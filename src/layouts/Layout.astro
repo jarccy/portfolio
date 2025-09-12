@@ -1,0 +1,79 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Jarcy</title>
+    <ClientRouter />
+
+    <script is:inline>
+      function applyTheme() {
+        const theme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        const isDark = theme === "dark" || (!theme && prefersDark);
+        document.documentElement.classList.toggle("dark", isDark);
+      }
+
+      function scrollToHash() {
+        if (window.location.hash) {
+          const el = document.querySelector(window.location.hash);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }
+
+      applyTheme();
+      scrollToHash();
+
+      document.addEventListener("astro:page-load", () => {
+        applyTheme();
+        scrollToHash();
+      });
+    </script>
+  </head>
+  <body
+    class="dark:bg-zinc-950 transition-colors duration-700 text-zinc-700 dark:text-zinc-200
+  selection:bg-gray-200 selection:text-zinc-950 dark:selection:bg-zinc-700 dark:selection:text-gray-100"
+  >
+    <main
+      class="w-full h-screen flex flex-col bg-neutral-50 dark:bg-zinc-950 backdrop-blur"
+    >
+      <div
+        class="absolute inset-0 -z-10
+         bg-[linear-gradient(to_right,_#e2e8f0_1px,_transparent_1px),linear-gradient(to_bottom,_#e2e8f0_1px,_transparent_1px)]
+    dark:bg-[linear-gradient(to_right,_#27272a_1px,_transparent_1px),linear-gradient(to_bottom,_#27272a_1px,_transparent_1px)]
+    bg-[length:60px_80px]
+    [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)]
+    [webkit-mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)]"
+        style={{
+          backgroundSize: "40px 40px",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%)",
+          maskImage:
+            "radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%)",
+        }}
+      >
+      </div>
+
+      <div class="flex-1 overflow-y-auto">
+        <slot />
+
+        <!-- <footer class="text-center">
+          <p class="text-md text-zinc-600 dark:text-zinc-400 mb-4">
+            © 2025 Designed and Build by Jarcy
+          </p>
+        </footer> -->
+      </div>
+    </main>
+  </body>
+</html>

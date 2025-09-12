@@ -1,0 +1,345 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "inter";
+  --font-vectra: "vectra";
+}
+
+@layer base {
+  @font-face {
+    font-family: "vectra";
+    src: url("/fonts/vectra.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "inter";
+    src: url("/fonts/inter.woff2") format("woff2");
+  }
+
+  :root {
+    --scrollbar-thumb: #e6e7eb;
+    --bg-invert: #3f3f47;
+  }
+
+  .dark {
+    --scrollbar-thumb: #202020;
+    --bg-invert: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* effect Circle Expand */
+  @keyframes circle-expand {
+    from {
+      clip-path: circle(0% at var(--circle-x) var(--circle-y));
+    }
+    to {
+      clip-path: circle(150% at var(--circle-x) var(--circle-y));
+    }
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: circle-expand 0.6s ease-in-out;
+  }
+
+  /* effect Background Loading */
+  .loading-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    animation: fadeOut 0.8s ease-in forwards;
+    animation-delay: 1s;
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  /* effect Loader */
+  .loader {
+    --ballcolor: #f2f2f2;
+    --shadow: 0px 0 #ffffff00;
+    --shadowcolor: #ffffff00;
+    width: 10px;
+    height: 10px;
+    left: -120px;
+    border-radius: 50%;
+    position: relative;
+    color: var(--ballcolor);
+    animation: shadowRolling 2s linear infinite;
+  }
+
+  @keyframes shadowRolling {
+    0% {
+      box-shadow: var(--shadow), var(--shadow), var(--shadow), var(--shadow);
+    }
+
+    12% {
+      box-shadow: 100px 0 var(--ballcolor), var(--shadow), var(--shadow),
+        var(--shadow);
+    }
+
+    25% {
+      box-shadow: 110px 0 var(--ballcolor), 100px 0 var(--ballcolor),
+        var(--shadow), var(--shadow);
+    }
+
+    36% {
+      box-shadow: 120px 0 var(--ballcolor), 110px 0 var(--ballcolor),
+        100px 0 var(--ballcolor), var(--shadow);
+    }
+
+    50% {
+      box-shadow: 130px 0 var(--ballcolor), 120px 0 var(--ballcolor),
+        110px 0 var(--ballcolor), 100px 0 var(--ballcolor);
+    }
+
+    62% {
+      box-shadow: 200px 0 var(--shadowcolor), 130px 0 var(--ballcolor),
+        120px 0 var(--ballcolor), 110px 0 var(--ballcolor);
+    }
+
+    75% {
+      box-shadow: 200px 0 var(--shadowcolor), 200px 0 var(--shadowcolor),
+        130px 0 var(--ballcolor), 120px 0 var(--ballcolor);
+    }
+
+    87% {
+      box-shadow: 200px 0 var(--shadowcolor), 200px 0 var(--shadowcolor),
+        200px 0 var(--shadowcolor), 130px 0 var(--ballcolor);
+    }
+
+    100% {
+      box-shadow: 200px 0 var(--shadowcolor), 200px 0 var(--shadowcolor),
+        200px 0 var(--shadowcolor), 200px 0 var(--shadowcolor);
+    }
+  }
+
+  /* effect shine */
+  .btn-shine {
+    background: linear-gradient(
+      to right,
+      #9f9f9f 0,
+      var(--bg-invert),
+      #9f9fa5 20%
+    );
+    background-position: 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+    animation-fill-mode: forwards;
+    -webkit-text-size-adjust: none;
+    text-decoration: none;
+    padding-block: 15px;
+  }
+  @keyframes shine {
+    0% {
+      background-position: 0;
+    }
+    60% {
+      background-position: calc(520px - 100%);
+    }
+    100% {
+      background-position: 100%;
+    }
+  }
+
+  /* effect Infinity Scroll */
+  @theme inline {
+    --animate-scroll: scroll var(--animation-duration, 10s)
+      var(--animation-direction, forwards) linear infinite;
+
+    @keyframes scroll {
+      to {
+        transform: translate(calc(-50% - 0.5rem));
+      }
+    }
+  }
+
+  .text-shine {
+    background: linear-gradient(
+      to right,
+      #9f9f9f 0,
+      var(--bg-invert),
+      #9f9fa5 20%
+    );
+    background-position: 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shinet 3s infinite linear;
+    animation-fill-mode: forwards;
+    -webkit-text-size-adjust: none;
+    text-decoration: none;
+  }
+  @keyframes shinet {
+    0% {
+      background-position: 0;
+    }
+    60% {
+      background-position: calc(220px - 50%);
+    }
+    100% {
+      background-position: 100%;
+    }
+  }
+
+  /* effect menu */
+  .hamburger input {
+    display: none;
+  }
+
+  .hamburger svg {
+    height: 2em;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .line {
+    fill: none;
+    stroke: var(--bg-invert);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .line-top-bottom {
+    stroke-dasharray: 12 63;
+  }
+
+  .hamburger input:checked + svg {
+    transform: rotate(-45deg);
+  }
+
+  .hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+  }
+
+  /* effect Heart*/
+  .heart-container {
+    --heart-color: rgb(204, 204, 204);
+    position: relative;
+    width: 50px;
+    height: 50px;
+    transition: 0.3s;
+  }
+
+  .heart-container .checkbox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 20;
+    cursor: pointer;
+  }
+
+  .heart-container .svg-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .heart-container .svg-outline,
+  .heart-container .svg-filled {
+    fill: var(--heart-color);
+    position: absolute;
+  }
+
+  .heart-container .svg-filled {
+    animation: keyframes-svg-filled 1s;
+    display: none;
+  }
+
+  .heart-container .svg-celebrate {
+    position: absolute;
+    animation: keyframes-svg-celebrate 0.5s;
+    animation-fill-mode: forwards;
+    display: none;
+    stroke: rgb(255, 91, 137);
+    fill: rgb(255, 91, 137);
+    stroke-width: 2px;
+  }
+
+  .heart-container .checkbox:checked ~ .svg-container .svg-filled {
+    display: block;
+    --heart-color: rgb(255, 91, 137);
+  }
+
+  .heart-container .checkbox:checked ~ .svg-container .svg-celebrate {
+    display: block;
+  }
+
+  @keyframes keyframes-svg-filled {
+    0% {
+      transform: scale(0);
+    }
+
+    25% {
+      transform: scale(1.2);
+    }
+
+    50% {
+      transform: scale(1);
+      filter: brightness(1.5);
+      --heart-color: rgb(255, 91, 137);
+    }
+  }
+
+  @keyframes keyframes-svg-celebrate {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      opacity: 1;
+      filter: brightness(1.5);
+    }
+
+    100% {
+      transform: scale(1.4);
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  /* effect Fade In Up */
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.4s ease-out forwards;
+  }
+}

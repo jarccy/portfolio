@@ -28,7 +28,7 @@ export default function Hobbie() {
   const checkLocalLiked = () => {
     const storedLiked = localStorage.getItem("liked");
     if (storedLiked === "true") {
-      // setLiked(true);
+      setLiked(true);
     }
   };
 

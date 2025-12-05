@@ -5,6 +5,7 @@ import { containerVariants, itemVariants } from "@/lib/functions";
 import { TypewriterEffectSmooth } from "@/components/textWrite";
 import { AnimatedShinyText } from "@/components/shinyText";
 const apiUrl = import.meta.env.PUBLIC_BACKEND_API;
+const apiKey = import.meta.env.PUBLIC_API_KEY;
 
 export default function Hobbie() {
   const [showIframe, setShowIframe] = useState(false);
@@ -12,21 +13,22 @@ export default function Hobbie() {
   const [liked, setLiked] = useState(false);
 
   const fetchLikeCount = useCallback(async () => {
-    try {
-      const response = await fetch(`${apiUrl}/api/likes`);
-      const data = await response.json();
-      if (data?.total !== undefined) {
+      await fetch(`${apiUrl}/api/likes?website=stadistics-port`,{
+        method: "GET",
+        headers: { "Content-Type": "application/json","jarcy-key": apiKey },
+      }).then((res) => res.json())
+      .then((data) => {
         setLikeCount(data.total);
-      }
-    } catch (error) {
-      console.error("Error fetching like count:", error);
-    }
+      })
+      .catch((error) => {
+        console.error("Error fetching like count:", error);
+      });
   }, []);
 
   const checkLocalLiked = () => {
     const storedLiked = localStorage.getItem("liked");
     if (storedLiked === "true") {
-      setLiked(true);
+      // setLiked(true);
     }
   };
 
@@ -45,14 +47,13 @@ export default function Hobbie() {
     setLikeCount((prev) => prev + 1);
     localStorage.setItem("liked", "true");
 
-    try {
-      await fetch(`${apiUrl}/api/likes`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      });
-    } catch (error) {
+    await fetch(`${apiUrl}/api/likes`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "jarcy-key": apiKey },
+      body: JSON.stringify({ website: "stadistics-port", timestamp: new Date().toISOString() }),
+    }).catch((error) => {
       console.error("Error sending like:", error);
-    }
+    });
   };
 
   return (

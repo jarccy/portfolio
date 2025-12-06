@@ -1,62 +1,9 @@
 import { TypewriterEffectSmooth } from "@/components/textWrite";
 import { useState } from "react";
+import {ThemeSwitch} from "@/components/themeSwitch"
 
 export default function NavBar() {
-  // const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [showMenu, setShowMenu] = useState<boolean>(false);
-
-  // useEffect(() => {
-  //   const savedTheme = localStorage.getItem("theme") as "light" | "dark";
-
-  //   if (savedTheme) {
-  //     setTheme(savedTheme);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     setShowText(true);
-  //   }, 500);
-
-  //   return () => clearTimeout(timeout);
-  // }, []);
-
-  const handleThemeToggle = (e: React.MouseEvent) => {
-    const x = `${e.clientX}px`;
-    const y = `${e.clientY}px`;
-
-    document.documentElement.style.setProperty("--circle-x", x);
-    document.documentElement.style.setProperty("--circle-y", y);
-
-    const applyTheme = () => {
-      document.documentElement.classList.toggle("dark");
-      localStorage.theme = document.documentElement.classList.contains("dark")
-        ? "dark"
-        : "light";
-
-      // setTheme(
-      //   document.documentElement.classList.contains("dark") ? "dark" : "light"
-      // );
-    };
-
-    if (document.startViewTransition) {
-      document.documentElement.classList.add("circle-reveal");
-
-      requestAnimationFrame(() => {
-        document
-          .startViewTransition(() => {
-            applyTheme();
-          })
-          .finished.finally(() => {
-            setTimeout(() => {
-              document.documentElement.classList.remove("circle-reveal");
-            }, 300);
-          });
-      });
-    } else {
-      applyTheme();
-    }
-  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -168,19 +115,7 @@ export default function NavBar() {
             </svg>
           </a>
 
-          <button
-            onClick={(e) => handleThemeToggle(e)}
-            className="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 256 256"
-              className="size-5"
-            >
-              <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,16.37a86.4,86.4,0,0,1,16,3V212.67a86.4,86.4,0,0,1-16,3Zm32,9.26a87.81,87.81,0,0,1,16,10.54V195.83a87.81,87.81,0,0,1-16,10.54ZM40,128a88.11,88.11,0,0,1,80-87.63V215.63A88.11,88.11,0,0,1,40,128Zm160,50.54V77.46a87.82,87.82,0,0,1,0,101.08Z"></path>
-            </svg>
-          </button>
+          <ThemeSwitch className="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200" />
         </div>
 
         <div className="flex md:hidden">

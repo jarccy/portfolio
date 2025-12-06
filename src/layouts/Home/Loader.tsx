@@ -1,5 +1,3 @@
-"use client"
-
 import { useEffect, useState } from "react"
 import { motion, type Variants } from "framer-motion"
 

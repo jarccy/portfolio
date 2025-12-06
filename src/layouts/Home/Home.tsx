@@ -1,6 +1,8 @@
 import { motion, type Variants } from "framer-motion";
 import Languages from "./Languages";
 import { BackgroundBeamsWithCollision } from "./Stars";
+import Preloader from "./Loader";
+import { useEffect, useState } from "react";
 
 const containerVariants: Variants = {
   animate: {
@@ -16,14 +18,35 @@ export const itemVariants: Variants = {
 };
 
 export default function Home() {
+    const [isPreloaderVisible, setIsPreloaderVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPreloaderVisible(false);
+    }, 3100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+
   return (
     <BackgroundBeamsWithCollision>
+        {isPreloaderVisible ? (
+      <>
+        <Preloader />
+        <div
+          id="home"
+          className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)]"
+        >
+        </div>
+      </>
+    ) : (
       <motion.section
         id="home"
         variants={containerVariants}
         initial="initial"
         animate="animate"
-        className="relative z-10 flex justify-center items-center min-h-[calc(100vh-12px)] px-4"
+        className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)] px-4"
       >
         <div className="max-w-xl w-full text-center">
           <motion.h1
@@ -53,6 +76,7 @@ export default function Home() {
           </motion.div>
         </div>
       </motion.section>
+       )}
     </BackgroundBeamsWithCollision>
   );
 }

@@ -129,7 +129,7 @@ export default function About() {
               <div className="mx-2 flex-1">
                 <div className="relative mt-2 aspect-[3/3] w-full">
                   <img
-                    loading="lazy"
+                    loading="eager"
                     className="absolute select-none pointer-events-none inset-0 h-full w-full rounded-[16px] bg-[#000000] object-cover"
                     alt="Invite background"
                     src="/images/profile.jpg"

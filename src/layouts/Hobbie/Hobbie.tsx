@@ -18,7 +18,7 @@ export default function Hobbie() {
         headers: { "Content-Type": "application/json","jarcy-key": apiKey },
       }).then((res) => res.json())
       .then((data) => {
-        setLikeCount(data.total);
+        if (data.statusCode !== 429) {setLikeCount(data.total)}
       })
       .catch((error) => {
         console.error("Error fetching like count:", error);
@@ -27,9 +27,7 @@ export default function Hobbie() {
 
   const checkLocalLiked = () => {
     const storedLiked = localStorage.getItem("liked");
-    if (storedLiked === "true") {
-      setLiked(true);
-    }
+    if (storedLiked === "true") {setLiked(true)}
   };
 
   useEffect(() => {

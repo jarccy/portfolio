@@ -76,7 +76,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-30 flex items-center justify-center transition-all duration-300`}
+      className={`fixed top-0 left-0 w-full z-20 flex items-center justify-center transition-all duration-300`}
     >
       <div
         className={

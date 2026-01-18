@@ -1,7 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import Languages from "./Languages";
 import { BackgroundBeamsWithCollision } from "./Stars";
-import Preloader from "./Loader";
 import { useEffect, useState } from "react";
 
 const containerVariants: Variants = {
@@ -17,66 +16,81 @@ export const itemVariants: Variants = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-export default function Home() {
-    const [isPreloaderVisible, setIsPreloaderVisible] = useState(true);
+export default function Home({
+  name,
+  jobTitle,
+  description,
+  lang,
+}: {
+  name: string;
+  jobTitle: string;
+  description: string;
+  lang?: string;
+}) {
+  const [isPreloaderVisible, setIsPreloaderVisible] = useState(true);
 
   useEffect(() => {
+    if (lang) {
+      import("../../i18n/config").then((module) => {
+        module.default.changeLanguage(lang);
+      });
+    }
+
     const timer = setTimeout(() => {
       setIsPreloaderVisible(false);
-    }, 3100);
+    }, 100);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [lang]);
 
 
   return (
     <BackgroundBeamsWithCollision>
-        {isPreloaderVisible ? (
-      <>
-        <Preloader />
-        <div
+      {isPreloaderVisible ? (
+        <>
+          {/* <Preloader /> */}
+          <div
+            id="home"
+            className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)]"
+          >
+          </div>
+        </>
+      ) : (
+        <motion.section
           id="home"
-          className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)]"
+          variants={containerVariants}
+          initial="initial"
+          animate="animate"
+          className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)] px-4"
         >
-        </div>
-      </>
-    ) : (
-      <motion.section
-        id="home"
-        variants={containerVariants}
-        initial="initial"
-        animate="animate"
-        className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)] px-4"
-      >
-        <div className="max-w-xl w-full text-center">
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-zinc-700 dark:text-zinc-200 leading-tight"
-          >
-            Hey, I'm Jarcy
-          </motion.h1>
+          <div className="max-w-xl w-full text-center">
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-zinc-700 dark:text-zinc-200 leading-tight"
+            >
+              {name}
+            </motion.h1>
 
-          <motion.h2
-            variants={itemVariants}
-            className="font-vectra text-3xl sm:text-4xl lg:text-6xl font-bold btn-shine"
-          >
-            Software Developer
-          </motion.h2>
+            <motion.h2
+              variants={itemVariants}
+              className="font-vectra text-3xl sm:text-4xl lg:text-6xl font-bold btn-shine"
+            >
+              {jobTitle}
+            </motion.h2>
 
-          <motion.article
-            variants={itemVariants}
-            className="dark:text-zinc-400/90 text-sm sm:text-base"
-          >
-            I build tools that turn work into a fun, seamless, and rewarding
-            experience, where productivity and creativity go hand in hand.
-          </motion.article>
+            <motion.article
+              variants={itemVariants}
+              className="dark:text-zinc-400/90 text-sm sm:text-base"
+            >
+              {description}
+            </motion.article>
 
-          <motion.div variants={itemVariants}>
-            <Languages />
-          </motion.div>
-        </div>
-      </motion.section>
-       )}
+            <motion.div variants={itemVariants}>
+              <Languages />
+            </motion.div>
+          </div>
+        </motion.section>
+      )}
     </BackgroundBeamsWithCollision>
   );
 }

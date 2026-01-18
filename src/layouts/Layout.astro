@@ -1,10 +1,12 @@
 ---
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
+
+const locale = Astro.currentLocale || "en";
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang={locale} class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -17,7 +19,7 @@ import { ClientRouter } from "astro:transitions";
       function applyTheme() {
         const theme = localStorage.getItem("theme");
         const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
+          "(prefers-color-scheme: dark)",
         ).matches;
         const isDark = theme === "dark" || (!theme && prefersDark);
         document.documentElement.classList.toggle("dark", isDark);

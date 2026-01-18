@@ -1,9 +1,43 @@
 import { TypewriterEffectSmooth } from "@/components/textWrite";
-import { useState } from "react";
-import {ThemeSwitch} from "@/components/themeSwitch"
+import { useState, useRef, useEffect } from "react";
+import { ThemeSwitch } from "@/components/themeSwitch"
+import { motion, AnimatePresence } from "framer-motion";
+import { i18next } from "../../i18n/config";
 
-export default function NavBar() {
+export default function NavBar({ lang }: { lang?: string }) {
+  const localT = i18next.getFixedT(lang || "en");
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [showLangMenu, setShowLangMenu] = useState<boolean>(false);
+  const langMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
+        setShowLangMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const changeLanguage = (lang: string) => {
+    const currentPath = window.location.pathname;
+    const pathParts = currentPath.split("/").filter(Boolean);
+
+    const locales = ["es", "en"];
+    const hasLocale = locales.includes(pathParts[0]);
+
+    let newPath = "";
+    if (lang === "en") {
+      newPath = hasLocale ? "/" + pathParts.slice(1).join("/") : currentPath;
+    } else {
+      newPath = hasLocale ? "/" + lang + "/" + pathParts.slice(1).join("/") : "/" + lang + currentPath;
+    }
+
+    newPath = newPath.replace(/\/+$/, "") || "/";
+
+    window.location.href = newPath;
+  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -14,11 +48,11 @@ export default function NavBar() {
   };
 
   const links = [
-    { name: "Home", href: "home" },
-    { name: "About", href: "about" },
-    { name: "Experience", href: "experience" },
-    { name: "Projects", href: "projects" },
-    { name: "Hobbie", href: "hobbie" },
+    { name: localT("nav.home"), href: "home" },
+    { name: localT("nav.about"), href: "about" },
+    { name: localT("nav.experience"), href: "experience" },
+    { name: localT("nav.projects"), href: "projects" },
+    { name: localT("nav.hobbie"), href: "hobbie" },
   ];
 
   return (
@@ -46,7 +80,7 @@ export default function NavBar() {
               onClick={() => scrollToSection("about")}
             >
               <span className="text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200">
-                About
+                {localT("nav.about")}
               </span>
 
               <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-zinc-400 dark:bg-zinc-200 transition-all duration-200 group-hover:w-full"></span>
@@ -57,7 +91,7 @@ export default function NavBar() {
               onClick={() => scrollToSection("experience")}
             >
               <span className="text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200">
-                Experience
+                {localT("nav.experience")}
               </span>
 
               <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-zinc-400 dark:bg-zinc-200 transition-all duration-200 group-hover:w-full"></span>
@@ -68,29 +102,12 @@ export default function NavBar() {
               onClick={() => scrollToSection("projects")}
             >
               <span className="text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200">
-                Projects
+                {localT("nav.projects")}
               </span>
 
               <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-zinc-400 dark:bg-zinc-200 transition-all duration-200 group-hover:w-full"></span>
             </div>
           </div>
-
-          <a
-            href="https://x.com/cristhian_jar"
-            target="_blank"
-            className="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-[1.1em]"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill="currentColor"
-                d="M9.294 6.928L14.357 1h-1.2L8.762 6.147L5.25 1H1.2l5.31 7.784L1.2 15h1.2l4.642-5.436L10.751 15h4.05zM7.651 8.852l-.538-.775L2.832 1.91h1.843l3.454 4.977l.538.775l4.491 6.47h-1.843z"
-              ></path>
-            </svg>
-          </a>
 
           <a
             href="https://github.com/jarccy"
@@ -114,6 +131,41 @@ export default function NavBar() {
               </g>
             </svg>
           </a>
+
+          <div className="relative" ref={langMenuRef}>
+            <button
+              onClick={() => setShowLangMenu(!showLangMenu)}
+              className="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.1em]" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a49 49 0 0 1 6-.371m0 0q1.681 0 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138q1.344.092 2.666.257m-4.589 8.495a18 18 0 0 1-3.827-5.802"></path></svg>
+            </button>
+
+            <AnimatePresence>
+              {showLangMenu && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                  className="absolute right-0 mt-2 w-32 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-xl z-30 overflow-hidden"
+                >
+                  <div className="py-1">
+                    <button
+                      onClick={() => changeLanguage("en")}
+                      className="w-full text-left px-4 py-2 text-sm text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                    >
+                      English
+                    </button>
+                    <button
+                      onClick={() => changeLanguage("es")}
+                      className="w-full text-left px-4 py-2 text-sm text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                    >
+                      Español
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
           <ThemeSwitch className="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200" />
         </div>

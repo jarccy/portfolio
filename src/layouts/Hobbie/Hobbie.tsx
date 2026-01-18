@@ -13,12 +13,12 @@ export default function Hobbie() {
   const [liked, setLiked] = useState(false);
 
   const fetchLikeCount = useCallback(async () => {
-      await fetch(`${apiUrl}/api/likes?website=stadistics-port`,{
-        method: "GET",
-        headers: { "Content-Type": "application/json","jarcy-key": apiKey },
-      }).then((res) => res.json())
+    await fetch(`${apiUrl}/api/likes?website=stadistics-port`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json", "jarcy-key": apiKey },
+    }).then((res) => res.json())
       .then((data) => {
-        if (data.statusCode !== 429) {setLikeCount(data.total)}
+        if (data.statusCode !== 429) { setLikeCount(data.total) }
       })
       .catch((error) => {
         console.error("Error fetching like count:", error);
@@ -27,16 +27,16 @@ export default function Hobbie() {
 
   const checkLocalLiked = () => {
     const storedLiked = localStorage.getItem("liked");
-    if (storedLiked === "true") {setLiked(true)}
+    if (storedLiked === "true") { setLiked(true) }
   };
 
-  useEffect(() => {
-    fetchLikeCount();
-    checkLocalLiked();
+  // useEffect(() => {
+  //   fetchLikeCount();
+  //   checkLocalLiked();
 
-    const timer = setTimeout(() => setShowIframe(true), 2000);
-    return () => clearTimeout(timer);
-  }, [fetchLikeCount]);
+  //   const timer = setTimeout(() => setShowIframe(true), 2000);
+  //   return () => clearTimeout(timer);
+  // }, [fetchLikeCount]);
 
   const incrementLike = async () => {
     if (liked) return;

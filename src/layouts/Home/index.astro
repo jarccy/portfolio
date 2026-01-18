@@ -1,9 +1,15 @@
 ---
 import Home from "./Home";
+import { i18next, t } from "../../i18n/config";
+
+const locale = Astro.currentLocale || "en";
+i18next.changeLanguage(locale);
 ---
 
-<html lang="en">
-  <body>
-    <Home client:load />
-  </body>
-</html>
+<Home
+  client:load
+  name={t("home.name")}
+  jobTitle={t("home.jobTitle")}
+  description={t("home.description")}
+  lang={locale}
+/>

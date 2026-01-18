@@ -1,9 +1,9 @@
 ---
 import NavBar from "./NavBar";
+import { i18next } from "../../i18n/config";
+
+const locale = Astro.currentLocale || "en";
+i18next.changeLanguage(locale);
 ---
 
-<html lang="en">
-  <body>
-    <NavBar client:load />
-  </body>
-</html>
+<NavBar client:load lang={locale} />

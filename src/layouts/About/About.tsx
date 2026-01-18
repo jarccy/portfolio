@@ -3,7 +3,7 @@ import { TitleMenu } from "../../components/titleMenu";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants, itemProfile } from "@/lib/functions";
 
-export default function About() {
+export default function About({ title, description, header, name, description2 }: { title: string, description: string, header: string, name: string, description2: string }) {
   const openMail = () => {
     window.location.href = "mailto:jarcristhian@gmail.com";
   };
@@ -19,8 +19,8 @@ export default function About() {
     >
       <motion.div variants={itemVariants}>
         <TitleMenu
-          title="About Me"
-          description="A story of growth and discovery"
+          title={title}
+          description={description}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -42,15 +42,11 @@ export default function About() {
       <div className="flex flex-col md:flex-row gap-5 mt-6">
         <motion.div variants={itemVariants} className="flex flex-col gap-2">
           <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 mb-4 min-w-[390px]">
-            Hi! I'm{" "}
+            {header}{" "}
             <span className="text-zinc-800 dark:text-zinc-200 font-semibold">
-              Jar Cristhian
+              {name}
             </span>
-            , a passionate web developer with experience building dynamic and
-            responsive websites. I love working with modern technologies and
-            constantly learning news skills to improve my stack. In my free
-            time, I enjoy exploring new web development trends and contributing
-            to open source projects.
+            {description2}
           </p>
           <div className="flex gap-4 ">
             <button

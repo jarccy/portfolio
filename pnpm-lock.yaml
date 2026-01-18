@@ -26,9 +26,6 @@ importers:
       i18next:
         specifier: ^25.7.4
         version: 25.7.4(typescript@5.9.2)
-      i18next-fs-backend:
-        specifier: ^2.6.1
-        version: 2.6.1
       react:
         specifier: ^19.2.3
         version: 19.2.3

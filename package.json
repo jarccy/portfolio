@@ -15,7 +15,6 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.26.2",
     "i18next": "^25.7.4",
-    "i18next-fs-backend": "^2.6.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "tailwind-merge": "^3.4.0",

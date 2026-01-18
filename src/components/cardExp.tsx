@@ -41,15 +41,17 @@ export const CardExperience = ({ company }: { company: Company }) => {
         alt="Background"
         width="200"
         height="200"
-        className="select-none grayscale pointer-events-none object-cover object-left-top h-[80%] absolute -bottom-10 inset-x-0 w-full"
+        className="hidden md:block select-none grayscale pointer-events-none object-cover object-left-top h-[80%] absolute -bottom-10 inset-x-0 w-full"
       />
     </div>
   );
 };
 
 const cardClass =
-  "w-full relative h-full rounded-2xl p-2 px-3 overflow-hidden transition-all duration-300 hover:scale-105 " +
+  "w-full relative h-full rounded-2xl p-2 px-3 overflow-hidden " +
   "bg-gradient-to-tr from-white via-neutral-100 to-neutral-100 " +
   "dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-800 " +
   "border border-zinc-200 dark:border-zinc-800 " +
-  "dark:border-t hover:border-t-4 hover:border-t-zinc-700 dark:hover:border-t-neutral-300";
+  "dark:border-t " +
+  "md:transition-all md:duration-300 md:hover:scale-105 " +
+  "md:hover:border-t-4 md:hover:border-t-zinc-700 dark:md:hover:border-t-neutral-300";

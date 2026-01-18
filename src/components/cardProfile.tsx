@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   motion,
   useMotionValue,
@@ -20,6 +20,12 @@ export const CardProfile = ({
   children: React.ReactNode;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -51,28 +57,23 @@ export const CardProfile = ({
 
   const glareX = useTransform(mouseXSpring, [-0.5, 0.5], [0, 100]);
   const glareY = useTransform(mouseYSpring, [-0.5, 0.5], [0, 100]);
-
-  const glareBackground = useMotionTemplate`radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0.75) 20%, rgba(255, 255, 255, 0) 80%)`;
+  const glareBackground = useMotionTemplate`
+    radial-gradient(circle at ${glareX}% ${glareY}%, 
+    rgba(255,255,255,0.9) 10%, 
+    rgba(255,255,255,0.75) 20%, 
+    rgba(255,255,255,0) 80%)`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-
+    if (isMobile || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-
-    const width = rect.width;
-    const height = rect.height;
-
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-
-    x.set(xPct);
-    y.set(yPct);
+    x.set(mouseX / rect.width - 0.5);
+    y.set(mouseY / rect.height - 0.5);
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
     x.set(0);
     y.set(0);
   };
@@ -83,26 +84,26 @@ export const CardProfile = ({
         ref={ref}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        style={{
-          rotateX,
-          rotateY,
-          translateX,
-          translateY,
-        }}
-        initial={{ scale: 1, z: 0 }}
-        whileHover={{
-          scale: 1.05,
-          z: 50,
-          transition: { duration: 0.2 },
-        }}
+        style={
+          isMobile
+            ? {}
+            : { rotateX, rotateY, translateX, translateY }
+        }
+        initial={{ scale: 1, opacity: 0 }}
+        animate={{ opacity: 1 }}
+        whileHover={
+          isMobile
+            ? {}
+            : { scale: 1.05, z: 50, transition: { duration: 0.2 } }
+        }
         className="relative rounded-2xl shadow-2xl"
       >
         {children}
         <motion.div
           className="pointer-events-none absolute inset-0 z-50 h-full w-full rounded-[16px] mix-blend-overlay"
           style={{
-            background: glareBackground,
-            opacity: 0.6,
+            background: isMobile ? "none" : glareBackground,
+            opacity: isMobile ? 0 : 0.6,
           }}
           transition={{ duration: 0.2 }}
         />

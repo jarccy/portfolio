@@ -46,7 +46,7 @@ export default function About({ lang }: { lang: string }) {
         <motion.div variants={itemVariants} className="flex flex-col gap-2">
           <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 mb-4 min-w-[350px]">
             {localT("about.header")}{" "}
-            <span className="text-zinc-800 dark:text-zinc-200 font-semibold">
+            <span className="text-primary font-semibold">
               Jar Cristhian
             </span>
             {localT("about.description2")}
@@ -72,7 +72,7 @@ export default function About({ lang }: { lang: string }) {
 
             <button
               className="inline-flex  select-none items-center gap-2 cursor-pointer rounded-2xl px-2 md:px-6 py-1.5 font-medium hover:scale-105 transition-transform duration-300
-          text-white dark:text-zinc-900 bg-zinc-700 dark:bg-neutral-200 active:scale-95 active:brightness-90 group/svg
+          text-white dark:text-zinc-900 bg-primary active:scale-95 active:brightness-90 group/svg
           "
               onClick={openMail}
             >

@@ -23,6 +23,9 @@ const locale = Astro.currentLocale || "en";
         ).matches;
         const isDark = theme === "dark" || (!theme && prefersDark);
         document.documentElement.classList.toggle("dark", isDark);
+
+        const primaryColor = localStorage.getItem("primary-color") || "default";
+        document.documentElement.setAttribute("data-theme-color", primaryColor);
       }
 
       function scrollToHash() {
@@ -36,6 +39,11 @@ const locale = Astro.currentLocale || "en";
 
       applyTheme();
       scrollToHash();
+
+      // Listen for primary color changes
+      window.addEventListener("primary-color-changed", (e) => {
+        document.documentElement.setAttribute("data-theme-color", e.detail);
+      });
 
       document.addEventListener("astro:page-load", () => {
         applyTheme();

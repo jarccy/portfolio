@@ -18,7 +18,7 @@ export const TitleMenu = ({ title, description, children }: data) => {
       <div className="flex flex-col -space-y-1">
         <div className="h-[35px]">
           <TypewriterEffectSmooth
-            className="text-2xl font-bold font-vectra"
+            className="text-primary text-2xl font-bold font-vectra"
             words={[{ text: title }]}
             duration={0.5}
           />

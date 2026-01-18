@@ -63,7 +63,7 @@ export const CardProject = ({
           <a
             className="absolute group-hover:-translate-y-7 translate-y-4 select-none
             inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300
-             text-white dark:text-zinc-900 bg-zinc-700 dark:bg-neutral-200 cursor-pointer hover:scale-105 active:scale-95 active:brightness-90 group/svg"
+             text-white dark:text-zinc-900 bg-primary cursor-pointer hover:scale-105 active:scale-95 active:brightness-90 group/svg"
             href={locale === "en" ? `/project/${project.name}` : `/es/project/${project.name}`}
           >
             {locale === "en" ? "Show more" : "Mostrar más"}

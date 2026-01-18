@@ -1,10 +1,67 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+}
+
+.dark {
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+}
+
+[data-theme-color="default"] {
+  --primary: 240 5% 34%;
+  --primary-foreground: 240 5.9% 10%;
+}
+
+.dark[data-theme-color="default"] {
+  --primary: 0 0% 90%;
+  --primary-foreground: 240 5.9% 10%;
+}
+
+[data-theme-color="blue"] {
+  --primary: 217 91% 78%;
+  --primary-foreground: 240 6% 10%;
+}
+
+[data-theme-color="green"] {
+  --primary: 142 77% 75%;
+  --primary-foreground: 240 6% 10%;
+}
+
+[data-theme-color="yellow"] {
+  --primary: 45 95% 77%;
+  --primary-foreground: 240 6% 10%;
+}
+
+[data-theme-color="rose"] {
+  --primary: 351 94% 71%;
+  --primary-foreground: 0 0% 100%;
+}
+
+[data-theme-color="violet"] {
+  --primary: 255 95% 85%;
+  --primary-foreground: 240 6% 10%;
+}
+
+[data-theme-color="pink"] {
+  --primary: 325 94% 69%;
+  --primary-foreground: 240 6% 10%;
+}
+
+[data-theme-color="orange"] {
+  --primary: 0 88% 80%;
+  --primary-foreground: 240 6% 10%;
+}
 
 @theme {
   --font-sans: "inter";
   --font-vectra: "vectra";
+    --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
 }
 
 @layer base {

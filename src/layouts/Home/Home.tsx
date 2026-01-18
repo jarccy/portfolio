@@ -3,7 +3,7 @@ import Languages from "./Languages";
 import { BackgroundBeamsWithCollision } from "./Stars";
 import { useEffect, useState } from "react";
 import { i18next } from "@/i18n/config";
-import Preloader from "./Loader";
+// import Preloader from "./Loader";
 
 const containerVariants: Variants = {
   animate: {
@@ -31,7 +31,7 @@ export default function Home({ lang }: { lang: string }) {
 
     const timer = setTimeout(() => {
       setIsPreloaderVisible(false);
-    }, 3100);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [lang]);
@@ -41,7 +41,7 @@ export default function Home({ lang }: { lang: string }) {
     <BackgroundBeamsWithCollision>
       {isPreloaderVisible ? (
         <>
-          <Preloader />
+          {/* <Preloader /> */}
           <div
             id="home"
             className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)]"
@@ -59,7 +59,7 @@ export default function Home({ lang }: { lang: string }) {
           <div className="max-w-xl w-full text-center">
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-zinc-700 dark:text-zinc-200 leading-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-primary leading-tight"
             >
               {localT("home.name")}
             </motion.h1>

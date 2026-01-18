@@ -1,11 +1,11 @@
 ---
-import "../../styles/global.css";
-import Layout from "../../layouts/Layout.astro";
+import "../../../styles/global.css";
+import Layout from "../../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import GalleryProjects from "@/layouts/Projects/galleryProjects";
-import { i18next } from "../../i18n/config";
+import { i18next } from "../../../i18n/config";
 
-const locale = Astro.currentLocale || "en";
+const locale = "es";
 i18next.changeLanguage(locale);
 
 export async function getStaticPaths() {
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { data, slug } = project;
-const { name, image, description, descriptionEs, technologies, images } = data;
+const { name, image, descriptionEs, technologies, images } = data;
 ---
 
 <Layout>
@@ -28,7 +28,7 @@ const { name, image, description, descriptionEs, technologies, images } = data;
       mainImage={image}
       name={name}
       images={images}
-      description={locale === "en" ? description : descriptionEs}
+      description={descriptionEs}
       technologies={technologies}
       locale={locale}
     >

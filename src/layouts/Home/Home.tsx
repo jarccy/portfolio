@@ -3,7 +3,7 @@ import Languages from "./Languages";
 import { BackgroundBeamsWithCollision } from "./Stars";
 import { useEffect, useState } from "react";
 import { i18next } from "@/i18n/config";
-// import Preloader from "./Loader";
+import Preloader from "./Loader";
 
 const containerVariants: Variants = {
   animate: {
@@ -31,7 +31,7 @@ export default function Home({ lang }: { lang: string }) {
 
     const timer = setTimeout(() => {
       setIsPreloaderVisible(false);
-    }, 100);
+    }, 3100);
 
     return () => clearTimeout(timer);
   }, [lang]);
@@ -41,7 +41,7 @@ export default function Home({ lang }: { lang: string }) {
     <BackgroundBeamsWithCollision>
       {isPreloaderVisible ? (
         <>
-          {/* <Preloader /> */}
+          <Preloader />
           <div
             id="home"
             className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)]"

@@ -12,6 +12,7 @@ interface ImageGalleryProps {
 
 interface GalleryProjectsProps extends ImageGalleryProps {
   children?: React.ReactNode;
+  locale?: string;
 }
 
 export default function GalleryProjects({
@@ -21,6 +22,7 @@ export default function GalleryProjects({
   description,
   technologies,
   children,
+  locale = "en",
 }: GalleryProjectsProps) {
   const [selectedImage, setSelectedImage] = useState<string>(mainImage);
 
@@ -29,7 +31,7 @@ export default function GalleryProjects({
   };
 
   const goBack = () => {
-    window.location.href = "/#projects";
+    window.location.href = locale === "es" ? "/es/#projects" : "/#projects";
   };
 
   return (
@@ -57,7 +59,7 @@ export default function GalleryProjects({
               d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
             ></path>
           </svg>
-          Back
+          {locale === "es" ? "Atrás" : "Back"}
         </button>
 
         <h1 className="text-2xl md:text-3xl font-bold capitalize">{name}</h1>

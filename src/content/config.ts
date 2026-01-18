@@ -6,6 +6,7 @@ const projects = defineCollection({
         date: z.number(),
         image: z.string(),
         description: z.string(),
+        descriptionEs: z.string(),
         technologies: z.array(z.string()),
         images: z.array(z.string()),
     }),

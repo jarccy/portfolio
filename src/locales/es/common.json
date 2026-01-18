@@ -1,25 +1,34 @@
 {
-    "home": {
-        "name": "Hola, soy Jarcy",
-        "jobTitle": "Desarrollador de Software",
-        "description": "Construyo herramientas que convierten el trabajo en una experiencia divertida, fluida y gratificante, donde la productividad y la creatividad van de la mano."
-    },
-    "about": {
-        "title": "Sobre mí",
-        "description": "Una historia de crecimiento y descubrimiento",
-        "header": "Hola, soy",
-        "name": "Jar Cristhian",
-        "description2": ", un apasionado desarrollador web con experiencia en la creación de sitios web dinámicos y responsivos. Me encanta trabajar con tecnologías modernas y aprender constantemente nuevas habilidades para mejorar mi stack. En mi tiempo libre, disfruto explorando nuevas tendencias en desarrollo web y contribuyendo a proyectos de código abierto."
-    },
-    "hobbie": {
-        "title": "Hobbie",
-        "description": "Me gusta mucho escuchar música"
-    },
     "nav": {
         "home": "Inicio",
         "about": "Sobre mí",
         "experience": "Experiencia",
         "projects": "Proyectos",
         "hobbie": "Hobbie"
+    },
+    "home": {
+        "name": "Hola, soy Jarcy",
+        "description": "Construyo herramientas que convierten el trabajo en una experiencia divertida, fluida y gratificante, donde la productividad y la creatividad van de la mano."
+    },
+    "about": {
+        "title": "Sobre mí",
+        "description": "Una historia de crecimiento y descubrimiento",
+        "header": "Hola, soy",
+        "description2": ", un apasionado desarrollador web con experiencia en la creación de sitios web dinámicos y responsivos. Me encanta trabajar con tecnologías modernas y aprender constantemente nuevas habilidades para mejorar mi stack. En mi tiempo libre, disfruto explorando nuevas tendencias en desarrollo web y contribuyendo a proyectos de código abierto.",
+        "resume": "Resumen",
+        "contact": "Contactame"
+    },
+    "experience": {
+        "title": "Experiencia",
+        "description": "Mi recorrido profesional"
+    },
+    "projects": {
+        "title": "Proyectos",
+        "description": "Una colección de mis proyectos favoritos"
+    },
+    "hobbie": {
+        "title": "Hobbie",
+        "description": "Me gusta mucho escuchar música"
     }
+    
 }

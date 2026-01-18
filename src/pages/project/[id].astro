@@ -3,6 +3,10 @@ import "../../styles/global.css";
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import GalleryProjects from "@/layouts/Projects/galleryProjects";
+import { i18next } from "../../i18n/config";
+
+const locale = Astro.currentLocale || "en";
+i18next.changeLanguage(locale);
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -14,17 +18,18 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { data, slug } = project;
-const { name, image, date, description, technologies, images } = data;
+const { name, image, description, descriptionEs, technologies, images } = data;
 ---
 
 <Layout>
   <div class="w-full max-w-3xl mx-auto pt-40 mb-10 px-4">
+    aa{locale}
     <GalleryProjects
       client:load
       mainImage={image}
       name={name}
       images={images}
-      description={description}
+      description={locale === "en" ? description : descriptionEs}
       technologies={technologies}
     >
       <img

@@ -1,5 +1,9 @@
 ---
 import Hobbie from "./Hobbie";
+import { i18next } from "../../i18n/config";
+
+const locale = Astro.currentLocale || "en";
+i18next.changeLanguage(locale);
 ---
 
-<Hobbie client:load />
+<Hobbie client:load lang={locale} />

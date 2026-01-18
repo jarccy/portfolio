@@ -71,9 +71,9 @@ export const Tabs = ({
             )}
             <span
               className={cn(
-                "relative block text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200 transition-transform duration-200 hover:translate-x-1.5 truncate max-w-14 md:max-w-full",
+                "relative block text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200 transition-transform duration-200 hover:translate-x-1.5 truncate max-w-12 md:max-w-full",
                 active.value === tab.value &&
-                  "font-semibold text-zinc-700 dark:text-zinc-200"
+                "font-semibold text-zinc-700 dark:text-zinc-200"
               )}
             >
               {tab.title}
@@ -128,7 +128,7 @@ export const FadeInDiv = ({
             "w-full h-full absolute top-0 left-0",
             className,
             hovering &&
-              "border-t-2 border-zinc-700 dark:border-t-zinc-200 rounded-2xl"
+            "border-t-2 border-zinc-700 dark:border-t-zinc-200 rounded-2xl"
           )}
         >
           {tab.content}

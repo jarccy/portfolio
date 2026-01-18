@@ -1,5 +1,9 @@
 ---
 import Experience from "./Experience";
+import { i18next } from "../../i18n/config";
+
+const locale = Astro.currentLocale || "en";
+i18next.changeLanguage(locale);
 ---
 
-<Experience client:load />
+<Experience client:load lang={locale} />

@@ -1,7 +1,13 @@
 {
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "experience": "Experience",
+        "projects": "Projects",
+        "hobbie": "Hobbie"
+    },
     "home": {
         "name": "Hey, I'm Jarcy",
-        "jobTitle": "Software Developer",
         "description": "I build tools that turn work into a fun, seamless, and rewarding experience, where productivity and creativity go hand in hand."
     },
     "about": {
@@ -9,17 +15,22 @@
         "description": "A story of growth and discovery",
         "header": "Hey, I'm",
         "name": "Jar Cristhian",
-        "description2": ", a passionate web developer with experience building dynamic and responsive websites. I love working with modern technologies and constantly learning new skills to improve my stack. In my free time, I enjoy exploring new web development trends and contributing to open source projects."
+        "description2": ", a passionate web developer with experience building dynamic and responsive websites. I love working with modern technologies and constantly learning new skills to improve my stack. In my free time, I enjoy exploring new web development trends and contributing to open source projects.",
+        "resume": "Resume",
+        "contact": "Contact Me"
+
+    },
+    "experience": {
+        "title": "Experience",
+        "description": "My professional journey"
+    },
+    "projects": {
+        "title": "Projects",
+        "description": "A collection of my favorite projects"
     },
     "hobbie": {
         "title": "Hobbie",
         "description": "I like so much listen music"
-    },
-    "nav": {
-        "home": "Home",
-        "about": "About",
-        "experience": "Experience",
-        "projects": "Projects",
-        "hobbie": "Hobbie"
     }
+   
 }

@@ -2,8 +2,11 @@ import { CardProfile } from "@/components/cardProfile";
 import { TitleMenu } from "../../components/titleMenu";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants, itemProfile } from "@/lib/functions";
+import { i18next } from "@/i18n/config";
 
-export default function About({ title, description, header, name, description2 }: { title: string, description: string, header: string, name: string, description2: string }) {
+export default function About({ lang }: { lang: string }) {
+  const localT = i18next.getFixedT(lang || "en");
+
   const openMail = () => {
     window.location.href = "mailto:jarcristhian@gmail.com";
   };
@@ -19,8 +22,8 @@ export default function About({ title, description, header, name, description2 }
     >
       <motion.div variants={itemVariants}>
         <TitleMenu
-          title={title}
-          description={description}
+          title={localT("about.title")}
+          description={localT("about.description")}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -41,12 +44,12 @@ export default function About({ title, description, header, name, description2 }
 
       <div className="flex flex-col md:flex-row gap-5 mt-6">
         <motion.div variants={itemVariants} className="flex flex-col gap-2">
-          <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 mb-4 min-w-[390px]">
-            {header}{" "}
+          <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 mb-4 min-w-[350px]">
+            {localT("about.header")}{" "}
             <span className="text-zinc-800 dark:text-zinc-200 font-semibold">
-              {name}
+              Jar Cristhian
             </span>
-            {description2}
+            {localT("about.description2")}
           </p>
           <div className="flex gap-4 ">
             <button
@@ -54,7 +57,7 @@ export default function About({ title, description, header, name, description2 }
             bg-white/10 border border-white/20 backdrop-blur-lg shadow-md hover:scale-105 
             active:scale-95 active:brightness-90 transition-all duration-300"
             >
-              Resume
+              {localT("about.resume")}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -87,7 +90,7 @@ export default function About({ title, description, header, name, description2 }
                   <path d="M2 17V7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2Z" />
                 </g>
               </svg>
-              Contact Me
+              {localT("about.contact")}
               <svg
                 className="h-3.5 w-3.5 transition-transform duration-500 -translate-x-1 group-hover/svg:translate-x-0.5"
                 viewBox="0 0 20 20"

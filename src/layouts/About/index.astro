@@ -1,16 +1,9 @@
 ---
 import About from "./About";
-import { i18next, t } from "../../i18n/config";
+import { i18next } from "../../i18n/config";
 
 const locale = Astro.currentLocale || "en";
 i18next.changeLanguage(locale);
 ---
 
-<About
-  client:load
-  title={t("about.title")}
-  description={t("about.description")}
-  header={t("about.header")}
-  name={t("about.name")}
-  description2={t("about.description2")}
-/>
+<About client:load lang={locale} />

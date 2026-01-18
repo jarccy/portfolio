@@ -2,6 +2,9 @@
 import { CardProject } from "@/components/cardProject";
 import { TitleMenu } from "@/components/titleMenu";
 import { getCollection } from "astro:content";
+import { i18next } from "../../i18n/config";
+
+const localT = i18next.getFixedT(Astro.currentLocale || "en");
 
 const projects = await getCollection("projects");
 ---
@@ -9,8 +12,8 @@ const projects = await getCollection("projects");
 <section id="projects" class="w-full max-w-2xl mx-auto pt-40 mb-10 px-4 a">
   <TitleMenu
     client:load
-    title="Projects"
-    description="A collection of my favorite projects"
+    title={localT("projects.title")}
+    description={localT("projects.description")}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +32,11 @@ const projects = await getCollection("projects");
       projects
         .toSorted((a, b) => b.data.date - a.data.date)
         .map((project, index) => (
-          <CardProject client:load project={project.data}>
+          <CardProject
+            client:load
+            project={project.data}
+            locale={Astro.currentLocale || "en"}
+          >
             <img
               transition:name={`image-${project.slug}`}
               src={project.data.image}
@@ -46,7 +53,7 @@ const projects = await getCollection("projects");
       class="select-none inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300
               bg-white/10 border shadow border-white/20 backdrop-blur-lg cursor-pointer hover:scale-105 active:scale-95 active:brightness-90 group/svg"
     >
-      More projects
+      {Astro.currentLocale === "en" ? "More Projects" : "Mas Proyectos"}
       <svg
         class="h-3.5 w-3.5 transition-transform duration-500 -translate-x-1 group-hover/svg:translate-x-0.5"
         viewBox="0 0 20 20"

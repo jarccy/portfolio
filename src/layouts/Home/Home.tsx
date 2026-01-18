@@ -2,7 +2,8 @@ import { motion, type Variants } from "framer-motion";
 import Languages from "./Languages";
 import { BackgroundBeamsWithCollision } from "./Stars";
 import { useEffect, useState } from "react";
-import Preloader from "./Loader";
+import { i18next } from "@/i18n/config";
+// import Preloader from "./Loader";
 
 const containerVariants: Variants = {
   animate: {
@@ -17,17 +18,8 @@ export const itemVariants: Variants = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
-export default function Home({
-  name,
-  jobTitle,
-  description,
-  lang,
-}: {
-  name: string;
-  jobTitle: string;
-  description: string;
-  lang?: string;
-}) {
+export default function Home({ lang }: { lang: string }) {
+  const localT = i18next.getFixedT(lang || "en");
   const [isPreloaderVisible, setIsPreloaderVisible] = useState(true);
 
   useEffect(() => {
@@ -39,7 +31,7 @@ export default function Home({
 
     const timer = setTimeout(() => {
       setIsPreloaderVisible(false);
-    }, 3100);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [lang]);
@@ -49,7 +41,7 @@ export default function Home({
     <BackgroundBeamsWithCollision>
       {isPreloaderVisible ? (
         <>
-          <Preloader />
+          {/* <Preloader /> */}
           <div
             id="home"
             className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)]"
@@ -69,21 +61,21 @@ export default function Home({
               variants={itemVariants}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-zinc-700 dark:text-zinc-200 leading-tight"
             >
-              {name}
+              {localT("home.name")}
             </motion.h1>
 
             <motion.h2
               variants={itemVariants}
               className="font-vectra text-3xl sm:text-4xl lg:text-6xl font-bold btn-shine"
             >
-              {jobTitle}
+              Software Developer
             </motion.h2>
 
             <motion.article
               variants={itemVariants}
               className="dark:text-zinc-400/90 text-sm sm:text-base"
             >
-              {description}
+              {localT("home.description")}
             </motion.article>
 
             <motion.div variants={itemVariants}>

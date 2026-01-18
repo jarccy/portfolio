@@ -1,88 +1,91 @@
 import { TitleMenu } from "@/components/titleMenu";
 import { CardExperience } from "../../components/cardExp";
 import { motion } from "framer-motion";
-import { containerVariants, itemVariants, itemProfile } from "@/lib/functions";
+import { containerVariants, itemVariants } from "@/lib/functions";
 import { Tabs } from "../../components/tabs";
+import { i18next } from "@/i18n/config";
 
-type company = {
-  name: string;
-  charge: string;
-  period: string;
-  description: string;
+type Company = {
+  name: { en: string; es: string };
+  charge: { en: string; es: string };
+  period: { en: string; es: string };
+  description: { en: string; es: string };
   technologies: string;
 };
 
-export default function Experience() {
-  const companies: company[] = [
-    {
-      name: "Consorcio Master",
-      charge: "Full Stack Developer",
-      period: "Sep 2024 - Present",
-      description:
-        "Working as a Full Stack Developer, focusing on building scalable web applications and improving user experience. Responsible for both front-end and back-end development tasks.",
-      technologies: "Vue.js, Laravel, Node.js, TypeScript, PHP y SQL",
+export const companies: Company[] = [
+  {
+    name: { en: "Consorcio Master", es: "Consorcio Master" },
+    charge: { en: "Full Stack Developer", es: "Full Stack Developer" },
+    period: { en: "Sep 2024 - Present", es: "Sep 2024 - Presente" },
+    description: {
+      en: "Working as a Full Stack Developer, focusing on building scalable web applications and improving user experience. Responsible for both front-end and back-end development tasks.",
+      es: "Trabajando como Full Stack Developer, enfocado en la creación de aplicaciones web escalables y mejorar la experiencia del usuario. Responsable de las tareas de desarrollo tanto del front-end como del back-end.",
     },
-    {
-      name: "Tecnologías y Soluciones Inteligentes",
-      charge: "Full Stack Developer",
-      period: "Apr 2021 - Apr 2023",
-      description:
-        "Developed and maintained web applications using Vue.js and Django, ensuring responsive design and optimal performance. Collaborated with cross-functional teams to deliver projects on time and within budget.",
-      technologies: "Vue.js, Django, JavaScript, Python y PostgreSQL",
+    technologies: "Vue.js, Laravel, Node.js, TypeScript, PHP y SQL",
+  },
+  {
+    name: { en: "Intelligent Technologies and Solutions", es: "Tecnologías y Soluciones Inteligentes" },
+    charge: { en: "Full Stack Developer", es: "Full Stack Developer" },
+    period: { en: "Apr 2021 - Apr 2023", es: "Abr 2021 - Abr 2023" },
+    description: {
+      en: "Developed and maintained web applications using Vue.js and Django, ensuring responsive design and optimal performance. Collaborated with cross-functional teams to deliver projects on time and within budget.",
+      es: "Desarrollé y mantuve aplicaciones web utilizando Vue.js y Django, asegurando un diseño responsive y rendimiento óptimo. Colaboré con equipos funcionales para entregar proyectos en plazo y dentro del presupuesto.",
     },
-    {
-      name: "Freelancer Jobs",
-      charge: "Full Stack Developer",
-      period: "Jan 2020 - Mar 2021",
-      description:
-        "Provided freelance web development services to various clients, creating custom websites and applications tailored to their needs. Managed all aspects of the development process from concept to deployment.",
-      technologies: "Vue.js, Node.js, JavaScript y PostgreSQL",
+    technologies: "Vue.js, Django, JavaScript, Python y PostgreSQL",
+  },
+  {
+    name: { en: "Freelancer Jobs", es: "Freelancer Jobs" },
+    charge: { en: "Full Stack Developer", es: "Full Stack Developer" },
+    period: { en: "Jan 2020 - Mar 2021", es: "Ene 2020 - Mar 2021" },
+    description: {
+      en: "Provided freelance web development services to various clients, creating custom websites and applications tailored to their needs. Managed all aspects of the development process from concept to deployment.",
+      es: "Proporcioné servicios de desarrollo web freelance a diversos clientes, creando sitios web y aplicaciones personalizadas según sus necesidades. Gestioné todo el proceso de desarrollo desde el concepto hasta la implementación.",
     },
-    {
-      name: "Instituto San Lucas",
-      charge: "Junior Developer",
-      period: "Ago 2019 - Dec 2019",
-      description:
-        "Contributed to web app and internal tool development, working across front-end and back-end. Improved workflows, enhanced UX, and upheld best practices in collaboration.",
-      technologies: "HTML, CSS, JavaScript, PHP y SQL",
+    technologies: "Vue.js, Node.js, JavaScript y PostgreSQL",
+  },
+  {
+    name: { en: "Institute San Lucas", es: "Instituto San Lucas" },
+    charge: { en: "Junior Developer", es: "Junior Developer" },
+    period: { en: "Aug 2019 - Dec 2019", es: "Ago 2019 - Dic 2019" },
+    description: {
+      en: "Contributed to web app and internal tool development, working across front-end and back-end. Improved workflows, enhanced UX, and upheld best practices in collaboration.",
+      es: "Contribuí al desarrollo de aplicaciones web y herramientas internas, trabajando en el front-end y back-end. Mejoré los flujos de trabajo, mejoré la experiencia del usuario y mantuve las mejores prácticas en colaboración.",
     },
-    {
-      name: "ADV Informatica",
-      charge: "Junior Developer",
-      period: "Mar 2019 - Jun 2019",
-      description:
-        "Assisted in the development of web applications and internal tools. Gained experience in coding, testing, and debugging under the guidance of senior developers.",
-      technologies: "HTML, CSS, JavaScript, PHP y MySQL",
+    technologies: "HTML, CSS, JavaScript, PHP y SQL",
+  },
+  {
+    name: { en: "ADV Computing", es: "ADV Informatica" },
+    charge: { en: "Junior Developer", es: "Junior Developer" },
+    period: { en: "Mar 2019 - Jun 2019", es: "Mar 2019 - Jun 2019" },
+    description: {
+      en: "Assisted in the development of web applications and internal tools. Gained experience in coding, testing, and debugging under the guidance of senior developers.",
+      es: "Ayudé en el desarrollo de aplicaciones web y herramientas internas. Adquirí experiencia en codificación, pruebas y depuración bajo la dirección de desarrolladores senior.",
     },
-  ];
+    technologies: "HTML, CSS, JavaScript, PHP y MySQL",
+  },
+];
 
-  const tabs = [
-    {
-      title: "Consorcio Master",
-      value: "master",
-      content: <CardExperience company={companies[0]} />,
-    },
-    {
-      title: "Tecnologías y Soluciones In.",
-      value: "tech",
-      content: <CardExperience company={companies[1]} />,
-    },
-    {
-      title: "Freelancer Jobs",
-      value: "freelance",
-      content: <CardExperience company={companies[2]} />,
-    },
-    {
-      title: "Instituto San Lucas",
-      value: "institution",
-      content: <CardExperience company={companies[3]} />,
-    },
-    {
-      title: "ADV Informatica",
-      value: "adv",
-      content: <CardExperience company={companies[4]} />,
-    },
-  ];
+
+
+export default function Experience({ lang }: { lang: string }) {
+  const localT = i18next.getFixedT(lang || "en");
+
+  const tabs = companies.map((company, index) => ({
+    title: company.name[lang as "en" | "es"],
+    value: `company-${index}`,
+    content: (
+      <CardExperience
+        company={{
+          name: company.name[lang as "en" | "es"],
+          charge: company.charge[lang as "en" | "es"],
+          period: company.period[lang as "en" | "es"],
+          description: company.description[lang as "en" | "es"],
+          technologies: company.technologies,
+        }}
+      />
+    ),
+  }));
 
   return (
     <motion.section
@@ -94,7 +97,7 @@ export default function Experience() {
       className="w-full max-w-2xl mx-auto pt-40 mb-10 px-4"
     >
       <motion.div variants={itemVariants}>
-        <TitleMenu title="Experience" description="My professional journey">
+        <TitleMenu title={localT("experience.title")} description={localT("experience.description")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

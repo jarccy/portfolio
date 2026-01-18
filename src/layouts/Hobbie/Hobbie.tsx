@@ -4,13 +4,15 @@ import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/lib/functions";
 import { TypewriterEffectSmooth } from "@/components/textWrite";
 import { AnimatedShinyText } from "@/components/shinyText";
+import { i18next } from "../../i18n/config";
 const apiUrl = import.meta.env.PUBLIC_BACKEND_API;
 const apiKey = import.meta.env.PUBLIC_API_KEY;
 
-export default function Hobbie() {
+export default function Hobbie({ lang }: { lang?: string }) {
   const [showIframe, setShowIframe] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
   const [liked, setLiked] = useState(false);
+  const localT = i18next.getFixedT(lang || "en");
 
   const fetchLikeCount = useCallback(async () => {
     await fetch(`${apiUrl}/api/likes?website=stadistics-port`, {
@@ -21,7 +23,7 @@ export default function Hobbie() {
         if (data.statusCode !== 429) { setLikeCount(data.total) }
       })
       .catch((error) => {
-        console.error("Error fetching like count:", error);
+        console.log("Error", error);
       });
   }, []);
 
@@ -30,13 +32,13 @@ export default function Hobbie() {
     if (storedLiked === "true") { setLiked(true) }
   };
 
-  // useEffect(() => {
-  //   fetchLikeCount();
-  //   checkLocalLiked();
+  useEffect(() => {
+    fetchLikeCount();
+    checkLocalLiked();
 
-  //   const timer = setTimeout(() => setShowIframe(true), 2000);
-  //   return () => clearTimeout(timer);
-  // }, [fetchLikeCount]);
+    const timer = setTimeout(() => setShowIframe(true), 2000);
+    return () => clearTimeout(timer);
+  }, [fetchLikeCount]);
 
   const incrementLike = async () => {
     if (liked) return;
@@ -64,7 +66,7 @@ export default function Hobbie() {
       className="w-full max-w-2xl mx-auto pt-40 mb-40 px-4"
     >
       <motion.div variants={itemVariants}>
-        <TitleMenu title="Hobbie" description="I like so much listen music">
+        <TitleMenu title={localT("hobbie.title")} description={localT("hobbie.description")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

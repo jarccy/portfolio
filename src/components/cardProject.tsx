@@ -6,14 +6,17 @@ type project = {
   date: number;
   image: string;
   description: string;
+  descriptionEs: string;
   technologies: string[];
 };
 
 export const CardProject = ({
   project,
+  locale,
   children,
 }: {
   project: project;
+  locale: string;
   children: React.ReactNode;
 }) => {
   return (
@@ -40,7 +43,7 @@ export const CardProject = ({
 
         <motion.div variants={itemUp} className="relative mt-1">
           <p className="font-medium text-zinc-600 dark:text-zinc-400 text-sm transition-all duration-300 group-hover:-translate-y-10 group-hover:bg-zinc-100/20 group-hover:backdrop-blur group-hover:dark:bg-zinc-950/90">
-            {project.description}
+            {locale === "en" ? project.description : project.descriptionEs}
             {project.technologies.map((tech, index) => (
               <span
                 key={index}
@@ -63,7 +66,7 @@ export const CardProject = ({
              text-white dark:text-zinc-900 bg-zinc-700 dark:bg-neutral-200 cursor-pointer hover:scale-105 active:scale-95 active:brightness-90 group/svg"
             href={`/project/${project.name}`}
           >
-            Show more
+            {locale === "en" ? "Show more" : "Mostrar más"}
             <svg
               className="h-3.5 w-3.5 transition-transform duration-500 -translate-x-1 group-hover/svg:translate-x-0.5"
               viewBox="0 0 20 20"

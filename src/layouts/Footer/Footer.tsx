@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/lib/functions";
-import { Icons } from "./Icons";
 
 export default function Footer() {
   return (

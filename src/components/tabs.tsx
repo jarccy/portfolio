@@ -64,16 +64,16 @@ export const Tabs = ({
                 layoutId="clickedbutton"
                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                 className={cn(
-                  "absolute inset-0 bg-zinc-200/50 dark:bg-zinc-800 rounded-r-xl border-l-2 border-zinc-700 dark:border-zinc-200",
+                  "absolute inset-0 bg-zinc-200/50 dark:bg-zinc-800 rounded-r-xl border-l-2 border-primary",
                   activeTabClassName
                 )}
               />
             )}
             <span
               className={cn(
-                "relative block text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200 transition-transform duration-200 hover:translate-x-1.5 truncate max-w-12 md:max-w-full",
+                "relative block text-zinc-400 dark:hover:text-zinc-200 transition-transform duration-200 hover:translate-x-1.5 truncate max-w-12 md:max-w-full",
                 active.value === tab.value &&
-                "font-semibold text-zinc-700 dark:text-zinc-200"
+                "font-semibold text-primary"
               )}
             >
               {tab.title}

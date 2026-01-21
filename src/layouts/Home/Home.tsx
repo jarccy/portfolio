@@ -3,6 +3,7 @@ import Languages from "./Languages";
 import { BackgroundBeamsWithCollision } from "./Stars";
 import { useEffect, useState } from "react";
 import { i18next } from "@/i18n/config";
+import ShinyText from "@/components/shinyText";
 import Preloader from "./Loader";
 
 const containerVariants: Variants = {
@@ -59,16 +60,23 @@ export default function Home({ lang }: { lang: string }) {
           <div className="max-w-xl w-full text-center">
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-primary leading-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-zinc-600 dark:text-zinc-200 leading-tight"
             >
-              {localT("home.name")}
+              {localT("home.name")} <span className="text-primary">Jarcy</span>
             </motion.h1>
 
             <motion.h2
               variants={itemVariants}
-              className="font-vectra text-3xl sm:text-4xl lg:text-6xl font-bold btn-shine"
+              className="font-vectra text-3xl sm:text-4xl lg:text-6xl font-bold py-2"
             >
-              Software Developer
+              <ShinyText
+                text="Software Developer"
+                speed={2}
+                delay={0}
+                color="var(--color-secondary)"
+                shineColor="var(--color-primary)"
+                direction="left"
+              />
             </motion.h2>
 
             <motion.article

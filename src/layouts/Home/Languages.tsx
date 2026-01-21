@@ -45,9 +45,10 @@ const Tooltip = ({ text, position, stacks }: params) => {
         transform: "translateX(-40%)",
       }}
     >
-      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-zinc-100 dark:border-b-zinc-800/80" />
 
-      <div className="text-xs rounded-2xl py-2 px-3 w-[180px] h-[80px] shadow-lg bg-zinc-100/50 backdrop-blur-sm dark:bg-zinc-800/50">
+      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white dark:border-b-zinc-800/80" />
+
+      <div className="text-xs rounded-2xl py-2 px-3 w-[180px] h-[80px] shadow-lg bg-white dark:bg-zinc-900">
         <div className="flex flex-col">
           <strong>Stack in {text}:</strong>
 

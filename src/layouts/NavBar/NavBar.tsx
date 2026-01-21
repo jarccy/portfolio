@@ -79,33 +79,33 @@ export default function NavBar({ lang }: { lang?: string }) {
               className="group relative w-fit select-none cursor-pointer"
               onClick={() => scrollToSection("about")}
             >
-              <span className="text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200">
+              <span className="text-zinc-400 hover:text-primary dark:text-zinc-400 dark:hover:text-primary">
                 {localT("nav.about")}
               </span>
 
-              <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-zinc-400 dark:bg-zinc-200 transition-all duration-200 group-hover:w-full"></span>
+              <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-primary transition-all duration-200 group-hover:w-full"></span>
             </div>
 
             <div
               className="group relative w-fit select-none cursor-pointer"
               onClick={() => scrollToSection("experience")}
             >
-              <span className="text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200">
+              <span className="text-zinc-400 hover:text-primary dark:text-zinc-400 dark:hover:text-primary">
                 {localT("nav.experience")}
               </span>
 
-              <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-zinc-400 dark:bg-zinc-200 transition-all duration-200 group-hover:w-full"></span>
+              <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-primary transition-all duration-200 group-hover:w-full"></span>
             </div>
 
             <div
               className="group relative w-fit select-none cursor-pointer"
               onClick={() => scrollToSection("projects")}
             >
-              <span className="text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200">
+              <span className="text-zinc-400 hover:text-primary dark:text-zinc-400 dark:hover:text-primary">
                 {localT("nav.projects")}
               </span>
 
-              <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-zinc-400 dark:bg-zinc-200 transition-all duration-200 group-hover:w-full"></span>
+              <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-primary transition-all duration-200 group-hover:w-full"></span>
             </div>
           </div>
 
@@ -146,7 +146,7 @@ export default function NavBar({ lang }: { lang?: string }) {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -10 }}
-                  className="absolute right-0 mt-3.5 w-32 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-xl z-30 overflow-hidden"
+                  className="absolute right-0 mt-3.5 w-32 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-lg z-30 overflow-hidden"
                 >
                   <div className="py-1">
                     <button

@@ -17,7 +17,7 @@ export const CardExperience = ({ company }: { company: Company }) => {
             <span className="text-lg font-semibold text-zinc-600 dark:text-zinc-300">
               {name}
             </span>
-            <span className="text-xs font-semibold text-zinc-400 dark:text-zinc-500">
+            <span className="text-xs font-semibold text-primary/70">
               {period}
             </span>
           </div>

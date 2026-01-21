@@ -60,7 +60,7 @@
 @theme {
   --font-sans: "inter";
   --font-vectra: "vectra";
-    --color-primary: hsl(var(--primary));
+  --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
 }
 
@@ -78,11 +78,14 @@
   :root {
     --scrollbar-thumb: #e6e7eb;
     --bg-invert: #3f3f47;
+    --color-secondary: #d4d3d8;
+
   }
 
   .dark {
     --scrollbar-thumb: #202020;
     --bg-invert: #fff;
+    --color-secondary: #3f4045;
   }
 
   ::-webkit-scrollbar {
@@ -104,74 +107,6 @@
   animation: none;
   mix-blend-mode: normal;
 }
-
-  /* effect shine */
-  .btn-shine {
-    background: linear-gradient(
-      to right,
-      #9f9f9f 0,
-      var(--bg-invert),
-      #9f9fa5 20%
-    );
-    background-position: 0;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 3s infinite linear;
-    animation-fill-mode: forwards;
-    -webkit-text-size-adjust: none;
-    text-decoration: none;
-    padding-block: 15px;
-  }
-  @keyframes shine {
-    0% {
-      background-position: 0;
-    }
-    60% {
-      background-position: calc(520px - 100%);
-    }
-    100% {
-      background-position: 100%;
-    }
-  }
-
-  /* effect Infinity Scroll */
-  @theme inline {
-    --animate-scroll: scroll var(--animation-duration, 10s)
-      var(--animation-direction, forwards) linear infinite;
-
-    @keyframes scroll {
-      to {
-        transform: translate(calc(-50% - 0.5rem));
-      }
-    }
-  }
-
-  .text-shine {
-    background: linear-gradient(
-      to right,
-      #9f9f9f 0,
-      var(--bg-invert),
-      #9f9fa5 20%
-    );
-    background-position: 0;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shinet 3s infinite linear;
-    animation-fill-mode: forwards;
-    -webkit-text-size-adjust: none;
-    text-decoration: none;
-  }
-  @keyframes shinet {
-    0% {
-      background-position: 0;
-    }
-    60% {
-      background-position: calc(220px - 50%);
-    }
-    100% {
-      background-position: 100%;
-    }
-  }
 
   /* effect menu */
   .hamburger input {

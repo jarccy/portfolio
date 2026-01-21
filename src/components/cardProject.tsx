@@ -33,7 +33,7 @@ export const CardProject = ({
           relative overflow-hidden flex flex-col justify-between"
       >
         <div className="flex items-center justify-between mb-2">
-          <span className="font-semibold capitalize">{project.name}</span>
+          <span className="font-semibold capitalize text-primary">{project.name}</span>
           <span className="font-vectra text-xs font-semibold opacity-50 mt-1">
             {project.date}
           </span>

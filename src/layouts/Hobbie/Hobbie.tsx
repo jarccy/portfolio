@@ -3,7 +3,7 @@ import { TitleMenu } from "../../components/titleMenu";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/lib/functions";
 import { TypewriterEffectSmooth } from "@/components/textWrite";
-import { AnimatedShinyText } from "@/components/shinyText";
+import { ShineTextSimple } from "@/components/shineTextSimple";
 import { i18next } from "../../i18n/config";
 const apiUrl = import.meta.env.PUBLIC_BACKEND_API;
 const apiKey = import.meta.env.PUBLIC_API_KEY;
@@ -150,13 +150,13 @@ export default function Hobbie({ lang }: { lang?: string }) {
 
       <div className="h-[80px] flex justify-center items-center w-full">
         {liked && (
-          <AnimatedShinyText>
+          <ShineTextSimple>
             <TypewriterEffectSmooth
               className="text-zinc-600 dark:text-zinc-500 font-vectra font-bold text-xl text-shine"
               words={[{ text: "Thank you for visiting my portfolio!" }]}
               duration={1.5}
             />
-          </AnimatedShinyText>
+          </ShineTextSimple>
         )}
       </div>
     </motion.section>

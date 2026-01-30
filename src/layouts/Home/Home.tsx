@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { i18next } from "@/i18n/config";
 import ShinyText from "@/components/shinyText";
 import Preloader from "./Loader";
+import { SpotlightParticles } from "@/components/SpotlightParticles";
 
 const containerVariants: Variants = {
   animate: {
@@ -32,7 +33,7 @@ export default function Home({ lang }: { lang: string }) {
 
     const timer = setTimeout(() => {
       setIsPreloaderVisible(false);
-    }, 3000);
+    }, 2900);
 
     return () => clearTimeout(timer);
   }, [lang]);
@@ -57,7 +58,8 @@ export default function Home({ lang }: { lang: string }) {
           animate="animate"
           className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)] px-4"
         >
-          <div className="max-w-xl w-full text-center">
+          <SpotlightParticles />
+          <div className="max-w-xl w-full text-center space-y-2">
             <motion.h1
               variants={itemVariants}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-zinc-600 dark:text-zinc-200 leading-tight"

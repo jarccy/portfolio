@@ -16,7 +16,7 @@ importers:
         version: 4.1.18(vite@6.4.1(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.30.2))
       astro-i18next:
         specifier: 1.0.0-beta.21
-        version: 1.0.0-beta.21(astro@5.16.11(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.2))
+        version: 1.0.0-beta.21(astro@5.17.1(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.2))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -46,8 +46,8 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.8)
       astro:
-        specifier: ^5.16.11
-        version: 5.16.11(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.2)
+        specifier: ^5.17.1
+        version: 5.17.1(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.2)
 
 packages:
 
@@ -844,8 +844,8 @@ packages:
     peerDependencies:
       astro: '>=1.0.0'
 
-  astro@5.16.11:
-    resolution: {integrity: sha512-Z7kvkTTT5n6Hn5lCm6T3WU6pkxx84Hn25dtQ6dR7ATrBGq9eVa8EuB/h1S8xvaoVyCMZnIESu99Z9RJfdLRLDA==}
+  astro@5.17.1:
+    resolution: {integrity: sha512-oD3tlxTaVWGq/Wfbqk6gxzVRz98xa/rYlpe+gU2jXJMSD01k6sEDL01ZlT8mVSYB/rMgnvIOfiQQ3BbLdN237A==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -2820,11 +2820,11 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro-i18next@1.0.0-beta.21(astro@5.16.11(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.2)):
+  astro-i18next@1.0.0-beta.21(astro@5.17.1(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.2)):
     dependencies:
       '@proload/core': 0.3.3
       '@proload/plugin-tsm': 0.2.1(@proload/core@0.3.3)
-      astro: 5.16.11(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.2)
+      astro: 5.17.1(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.2)
       i18next: 22.5.1
       i18next-browser-languagedetector: 7.2.2
       i18next-fs-backend: 2.6.1
@@ -2835,7 +2835,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  astro@5.16.11(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.2):
+  astro@5.17.1(@types/node@24.3.0)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(typescript@5.9.2):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.5

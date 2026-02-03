@@ -144,6 +144,8 @@ const CollisionMechanism = React.forwardRef<
   const [beamKey, setBeamKey] = useState(0);
   const [cycleCollisionDetected, setCycleCollisionDetected] = useState(false);
 
+  const requestRef = React.useRef<number>(null);
+
   useEffect(() => {
     const checkCollision = () => {
       if (
@@ -154,9 +156,9 @@ const CollisionMechanism = React.forwardRef<
       ) {
         const beamRect = beamRef.current.getBoundingClientRect();
         const containerRect = containerRef.current.getBoundingClientRect();
-        const parentRect = parentRef.current.getBoundingClientRect();
 
         if (beamRect.bottom >= containerRect.top) {
+          const parentRect = parentRef.current.getBoundingClientRect();
           const relativeX =
             beamRect.left - parentRect.left + beamRect.width / 2;
           const relativeY = beamRect.bottom - parentRect.top;
@@ -171,12 +173,17 @@ const CollisionMechanism = React.forwardRef<
           setCycleCollisionDetected(true);
         }
       }
+      requestRef.current = requestAnimationFrame(checkCollision);
     };
 
-    const animationInterval = setInterval(checkCollision, 50);
+    requestRef.current = requestAnimationFrame(checkCollision);
 
-    return () => clearInterval(animationInterval);
-  }, [cycleCollisionDetected, containerRef]);
+    return () => {
+      if (requestRef.current) {
+        cancelAnimationFrame(requestRef.current);
+      }
+    };
+  }, [cycleCollisionDetected, containerRef, parentRef]);
 
   useEffect(() => {
     if (collision.detected && collision.coordinates) {
@@ -241,14 +248,14 @@ const CollisionMechanism = React.forwardRef<
 
 CollisionMechanism.displayName = "CollisionMechanism";
 
-const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
-  const spans = Array.from({ length: 20 }, (_, index) => ({
+const Explosion = React.memo(({ ...props }: React.HTMLProps<HTMLDivElement>) => {
+  const spans = React.useMemo(() => Array.from({ length: 20 }, (_, index) => ({
     id: index,
     initialX: 0,
     initialY: 0,
     directionX: Math.floor(Math.random() * 80 - 40),
     directionY: Math.floor(Math.random() * -50 - 10),
-  }));
+  })), []);
 
   return (
     <div {...props} className={cn("absolute z-50 h-2 w-2", props.className)}>
@@ -274,4 +281,6 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
       ))}
     </div>
   );
-};
+});
+
+Explosion.displayName = "Explosion";

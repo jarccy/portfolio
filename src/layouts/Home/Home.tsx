@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { i18next } from "@/i18n/config";
 import ShinyText from "@/components/shinyText";
 import Preloader from "./Loader";
-import { SpotlightParticles } from "@/components/SpotlightParticles";
+// import { SpotlightParticles } from "@/components/SpotlightParticles";
 
 const containerVariants: Variants = {
   animate: {
@@ -30,20 +30,18 @@ export default function Home({ lang }: { lang: string }) {
         module.default.changeLanguage(lang);
       });
     }
-
-    const timer = setTimeout(() => {
-      setIsPreloaderVisible(false);
-    }, 2900);
-
-    return () => clearTimeout(timer);
   }, [lang]);
+
+  const handleLoaderComplete = () => {
+    setIsPreloaderVisible(false);
+  };
 
 
   return (
     <BackgroundBeamsWithCollision>
       {isPreloaderVisible ? (
         <>
-          <Preloader />
+          <Preloader onComplete={handleLoaderComplete} />
           <div
             id="home"
             className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)]"
@@ -58,7 +56,7 @@ export default function Home({ lang }: { lang: string }) {
           animate="animate"
           className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)] px-4"
         >
-          <SpotlightParticles />
+          {/* <SpotlightParticles /> */}
           <div className="max-w-xl w-full text-center space-y-2">
             <motion.h1
               variants={itemVariants}

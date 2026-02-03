@@ -54,7 +54,7 @@ export function ColorPicker({ lang }: { lang?: string }) {
                             <p className="text-xs font-bold text-muted-foreground px-1 uppercase tracking-wider">
                                 {lang === "en" ? "Theme / Color" : "Tema / Color"}
                             </p>
-                            <ThemeSwitch className="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200" />
+                            <ThemeSwitch variant="top-down" className="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200" />
                         </div>
                         <div className="grid grid-cols-4 gap-2">
                             {colors.map((c) => (

@@ -54,10 +54,9 @@ const NavLink = ({ href, icon: Icon, label }: { href: string; icon: React.Compon
 const Navbar = ({ className, ...props }: React.HTMLAttributes<HTMLElement> & { logo?: React.ReactNode }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-    const navRef = useRef<HTMLElement | null>(null);
+    // const navRef = useRef<HTMLElement | null>(null);
 
 
-    // Navigation items configuration
     const items = {
         left: [
             { label: "Components", href: "/docs/components-overview", icon: "Home" },

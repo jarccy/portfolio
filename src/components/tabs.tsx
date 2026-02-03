@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type Tab = {
@@ -22,22 +22,13 @@ export const Tabs = ({
   contentClassName?: string;
 }) => {
   const [active, setActive] = useState<Tab>(propTabs[0]);
-  const [tabs, setTabs] = useState<Tab[]>(propTabs);
-
-  const moveSelectedTabToTop = (idx: number) => {
-    const newTabs = [...propTabs];
-    const selectedTab = newTabs.splice(idx, 1);
-    newTabs.unshift(selectedTab[0]);
-    setTabs(newTabs);
-    setActive(newTabs[0]);
-  };
 
   const [hovering, setHovering] = useState(false);
 
   return (
     <div
       className={cn(
-        "flex flex-col md:flex-row items-start justify-start gap-4 [perspective:1000px] relative max-w-full w-full",
+        "flex flex-col md:flex-row items-start justify-start gap-4 perspective-[1000px] relative max-w-full w-full",
         containerClassName
       )}
     >
@@ -49,10 +40,10 @@ export const Tabs = ({
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
       >
-        {propTabs.map((tab, idx) => (
+        {propTabs.map((tab) => (
           <button
             key={tab.title}
-            onClick={() => moveSelectedTabToTop(idx)}
+            onClick={() => setActive(tab)}
             className={cn(
               "relative px-2 py-2 cursor-pointer text-sm text-left select-none shrink-0",
               tabClassName
@@ -83,57 +74,21 @@ export const Tabs = ({
       </div>
 
       <div className="flex w-full items-center justify-center h-60 md:h-64 lg:h-64 relative">
-        <FadeInDiv
-          tabs={tabs}
-          active={active}
-          key={active.value}
-          hovering={hovering}
-          className={cn("w-full", contentClassName)}
-        />
+        <div className={cn("w-full h-full", contentClassName)}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active.value}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="w-full h-full"
+            >
+              {active.content}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
-    </div>
-  );
-};
-
-export const FadeInDiv = ({
-  className,
-  tabs,
-  hovering,
-}: {
-  className?: string;
-  key?: string;
-  tabs: Tab[];
-  active: Tab;
-  hovering?: boolean;
-}) => {
-  const isActive = (tab: Tab) => {
-    return tab.value === tabs[0].value;
-  };
-  return (
-    <div className="relative w-full h-full">
-      {tabs.map((tab, idx) => (
-        <motion.div
-          key={tab.value}
-          layoutId={tab.value}
-          style={{
-            scale: 1 - idx * 0.1,
-            top: hovering ? idx * -27 : 0,
-            zIndex: -idx,
-            opacity: idx < 3 ? 1 - idx * 0.1 : 0,
-          }}
-          animate={{
-            y: isActive(tab) ? [0, 40, 0] : 0,
-          }}
-          className={cn(
-            "w-full h-full absolute top-0 left-0",
-            className,
-            hovering &&
-            "border-t-2 border-zinc-700 dark:border-t-zinc-200 rounded-2xl"
-          )}
-        >
-          {tab.content}
-        </motion.div>
-      ))}
-    </div>
+    </div >
   );
 };

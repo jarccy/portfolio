@@ -72,10 +72,8 @@ export default function Home({ lang }: { lang: string }) {
               <ShinyText
                 text="Software Developer"
                 speed={2}
-                delay={0}
                 color="var(--color-secondary)"
                 shineColor="var(--color-primary)"
-                direction="left"
               />
             </motion.h2>
 

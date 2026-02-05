@@ -1,6 +1,6 @@
 import { motion, type Variants } from "framer-motion";
 import Languages from "./Languages";
-import { BackgroundBeamsWithCollision } from "./Stars";
+import { Stars } from "./Stars";
 import { useEffect, useState } from "react";
 import { i18next } from "@/i18n/config";
 import ShinyText from "@/components/shinyText";
@@ -38,13 +38,13 @@ export default function Home({ lang }: { lang: string }) {
 
 
   return (
-    <BackgroundBeamsWithCollision>
+    <Stars>
       {isPreloaderVisible ? (
         <>
           <Preloader onComplete={handleLoaderComplete} />
           <div
             id="home"
-            className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)]"
+            className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-10px)]"
           >
           </div>
         </>
@@ -54,7 +54,7 @@ export default function Home({ lang }: { lang: string }) {
           variants={containerVariants}
           initial="initial"
           animate="animate"
-          className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-12px)] px-4"
+          className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-2px)] px-4"
         >
           {/* <SpotlightParticles /> */}
           <div className="max-w-xl w-full text-center space-y-2">
@@ -90,6 +90,6 @@ export default function Home({ lang }: { lang: string }) {
           </div>
         </motion.section>
       )}
-    </BackgroundBeamsWithCollision>
+    </Stars>
   );
 }

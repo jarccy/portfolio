@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import * as React from "react";
 
-export const BackgroundBeamsWithCollision = ({
+export const Stars = ({
   children,
   className,
 }: {
@@ -94,23 +94,6 @@ export const BackgroundBeamsWithCollision = ({
             "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset",
         }}
       ></div>
-
-      {/* <div
-        className="absolute inset-0 z-0
-         bg-[linear-gradient(to_right,_#e2e8f0_1px,_transparent_1px),linear-gradient(to_bottom,_#e2e8f0_1px,_transparent_1px)]
-    dark:bg-[linear-gradient(to_right,_#27272a_1px,_transparent_1px),linear-gradient(to_bottom,_#27272a_1px,_transparent_1px)]
-    bg-[length:60px_80px]
-    [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)]
-    [webkit-mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)]
-        "
-        style={{
-          backgroundSize: "40px 40px",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%)",
-          maskImage:
-            "radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%)",
-        }}
-      /> */}
     </div>
   );
 };

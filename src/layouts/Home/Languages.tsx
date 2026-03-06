@@ -76,7 +76,7 @@ const Tooltip = ({ text, position, stacks, isVisible }: TooltipParams) => {
 
   return ReactDOM.createPortal(
     <div
-      className="fixed z-30 transition-all duration-300 pointer-events-none flex justify-center w-full px-4 md:px-0 md:w-auto"
+      className="fixed z-30 transition-all duration-300 pointer-events-none flex justify-center w-auto px-10 md:px-0"
       style={{
         top: position.top,
         left: typeof window !== "undefined" && window.innerWidth < 768 ? 0 : position.left,
@@ -85,7 +85,7 @@ const Tooltip = ({ text, position, stacks, isVisible }: TooltipParams) => {
     >
       <div className="hidden md:block absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white dark:border-b-zinc-800/80" />
 
-      <div className="text-xs rounded-2xl py-2 px-3 w-full md:w-[180px] md:h-[80px] shadow-lg bg-white dark:bg-zinc-900">
+      <div className="text-xs rounded-2xl py-2 px-3 w-[180px] md:h-[80px] shadow-lg bg-white dark:bg-zinc-900">
         <div className="flex flex-col">
           <strong className="dark:text-white text-zinc-900">Stack in {text || "GO"}:</strong>
 

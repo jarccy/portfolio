@@ -15,7 +15,7 @@ type Company = {
 
 export const companies: Company[] = [
   {
-    name: { en: "Consorcio Master", es: "Consorcio Master" },
+    name: { en: "Capital Management Partners", es: "Capital Management Partners" },
     charge: { en: "Full Stack Developer", es: "Full Stack Developer" },
     period: { en: "Sep 2024 - Present", es: "Sep 2024 - Presente" },
     description: {

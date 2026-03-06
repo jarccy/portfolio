@@ -8,6 +8,7 @@ technologies:
   - Vue.js
   - Django
 images:
+  - /projects/zenda/purchase.webp
   - /projects/zenda/product.webp
   - /projects/zenda/sale.webp
   - /projects/zenda/voucher.webp

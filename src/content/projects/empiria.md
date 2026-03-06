@@ -8,6 +8,7 @@ technologies:
   - Vue.js
   - Django
 images:
+  - /projects/empiria/empiria.webp
   - /projects/empiria/sale.webp
   - /projects/empiria/till.webp
   - /projects/empiria/results.webp

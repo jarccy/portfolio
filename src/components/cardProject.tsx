@@ -1,11 +1,11 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type project = {
   name: string;
   date: number;
   image: string;
-  images?: string[]; // Support for multiple images
+  images?: string[];
   description: string;
   descriptionEs: string;
   technologies: string[];
@@ -25,10 +25,11 @@ const ImageSlider = ({ images }: { images: string[] }) => {
   };
 
   return (
-    <div className="relative w-full aspect-video rounded-2xl overflow-hidden  shadow-2xl group/slider border border-white/5">
+    <div className="relative w-full aspect-video rounded-2xl overflow-hidden  shadow-sm group/slider border border-white/5">
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
+          layoutId={currentIndex === 0 ? `image-container-${images[0]}` : undefined}
           initial={{ opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
@@ -93,9 +94,13 @@ export const CardProject = ({
   }, [isExpanded]);
 
   return (
-    <div className="relative group">
+    <motion.div
+      className="relative group"
+      animate={{ zIndex: isExpanded ? 50 : 0 }}
+      transition={{ zIndex: { delay: isExpanded ? 0 : 0.6 } }}
+    >
       {/* Grid State Placeholder */}
-      <div className="h-[450px] w-full invisible pointer-events-none" />
+      <div className="h-[350px] w-full invisible pointer-events-none" />
 
       {/* Backdrop */}
       <AnimatePresence>
@@ -105,56 +110,54 @@ export const CardProject = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsExpanded(false)}
-            className="fixed inset-0 bg-black/80 backdrop-blur-xl z-[100] cursor-zoom-out"
+            className="fixed inset-0 bg-black/20 backdrop-blur-xs z-[100]"
           />
         )}
       </AnimatePresence>
 
       {/* Main Card */}
       <motion.div
-        layout
+        layoutId={`card-${project.name}`}
         onClick={!isExpanded ? () => setIsExpanded(true) : undefined}
+        animate={{
+          zIndex: isExpanded ? 100 : 0
+        }}
+        transition={{
+          layout: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
+          zIndex: { delay: isExpanded ? 0 : 0.6 }
+        }}
         className={`
           ${isExpanded
-            ? "fixed inset-4 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-[101] w-auto sm:w-[95vw] max-w-[700px] h-auto sm:h-[90vh] max-h-[850px] cursor-default bg-zinc-950 p-8 pt-12"
-            : "absolute inset-x-0 top-0 h-[450px] cursor-pointer bg-zinc-950 p-4 border border-zinc-900 group-hover:border-zinc-800 transition-colors"
+            ? "fixed inset-4 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-[101] w-auto sm:w-[95vw] max-w-[800px] h-auto sm:h-[90vh] max-h-[850px] cursor-default p-8 pt-12 shadow-sm"
+            : "absolute inset-x-0 top-0 h-[350px] cursor-pointer"
           }
-          rounded-[2.5rem] flex flex-col overflow-hidden shadow-2xl
+          rounded-[2.5rem] flex flex-col overflow-hidden bg-gradient-to-tr from-white via-neutral-100 to-neutral-200/30 dark:border-t hover:border-t-4 border border-zinc-200 hover:border-t-zinc-700 dark:border-zinc-800 dark:hover:border-t-neutral-300 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-800
         `}
       >
         {/* Helmet-style Design elements (Decor) */}
         {!isExpanded && (
-          <div className="absolute inset-0 border border-white/5 rounded-[2.5rem] pointer-events-none m-2" />
+          <motion.div
+            layoutId={`decor-${project.name}`}
+            className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2.5rem] pointer-events-none m-1"
+          />
         )}
 
-        {/* Close Button (Expanded only) */}
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.button
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsExpanded(false);
-              }}
-              className="absolute top-6 right-6 p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-white transition-colors z-20 border border-zinc-800"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </motion.button>
-          )}
-        </AnimatePresence>
-
         {/* Content Container */}
-        <motion.div layout className={`flex-1 flex flex-col items-center justify-center relative ${isExpanded ? "mb-8 overflow-y-auto custom-scrollbar pr-2" : ""}`}>
-          <div className={`w-full ${isExpanded ? "space-y-8" : "h-full flex flex-col items-center justify-center"}`}>
+        <motion.div
+          layout
+          className={`flex-1 flex flex-col items-center justify-center relative ${isExpanded ? "mb-8 overflow-y-auto custom-scrollbar pr-2" : ""}`}
+        >
+          <div className={`w-full ${isExpanded ? "space-y-6" : "h-full flex flex-col items-center justify-center"}`}>
             {isExpanded ? (
-              <>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+                className="w-full space-y-6"
+              >
                 <ImageSlider images={project.images || [project.image]} />
-                <div className="space-y-8">
-                  <div className="space-y-4">
+                <div className="space-y-4">
+                  <div className="space-y-2">
                     <h2 className="text-4xl font-black text-white tracking-tight">{project.name}</h2>
                     <div className="flex items-center gap-4 text-zinc-500 font-bold uppercase tracking-widest text-xs">
                       <span>Year {project.date}</span>
@@ -185,56 +188,65 @@ export const CardProject = ({
                     </div>
                   </div>
                 </div>
-              </>
+              </motion.div>
             ) : (
               <div className="relative w-full h-full flex flex-col items-center">
                 {/* Main Subject Image (The Helmet vibe) */}
-                <div className="flex-1 w-full flex items-center justify-center p-8">
+                <div className="flex-1 w-full flex items-center justify-center px-4">
                   <motion.div
-                    layoutId={`image-${project.name}`}
-                    className="relative w-full h-full max-h-[250px] flex items-center justify-center pointer-events-none"
+                    layoutId={`image-container-${project.image}`}
+                    className="relative w-full h-full max-h-[210px] flex items-center justify-center pointer-events-none"
                   >
-                    <img
+                    <motion.img
+                      layoutId={`image-${project.image}`}
                       src={project.image}
                       alt={project.name}
-                      className="w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(255,255,255,0.05)] transition-transform group-hover:scale-110 duration-700"
+                      className="w-full h-full rounded-t-3xl object-cover object-left filter drop-shadow-[0_20px_50px_rgba(255,255,255,0.05)] transition-transform group-hover:scale-110 duration-700"
                     />
                   </motion.div>
                 </div>
 
                 {/* Collapsed Description Section */}
-                <div className="w-full px-6 pb-4 text-center">
-                  <p className="text-zinc-500 text-sm line-clamp-2 leading-relaxed h-10">
+                <motion.div
+                  layoutId={`desc-${project.name}`}
+                  className="w-full px-6 pb-2 text-center"
+                >
+                  <p className="text-zinc-500 text-sm line-clamp-2 leading-relaxed h-11">
                     {locale === "en" ? project.description : project.descriptionEs}
                   </p>
-                </div>
+                </motion.div>
               </div>
             )}
           </div>
         </motion.div>
 
         {/* Footer (Custom Bottom Shape inspired by image) */}
-        {!isExpanded && (
-          <motion.div layout className="mt-auto h-16 w-full relative">
-            <div className="absolute inset-0 flex items-end justify-between px-6 pb-4">
-              {/* Project Name (Left) */}
-              <div className="flex flex-col">
-                <span className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Project</span>
-                <span className="text-white font-bold text-lg leading-none">{project.name}</span>
-              </div>
+        <motion.div
+          layoutId={`footer-${project.name}`}
+          className={`mt-auto w-full relative ${isExpanded ? "hidden" : "h-16"}`}
+        >
+          <div className="absolute inset-0 flex items-center justify-between px-6 pb-4">
+            {/* Project Name (Left) */}
+            <motion.span
+              layoutId={`name-${project.name}`}
+              className="font-bold text-primary text-xl capitalize"
+            >
+              {project.name}
+            </motion.span>
 
-              {/* Date Segment (Right) */}
-              <div className="relative group/footer">
-                <div className="absolute -inset-x-4 -inset-y-2 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative flex items-baseline gap-2">
-                  <span className="text-zinc-400 text-sm font-medium">Year</span>
-                  <span className="text-white text-xl font-black">{project.date}</span>
-                </div>
+            {/* Date Segment (Right) */}
+            <motion.div
+              layoutId={`date-${project.name}`}
+              className="relative"
+            >
+              <div className="relative flex items-baseline gap-2">
+                <span className="text-zinc-400 text-sm font-medium">Year</span>
+                <span className="opacity-50 text-xl font-bold">{project.date}</span>
               </div>
-            </div>
-          </motion.div>
-        )}
+            </motion.div>
+          </div>
+        </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };

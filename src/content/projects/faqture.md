@@ -8,6 +8,7 @@ technologies:
   - Vue.js
   - Nest.js
 images:
+  - /projects/faqture/faqture.webp
   - /projects/faqture/company.webp
   - /projects/faqture/faqtureB.webp
   - /projects/faqture/setting.webp

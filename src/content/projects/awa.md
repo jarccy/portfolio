@@ -8,6 +8,7 @@ technologies:
   - Vue.js
   - Django
 images:
+  - /projects/awa/awa.webp
   - /projects/awa/sale.webp
   - /projects/awa/saleList.webp
   - /projects/awa/report.webp

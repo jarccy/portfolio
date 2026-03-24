@@ -36,7 +36,6 @@ export default function Home({ lang }: { lang: string }) {
   //   setIsPreloaderVisible(false);
   // };
 
-
   return (
     <Stars>
       {/* {isPreloaderVisible ? (

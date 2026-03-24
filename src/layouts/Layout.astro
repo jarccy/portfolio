@@ -40,7 +40,6 @@ const locale = Astro.currentLocale || "en";
       applyTheme();
       scrollToHash();
 
-      // Listen for primary color changes
       window.addEventListener("primary-color-changed", (e) => {
         document.documentElement.setAttribute("data-theme-color", e.detail);
       });
@@ -52,37 +51,72 @@ const locale = Astro.currentLocale || "en";
     </script>
   </head>
   <body
-    class="dark:bg-zinc-950 transition-colors duration-700 text-zinc-700 dark:text-zinc-200
-  selection:bg-gray-200 selection:text-zinc-950 dark:selection:bg-zinc-700 dark:selection:text-gray-100"
+    class="bg-primary transition-colors duration-700 text-zinc-500 dark:text-zinc-200
+  selection:bg-gray-200 selection:text-zinc-950 dark:selection:bg-zinc-700 dark:selection:text-gray-100
+  h-screen w-screen p-1 md:p-2 flex flex-col overflow-hidden"
   >
-    <main
-      class="w-full h-screen flex flex-col bg-neutral-50 dark:bg-zinc-950 backdrop-blur"
-    >
+    <main class="relative w-full h-full flex-1 flex flex-col">
       <div
-        class="absolute inset-0 -z-10
-         bg-[linear-gradient(to_right,_#e2e8f0_1px,_transparent_1px),linear-gradient(to_bottom,_#e2e8f0_1px,_transparent_1px)]
-    dark:bg-[linear-gradient(to_right,_#27272a_1px,_transparent_1px),linear-gradient(to_bottom,_#27272a_1px,_transparent_1px)]
-    bg-[length:60px_80px]
-    [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)]
-    [webkit-mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)]"
-        style={{
-          backgroundSize: "40px 40px",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%)",
-          maskImage:
-            "radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%)",
-        }}
+        class="absolute inset-0 -z-20 bg-neutral-50 dark:bg-zinc-900 rounded-4xl overflow-hidden"
       >
+        <div
+          class="absolute inset-0 bg-[linear-gradient(to_right,_#e2e8f0_1px,_transparent_1px),linear-gradient(to_bottom,_#e2e8f0_1px,_transparent_1px)] dark:bg-[linear-gradient(to_right,_#27272a_1px,_transparent_1px),linear-gradient(to_bottom,_#27272a_1px,_transparent_1px)] bg-[length:60px_80px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)] [webkit-mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)]"
+          style={{
+            backgroundSize: "40px 40px",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%)",
+            maskImage:
+              "radial-gradient(ellipse 70% 60% at 50% 100%, #000 60%, transparent 100%)",
+          }}
+        >
+        </div>
       </div>
 
-      <div class="flex-1 overflow-y-auto">
+      <div
+        class="flex-1 overflow-y-auto relative z-10 custom-scrollbar rounded-4xl"
+      >
         <slot />
+        <div class="h-32 w-full md:hidden"></div>
+      </div>
 
-        <!-- <footer class="text-center">
-          <p class="text-md text-zinc-600 dark:text-zinc-400 mb-4">
-            © 2025 Designed and Build by Jarcy
-          </p>
-        </footer> -->
+      <!-- Cutout Footer Base (Left) -->
+      <div
+        class="hidden sm:block absolute bottom-0 left-0 bg-primary rounded-tr-4xl rounded-bl-4xl ring-1 ring-primary pt-6 pr-6 z-50 text-white dark:text-black pb-0 pl-0"
+      >
+        <!-- Inverted Corner: Top -->
+        <svg
+          class="absolute bottom-full left-0 w-8 h-8 sm:w-10 sm:h-10 text-primary fill-current pointer-events-none transition-colors duration-700"
+          viewBox="0 0 100 100"
+        >
+          <path d="M0 100 H 100 A 100 100 0 0 1 0 0 V 100 Z"></path>
+        </svg>
+
+        <!-- Inverted Corner: Right -->
+        <svg
+          class="absolute bottom-0 right-[-2rem] sm:right-[-2.5rem] w-8 h-8 sm:w-10 sm:h-10 text-primary fill-current pointer-events-none transition-colors duration-700"
+          viewBox="0 0 100 100"
+        >
+          <path d="M0 100 H 100 A 100 100 0 0 1 0 0 V 100 Z"></path>
+        </svg>
+
+        <div
+          class="max-w-[200px] sm:max-w-[240px] pb-4 pl-4 sm:pb-6 sm:pl-6 text-sm sm:text-base font-medium leading-tight"
+        >
+          <!-- <div
+            class="absolute -top-3 right-6 sm:right-8 bg-yellow-400 text-black w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center font-black text-lg leading-none select-none"
+          >
+            *
+          </div> -->
+          Our tools help you <br />
+          focus in ways you've <br />
+          only dreamt of.
+
+          <div
+            class="mt-4 text-[10px] sm:text-xs font-normal text-zinc-500 dark:text-zinc-500"
+          >
+            © 2026 Designed and Build by Jarcy
+          </div>
+        </div>
       </div>
     </main>
   </body>

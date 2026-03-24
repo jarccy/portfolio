@@ -15,6 +15,7 @@ i18next.init({
     supportedLngs: Object.keys(languages),
     ns: ["common"],
     defaultNS: "common",
+    debug: false,
     resources: {
         en: {
             common: enCommon,

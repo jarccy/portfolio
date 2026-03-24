@@ -11,13 +11,13 @@ i18next.changeLanguage(locale);
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
   return projects.map((project) => ({
-    params: { id: project.slug },
+    params: { id: project.id },
     props: { project },
   }));
 }
 
 const { project } = Astro.props;
-const { data, slug } = project;
+const { data, id } = project;
 const { name, image, description, descriptionEs, technologies, images } = data;
 ---
 
@@ -33,7 +33,7 @@ const { name, image, description, descriptionEs, technologies, images } = data;
       locale={locale}
     >
       <img
-        transition:name={`image-${slug}`}
+        transition:name={`image-${id}`}
         src={image}
         alt={name}
         class="transition-transform duration-300 select-none hover:scale-105"

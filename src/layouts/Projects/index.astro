@@ -7,6 +7,7 @@ import { i18next } from "../../i18n/config";
 const localT = i18next.getFixedT(Astro.currentLocale || "en");
 
 const projects = await getCollection("projects");
+// console.log(projects);
 ---
 
 <section id="projects" class="w-full max-w-2xl mx-auto pt-40 mb-10 px-4 a">
@@ -38,7 +39,7 @@ const projects = await getCollection("projects");
             locale={Astro.currentLocale || "en"}
           >
             <img
-              transition:name={`image-${project.slug}`}
+              transition:name={`image-${project.id}`}
               src={project.data.image}
               alt={project.data.name}
               class="transition-transform duration-300 grayscale group-hover:grayscale-0 select-none pointer-events-none"

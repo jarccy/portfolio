@@ -61,7 +61,7 @@ export default function NavBar({ lang }: { lang?: string }) {
     >
       <div
         className={
-          "flex justify-between items-center w-full sm:max-w-xl md:max-w-xl px-4 py-2 bg-zinc-100/10 dark:bg-zinc-800/20 shadow rounded-xl mt-2 " +
+          "flex justify-between items-center w-full sm:max-w-xl md:max-w-xl px-4 py-2 bg-zinc-100/10 dark:bg-zinc-800/20 shadow rounded-xl mt-4 " +
           (showMenu ? "" : "backdrop-blur")
         }
       >

@@ -73,15 +73,36 @@ const locale = Astro.currentLocale || "en";
       </div>
 
       <div
-        class="flex-1 overflow-y-auto relative z-10 custom-scrollbar rounded-4xl"
+        class="flex-1 overflow-y-auto relative rounded-4xl [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         <slot />
         <div class="h-32 w-full md:hidden"></div>
       </div>
 
+      <!-- Cutout Header Base (Right) -->
+      <div
+        class="absolute z-40 top-0 right-0 bg-primary rounded-bl-4xl rounded-tr-4xl pb-5 pl-5 ring-1 ring-primary text-white dark:text-black pt-0 pr-0 min-w-[400px] min-h-[70px]"
+      >
+        <!-- Inverted Corner: Left -->
+        <svg
+          class="absolute top-0 left-[-2rem] sm:left-[-2.5rem] w-8 h-8 sm:w-10 sm:h-10 text-primary fill-current pointer-events-none transition-colors duration-700 rotate-180"
+          viewBox="0 0 100 100"
+        >
+          <path d="M0 100 H 100 A 100 100 0 0 1 0 0 V 100 Z"></path>
+        </svg>
+
+        <!-- Inverted Corner: Bottom -->
+        <svg
+          class="absolute top-full right-0 w-8 h-8 sm:w-10 sm:h-10 text-primary fill-current pointer-events-none transition-colors duration-700 rotate-180"
+          viewBox="0 0 100 100"
+        >
+          <path d="M0 100 H 100 A 100 100 0 0 1 0 0 V 100 Z"></path>
+        </svg>
+      </div>
+
       <!-- Cutout Footer Base (Left) -->
       <div
-        class="hidden sm:block absolute bottom-0 left-0 bg-primary rounded-tr-4xl rounded-bl-4xl ring-1 ring-primary pt-6 pr-6 z-50 text-white dark:text-black pb-0 pl-0"
+        class="hidden sm:block absolute bottom-0 left-0 bg-primary rounded-tr-4xl rounded-bl-4xl pt-6 pr-6 z-40 ring-1 ring-primary text-white dark:text-black pb-0 pl-0"
       >
         <!-- Inverted Corner: Top -->
         <svg
@@ -100,21 +121,108 @@ const locale = Astro.currentLocale || "en";
         </svg>
 
         <div
-          class="max-w-[200px] sm:max-w-[240px] pb-4 pl-4 sm:pb-6 sm:pl-6 text-sm sm:text-base font-medium leading-tight"
+          class="pb-3 pl-4 sm:pb-4 sm:pl-6 text-sm sm:text-base font-medium leading-tight"
         >
-          <!-- <div
-            class="absolute -top-3 right-6 sm:right-8 bg-yellow-400 text-black w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center font-black text-lg leading-none select-none"
-          >
-            *
-          </div> -->
-          Our tools help you <br />
-          focus in ways you've <br />
-          only dreamt of.
+          <div class="flex gap-4 items-center">
+            <a
+              href="https://github.com/jarccy"
+              target="_blank"
+              class="p-1 rounded-full cursor-pointer hover:bg-zinc-200/50 dark:hover:bg-zinc-800 text-zinc-500 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-[1.2em]"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"
+                  ></path>
+                  <path d="M9 20.027c-3 .973-5.5 0-7-3"></path>
+                </g>
+              </svg>
+            </a>
 
-          <div
-            class="mt-4 text-[10px] sm:text-xs font-normal text-zinc-500 dark:text-zinc-500"
-          >
-            © 2026 Designed and Build by Jarcy
+            <a
+              href="https://github.com/jarccy"
+              target="_blank"
+              class="p-1 rounded-full cursor-pointer hover:bg-zinc-200/50 dark:hover:bg-zinc-800 text-zinc-500 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-[1.2em]"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"
+                  ></path>
+                  <path d="M9 20.027c-3 .973-5.5 0-7-3"></path>
+                </g>
+              </svg>
+            </a>
+
+            <a
+              href="https://github.com/jarccy"
+              target="_blank"
+              class="p-1 rounded-full cursor-pointer hover:bg-zinc-200/50 dark:hover:bg-zinc-800 text-zinc-500 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-[1.2em]"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"
+                  ></path>
+                  <path d="M9 20.027c-3 .973-5.5 0-7-3"></path>
+                </g>
+              </svg>
+            </a>
+
+            <a
+              href="https://github.com/jarccy"
+              target="_blank"
+              class="p-1 rounded-full cursor-pointer hover:bg-zinc-200/50 dark:hover:bg-zinc-800 text-zinc-500 hover:text-zinc-600 dark:text-zinc-200 dark:hover:text-zinc-100 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="size-[1.2em]"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"
+                  ></path>
+                  <path d="M9 20.027c-3 .973-5.5 0-7-3"></path>
+                </g>
+              </svg>
+            </a>
           </div>
         </div>
       </div>

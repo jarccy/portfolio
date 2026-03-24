@@ -1,4 +1,4 @@
-import { TypewriterEffectSmooth } from "@/components/textWrite";
+// import { TypewriterEffectSmooth } from "@/components/textWrite";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { i18next } from "../../i18n/config";
@@ -57,29 +57,29 @@ export default function NavBar({ lang }: { lang?: string }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-20 flex items-center justify-center transition-all duration-300`}
+      className={`fixed z-50 top-0 right-5  transition-all duration-300`}
     >
       <div
         className={
-          "flex justify-between items-center w-full sm:max-w-xl md:max-w-xl px-4 py-2 bg-zinc-100/10 dark:bg-zinc-800/20 shadow rounded-xl mt-4 " +
+          "flex justify-between items-center w-full sm:max-w-xl md:max-w-xl px-4 py-2 bg-zinc-800/20 shadow rounded-xl mt-4 " +
           (showMenu ? "" : "backdrop-blur")
         }
       >
-        <div className="h-[35px]" onClick={() => scrollToSection("home")}>
+        {/* <div className="h-[35px]" onClick={() => scrollToSection("home")}>
           <TypewriterEffectSmooth
             className="text-xl font-vectra font-bold mt-2 select-none text-zinc-500 dark:text-zinc-200 cursor-pointer"
             words={[{ text: "Jarcy" }]}
             duration={0.5}
           />
-        </div>
+        </div> */}
 
-        <div className="flex items-center gap-3">
-          <div className="hidden md:flex items-center gap-4">
+        <div className="flex items-center gap-4 px-1">
+          <div className="hidden md:flex items-center gap-6">
             <div
               className="group relative w-fit select-none cursor-pointer"
               onClick={() => scrollToSection("about")}
             >
-              <span className="text-zinc-400 hover:text-primary dark:text-zinc-400 dark:hover:text-primary">
+              <span className="text-zinc-200 hover:text-black">
                 {localT("nav.about")}
               </span>
 
@@ -90,7 +90,7 @@ export default function NavBar({ lang }: { lang?: string }) {
               className="group relative w-fit select-none cursor-pointer"
               onClick={() => scrollToSection("experience")}
             >
-              <span className="text-zinc-400 hover:text-primary dark:text-zinc-400 dark:hover:text-primary">
+              <span className="text-zinc-200 hover:text-black">
                 {localT("nav.experience")}
               </span>
 
@@ -101,7 +101,7 @@ export default function NavBar({ lang }: { lang?: string }) {
               className="group relative w-fit select-none cursor-pointer"
               onClick={() => scrollToSection("projects")}
             >
-              <span className="text-zinc-400 hover:text-primary dark:text-zinc-400 dark:hover:text-primary">
+              <span className="text-zinc-200 hover:text-black">
                 {localT("nav.projects")}
               </span>
 
@@ -109,33 +109,10 @@ export default function NavBar({ lang }: { lang?: string }) {
             </div>
           </div>
 
-          <a
-            href="https://github.com/jarccy"
-            target="_blank"
-            className="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-[1.2em]"
-              viewBox="0 0 24 24"
-            >
-              <g
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.5"
-              >
-                <path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path>
-                <path d="M9 20.027c-3 .973-5.5 0-7-3"></path>
-              </g>
-            </svg>
-          </a>
-
           <div className="relative" ref={langMenuRef}>
             <button
               onClick={() => setShowLangMenu(!showLangMenu)}
-              className="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors"
+              className="p-1 rounded-full cursor-pointer hover:bg-zinc-200/50 dark:hover:bg-zinc-800 text-zinc-200 hover:text-zinc-200 dark:text-zinc-200 dark:hover:text-zinc-100 transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.1em]" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a49 49 0 0 1 6-.371m0 0q1.681 0 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138q1.344.092 2.666.257m-4.589 8.495a18 18 0 0 1-3.827-5.802"></path></svg>
             </button>

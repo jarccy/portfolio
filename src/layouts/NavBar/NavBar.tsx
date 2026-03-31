@@ -60,7 +60,7 @@ export default function NavBar({ lang }: { lang?: string }) {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.1, ease: "easeOut" }}
-      className={`fixed flex justify-between items-center z-50 top-0 right-5 sm:right-5 sm:left-auto w-[calc(100vw-150px)] sm:w-auto transition-all duration-300`}
+      className={`fixed flex justify-between items-center gap-3 z-50 top-0 right-5 sm:left-auto w-[calc(100vw-150px)] sm:w-auto transition-all duration-300`}
     >
 
       <div className="flex w-full items-center gap-3 mt-4 md:hidden xl:hidden">
@@ -203,7 +203,7 @@ export default function NavBar({ lang }: { lang?: string }) {
 
             {showMenu && (
               <div className="fixed top-0 left-0 w-screen h-screen backdrop-blur-3xl bg-white/50 dark:bg-zinc-900/50 -z-10">
-                <div className="flex flex-col items-end justify-end gap-4 pr-6 mt-20">
+                <div className="flex flex-col items-end justify-end gap-4 pr-8 mt-20">
                   {links.map((link, index) => (
                     <div
                       key={link.href}

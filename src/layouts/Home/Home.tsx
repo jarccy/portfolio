@@ -4,8 +4,7 @@ import { Stars } from "./Stars";
 import { useEffect } from "react";
 import { i18next } from "@/i18n/config";
 import ShinyText from "@/components/shinyText";
-// import Preloader from "./Loader";
-import { SpotlightParticles } from "@/components/SpotlightParticles";
+import { SpotlightParticles } from "@/components/spotlightParticles";
 
 const containerVariants: Variants = {
   animate: {
@@ -22,7 +21,6 @@ export const itemVariants: Variants = {
 
 export default function Home({ lang }: { lang: string }) {
   const localT = i18next.getFixedT(lang || "en");
-  // const [isPreloaderVisible, setIsPreloaderVisible] = useState(true);
 
   useEffect(() => {
     if (lang) {
@@ -32,22 +30,8 @@ export default function Home({ lang }: { lang: string }) {
     }
   }, [lang]);
 
-  // const handleLoaderComplete = () => {
-  //   setIsPreloaderVisible(false);
-  // };
-
   return (
     <Stars>
-      {/* {isPreloaderVisible ? (
-        <>
-          <Preloader onComplete={handleLoaderComplete} />
-          <div
-            id="home"
-            className="relative z-[2] flex justify-center items-center min-h-[calc(100vh-10px)]"
-          >
-          </div>
-        </>
-      ) : ( */}
       <motion.section
         id="home"
         variants={containerVariants}
@@ -88,7 +72,6 @@ export default function Home({ lang }: { lang: string }) {
           </motion.div>
         </div>
       </motion.section>
-      {/* )} */}
     </Stars>
   );
 }

@@ -4,7 +4,7 @@ import { Stars } from "./Stars";
 import { useEffect } from "react";
 import { i18next } from "@/i18n/config";
 import ShinyText from "@/components/shinyText";
-import { SpotlightParticles } from "@/components/spotlightParticles";
+import { SpotlightParticles } from "./spotlightParticles";
 
 const containerVariants: Variants = {
   animate: {

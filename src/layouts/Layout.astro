@@ -57,10 +57,10 @@ const locale = Astro.currentLocale || "en";
   >
     <main class="relative w-full h-full flex-1 flex flex-col">
       <div
-        class="absolute inset-0 -z-20 bg-neutral-50 dark:bg-zinc-900 rounded-4xl overflow-hidden"
+        class="absolute inset-0 -z-20 bg-neutral-50 dark:bg-zinc-900 rounded-4xl overflow-hidden transition-colors duration-700"
       >
         <div
-          class="absolute inset-0 bg-[linear-gradient(to_right,_#e2e8f0_1px,_transparent_1px),linear-gradient(to_bottom,_#e2e8f0_1px,_transparent_1px)] dark:bg-[linear-gradient(to_right,_#27272a_1px,_transparent_1px),linear-gradient(to_bottom,_#27272a_1px,_transparent_1px)] bg-[length:60px_80px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)] [webkit-mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)]"
+          class="absolute inset-0 bg-[linear-gradient(to_right,_#e2e8f0_1px,_transparent_1px),linear-gradient(to_bottom,_#e2e8f0_1px,_transparent_1px)] dark:bg-[linear-gradient(to_right,_#27272a_1px,_transparent_1px),linear-gradient(to_bottom,_#27272a_1px,_transparent_1px)] bg-[length:60px_80px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)] [webkit-mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)] transition-colors duration-700"
           style={{
             backgroundSize: "40px 40px",
             WebkitMaskImage:

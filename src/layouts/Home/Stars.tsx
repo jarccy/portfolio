@@ -237,7 +237,7 @@ const Explosion = React.memo(({ ...props }: React.HTMLProps<HTMLDivElement>) => 
     initialX: 0,
     initialY: 0,
     directionX: Math.floor(Math.random() * 80 - 40),
-    directionY: Math.floor(Math.random() * -50 - 10),
+    directionY: Math.floor(Math.random() * -50 - 40),
   })), []);
 
   return (

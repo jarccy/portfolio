@@ -3,7 +3,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary: 0 0% 98%;
+  --primary: 240 5.9% 10%;
   --primary-foreground: 0 0% 98%;
 }
 
@@ -13,12 +13,12 @@
 }
 
 [data-theme-color="default"] {
-  --primary: 240 5% 34%;
-  --primary-foreground: 240 5.9% 10%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
 }
 
 .dark[data-theme-color="default"] {
-  --primary: 0 0% 90%;
+  --primary: 0 0% 98%;
   --primary-foreground: 240 5.9% 10%;
 }
 

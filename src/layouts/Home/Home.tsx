@@ -66,7 +66,7 @@ export default function Home({ lang }: { lang: string }) {
 
           <motion.h2
             variants={itemVariants}
-            className="font-vectra text-3xl sm:text-4xl lg:text-6xl font-bold py-2"
+            className="font-vectra text-4xl sm:text-5xl lg:text-6xl font-bold py-2"
           >
             <ShinyText
               text="Software Developer"
@@ -78,7 +78,7 @@ export default function Home({ lang }: { lang: string }) {
 
           <motion.article
             variants={itemVariants}
-            className="dark:text-zinc-400/90 text-sm sm:text-base"
+            className="dark:text-zinc-400/90 px-4 md:px-0 text-sm sm:text-base"
           >
             {localT("home.description")}
           </motion.article>

@@ -57,7 +57,7 @@ const locale = Astro.currentLocale || "en";
   >
     <main class="relative w-full h-full flex-1 flex flex-col">
       <div
-        class="absolute inset-0 -z-20 bg-neutral-50 dark:bg-zinc-900 rounded-4xl overflow-hidden transition-colors duration-700"
+        class="absolute inset-0 -z-20 bg-neutral-50 dark:bg-zinc-950 rounded-4xl overflow-hidden transition-colors duration-700"
       >
         <div
           class="absolute inset-0 bg-[linear-gradient(to_right,_#e2e8f0_1px,_transparent_1px),linear-gradient(to_bottom,_#e2e8f0_1px,_transparent_1px)] dark:bg-[linear-gradient(to_right,_#27272a_1px,_transparent_1px),linear-gradient(to_bottom,_#27272a_1px,_transparent_1px)] bg-[length:60px_80px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)] [webkit-mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,_#000_60%,transparent_100%)] transition-colors duration-700"
@@ -124,36 +124,77 @@ const locale = Astro.currentLocale || "en";
           class="pb-3 pl-4 sm:pb-4 sm:pl-6 text-sm font-medium leading-tight"
         >
           <div class="grid grid-cols-2 gap-2 w-fit -mt-2">
-            <a
-              href="https://github.com/jarccy"
-              target="_blank"
-              class="px-3 py-1 rounded-full font-mono text-xs sm:text-sm border border-dashed border-zinc-600 text-zinc-600 hover:border-solid hover:bg-zinc-200 hover:text-zinc-900 hover:border-zinc-200 dark:hover:bg-zinc-200 dark:hover:text-zinc-900 dark:hover:border-zinc-200 transition-all duration-300 flex items-center justify-center cursor-pointer"
+            <div
+              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 rounded-full overflow-hidden text-center"
             >
-              Github
-            </a>
+              <span
+                class="block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0"
+              >
+                Github
+              </span>
 
-            <a
-              href="https://linkedin.com/in/jarcristhian"
-              target="_blank"
-              class="px-3 py-1 rounded-full font-mono text-xs sm:text-sm border border-dashed border-zinc-600 text-zinc-600 hover:border-solid hover:bg-zinc-200 hover:text-zinc-900 hover:border-zinc-200 dark:hover:bg-zinc-200 dark:hover:text-zinc-900 dark:hover:border-zinc-200 transition-all duration-300 flex items-center justify-center cursor-pointer"
-            >
-              LinkedIn
-            </a>
+              <a
+                href="https://github.com/jarccy"
+                target="_blank"
+                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+              >
+                Github
+              </a>
+            </div>
 
-            <a
-              href="https://x.com/cristhian_jar"
-              target="_blank"
-              class="px-3 py-1 rounded-full font-mono text-xs sm:text-sm border border-dashed border-zinc-600 text-zinc-600 hover:border-solid hover:bg-zinc-200 hover:text-zinc-900 hover:border-zinc-200 dark:hover:bg-zinc-200 dark:hover:text-zinc-900 dark:hover:border-zinc-200 transition-all duration-300 flex items-center justify-center cursor-pointer"
+            <div
+              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 rounded-full overflow-hidden text-center"
             >
-              Twitter / X
-            </a>
+              <span
+                class="block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0"
+              >
+                LinkedIn
+              </span>
 
-            <a
-              href="mailto:jarcristhian@gmail.com"
-              class="px-3 py-1 rounded-full font-mono text-xs sm:text-sm border border-dashed border-zinc-600 text-zinc-600 hover:border-solid hover:bg-zinc-200 hover:text-zinc-900 hover:border-zinc-200 dark:hover:bg-zinc-200 dark:hover:text-zinc-900 dark:hover:border-zinc-200 transition-all duration-300 flex items-center justify-center cursor-pointer"
+              <a
+                href="https://linkedin.com/in/jarcristhian"
+                target="_blank"
+                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+              >
+                LinkedIn
+              </a>
+            </div>
+
+            <div
+              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 rounded-full overflow-hidden text-center"
             >
-              Email
-            </a>
+              <span
+                class="block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0"
+              >
+                Twitter / X
+              </span>
+
+              <a
+                href="https://x.com/cristhian_jar"
+                target="_blank"
+                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+              >
+                Twitter / X
+              </a>
+            </div>
+
+            <div
+              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 rounded-full overflow-hidden text-center"
+            >
+              <span
+                class="block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0"
+              >
+                Email
+              </span>
+
+              <a
+                href="mailto:jarcristhian@gmail.com"
+                target="_blank"
+                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+              >
+                Email
+              </a>
+            </div>
           </div>
         </div>
       </div>

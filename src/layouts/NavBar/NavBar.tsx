@@ -63,37 +63,44 @@ export default function NavBar({ lang }: { lang?: string }) {
       className={`fixed flex justify-between items-center z-50 top-0 right-5 sm:right-5 sm:left-auto w-[calc(100vw-150px)] sm:w-auto transition-all duration-300`}
     >
 
-      <div className="flex sm:hidden items-center gap-4 mt-4">
-        <div className='group relative cursor-pointer px-2 py-1.5 border border-dashed hover:border-solid rounded-full overflow-hidden text-black text-center font-semibold'>
-          <span className='translate-y-0 group-hover:-translate-y-12 group-hover:opacity-0 transition-all duration-300 inline-block'>
-            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path><path d="M9 20.027c-3 .973-5.5 0-7-3"></path></g></svg>
+      <div className="flex w-full items-center gap-3 mt-4 md:hidden xl:hidden">
+        <div className="group relative cursor-pointer px-3 py-2 border border-dashed hover:border-solid rounded-full overflow-hidden text-black text-center font-semibold">
+          <span className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0">
+            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24">
+              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5">
+                <path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path>
+                <path d="M9 20.027c-3 .973-5.5 0-7-3"></path>
+              </g>
+            </svg>
           </span>
 
-          <div className='flex gap-2 text-white bg-zinc-900 z-10 items-center absolute left-0 top-0 h-full w-full justify-center translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 rounded-full group-hover:rounded-none '>
-            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path><path d="M9 20.027c-3 .973-5.5 0-7-3"></path></g></svg>
-          </div>
+          <a href="https://github.com/jarccy"
+            target="_blank" className="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24">
+              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5">
+                <path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path>
+                <path d="M9 20.027c-3 .973-5.5 0-7-3"></path>
+              </g>
+            </svg>
+          </a>
         </div>
 
-        <div className='group relative cursor-pointer px-2 py-1.5 border border-dashed hover:border-solid rounded-full overflow-hidden text-black text-center font-semibold'>
-          <span className='translate-y-0 group-hover:-translate-y-12 group-hover:opacity-0 transition-all duration-300 inline-block'>
-            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path><path d="M9 20.027c-3 .973-5.5 0-7-3"></path></g></svg>
+        <div className="group relative cursor-pointer px-3 py-2 border border-dashed hover:border-solid rounded-full overflow-hidden text-black text-center font-semibold">
+          <span className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0">
+            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 20 20">
+              <path fill="currentColor" d="M15.5 4A2.5 2.5 0 0 1 18 6.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 14.5v-8A2.5 2.5 0 0 1 4.5 4zM17 7.961l-6.746 3.97a.5.5 0 0 1-.426.038l-.082-.038L3 7.963V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5zM15.5 5h-11A1.5 1.5 0 0 0 3 6.5v.302l7 4.118l7-4.12v-.3A1.5 1.5 0 0 0 15.5 5"></path>
+            </svg>
           </span>
 
-          <div className='flex gap-2 text-white bg-zinc-900 z-10 items-center absolute left-0 top-0 h-full w-full justify-center translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 rounded-full group-hover:rounded-none '>
-            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path><path d="M9 20.027c-3 .973-5.5 0-7-3"></path></g></svg>
-          </div>
-        </div>
-
-        <div className='group relative cursor-pointer px-2 py-1.5 border border-dashed hover:border-solid rounded-full overflow-hidden text-black text-center font-semibold'>
-          <span className='translate-y-0 group-hover:-translate-y-12 group-hover:opacity-0 transition-all duration-300 inline-block'>
-            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path><path d="M9 20.027c-3 .973-5.5 0-7-3"></path></g></svg>
-          </span>
-
-          <div className='flex gap-2 text-white bg-zinc-900 z-10 items-center absolute left-0 top-0 h-full w-full justify-center translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 rounded-full group-hover:rounded-none '>
-            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"><path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path><path d="M9 20.027c-3 .973-5.5 0-7-3"></path></g></svg>
-          </div>
+          <a href="mailto:jarcristhian@gmail.com"
+            target="_blank" className="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 20 20">
+              <path fill="currentColor" d="M15.5 4A2.5 2.5 0 0 1 18 6.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 14.5v-8A2.5 2.5 0 0 1 4.5 4zM17 7.961l-6.746 3.97a.5.5 0 0 1-.426.038l-.082-.038L3 7.963V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5zM15.5 5h-11A1.5 1.5 0 0 0 3 6.5v.302l7 4.118l7-4.12v-.3A1.5 1.5 0 0 0 15.5 5"></path>
+            </svg>
+          </a>
         </div>
       </div>
+
 
       <div
         className={
@@ -196,7 +203,7 @@ export default function NavBar({ lang }: { lang?: string }) {
 
             {showMenu && (
               <div className="fixed top-0 left-0 w-screen h-screen backdrop-blur-3xl bg-white/50 dark:bg-zinc-900/50 -z-10">
-                <div className="flex flex-col items-end justify-end gap-4 px-10 mt-20">
+                <div className="flex flex-col items-end justify-end gap-4 pr-6 mt-20">
                   {links.map((link, index) => (
                     <div
                       key={link.href}

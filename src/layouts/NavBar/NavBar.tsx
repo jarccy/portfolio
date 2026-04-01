@@ -63,8 +63,8 @@ export default function NavBar({ lang }: { lang?: string }) {
       className={`fixed flex justify-between items-center gap-3 z-50 top-0 right-5 sm:left-auto w-[calc(100vw-150px)] sm:w-auto transition-all duration-300`}
     >
 
-      <div className="flex w-full items-center gap-3 mt-2 md:mt-4 md:hidden xl:hidden">
-        <div className="group relative cursor-pointer px-2 py-1 md:px-3 md:py-2 text-white dark:text-black border-white dark:border-black border border-dashed hover:border-solid rounded-full overflow-hidden text-center font-semibold">
+      <div className="flex w-full items-center gap-3 mt-2 sm:mt-4 sm:hidden xl:hidden">
+        <div className="group relative cursor-pointer px-2 py-1 sm:px-3 sm:py-2 text-white dark:text-black border-white dark:border-black border border-dashed hover:border-solid rounded-full overflow-hidden text-center font-semibold">
           <a href="https://github.com/jarccy"
             target="_blank" className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0">
             <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24">
@@ -86,7 +86,7 @@ export default function NavBar({ lang }: { lang?: string }) {
           </a>
         </div>
 
-        <div className="group relative cursor-pointer px-2 py-1 md:px-3 md:py-2 text-white dark:text-black border-white dark:border-black border border-dashed hover:border-solid rounded-full overflow-hidden text-center font-semibold">
+        <div className="group relative cursor-pointer px-2 py-1 sm:px-3 sm:py-2 text-white dark:text-black border-white dark:border-black border border-dashed hover:border-solid rounded-full overflow-hidden text-center font-semibold">
           <a href="mailto:jarcristhian@gmail.com"
             target="_blank" className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0">
             <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 20 20">
@@ -105,7 +105,7 @@ export default function NavBar({ lang }: { lang?: string }) {
 
       <div
         className={
-          "flex items-center w-[150px] md:w-full px-4 py-1 md:py-2 bg-zinc-800/40 shadow rounded-xl mt-2 md:mt-4 " +
+          "flex items-center w-[150px] md:w-full px-4 py-1 sm:py-2 bg-zinc-800/40 shadow rounded-xl mt-2 sm:mt-4 " +
           (showMenu ? "" : "backdrop-blur")
         }
       >

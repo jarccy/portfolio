@@ -63,19 +63,20 @@ export default function NavBar({ lang }: { lang?: string }) {
       className={`fixed flex justify-between items-center gap-3 z-50 top-0 right-5 sm:left-auto w-[calc(100vw-150px)] sm:w-auto transition-all duration-300`}
     >
 
-      <div className="flex w-full items-center gap-3 mt-4 md:hidden xl:hidden">
-        <div className="group relative cursor-pointer px-3 py-2 border border-dashed hover:border-solid rounded-full overflow-hidden text-black text-center font-semibold">
-          <span className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0">
+      <div className="flex w-full items-center gap-3 mt-2 md:mt-4 md:hidden xl:hidden">
+        <div className="group relative cursor-pointer px-2 py-1 md:px-3 md:py-2 text-white dark:text-black border-white dark:border-black border border-dashed hover:border-solid rounded-full overflow-hidden text-center font-semibold">
+          <a href="https://github.com/jarccy"
+            target="_blank" className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0">
             <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24">
               <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5">
                 <path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path>
                 <path d="M9 20.027c-3 .973-5.5 0-7-3"></path>
               </g>
             </svg>
-          </span>
+          </a>
 
           <a href="https://github.com/jarccy"
-            target="_blank" className="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
+            target="_blank" className="absolute inset-0 flex items-center justify-center text-black dark:text-white bg-white dark:bg-zinc-900  transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24">
               <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5">
                 <path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path>
@@ -85,15 +86,16 @@ export default function NavBar({ lang }: { lang?: string }) {
           </a>
         </div>
 
-        <div className="group relative cursor-pointer px-3 py-2 border border-dashed hover:border-solid rounded-full overflow-hidden text-black text-center font-semibold">
-          <span className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0">
+        <div className="group relative cursor-pointer px-2 py-1 md:px-3 md:py-2 text-white dark:text-black border-white dark:border-black border border-dashed hover:border-solid rounded-full overflow-hidden text-center font-semibold">
+          <a href="mailto:jarcristhian@gmail.com"
+            target="_blank" className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0">
             <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 20 20">
               <path fill="currentColor" d="M15.5 4A2.5 2.5 0 0 1 18 6.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 14.5v-8A2.5 2.5 0 0 1 4.5 4zM17 7.961l-6.746 3.97a.5.5 0 0 1-.426.038l-.082-.038L3 7.963V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5zM15.5 5h-11A1.5 1.5 0 0 0 3 6.5v.302l7 4.118l7-4.12v-.3A1.5 1.5 0 0 0 15.5 5"></path>
             </svg>
-          </span>
+          </a>
 
           <a href="mailto:jarcristhian@gmail.com"
-            target="_blank" className="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
+            target="_blank" className="absolute inset-0 flex items-center justify-center text-black dark:text-white bg-white dark:bg-zinc-900  transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 20 20">
               <path fill="currentColor" d="M15.5 4A2.5 2.5 0 0 1 18 6.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 14.5v-8A2.5 2.5 0 0 1 4.5 4zM17 7.961l-6.746 3.97a.5.5 0 0 1-.426.038l-.082-.038L3 7.963V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5zM15.5 5h-11A1.5 1.5 0 0 0 3 6.5v.302l7 4.118l7-4.12v-.3A1.5 1.5 0 0 0 15.5 5"></path>
             </svg>
@@ -101,10 +103,9 @@ export default function NavBar({ lang }: { lang?: string }) {
         </div>
       </div>
 
-
       <div
         className={
-          "flex items-center w-[150px] md:w-full px-4 py-2 bg-zinc-800/40 shadow rounded-xl mt-4 " +
+          "flex items-center w-[150px] md:w-full px-4 py-1 md:py-2 bg-zinc-800/40 shadow rounded-xl mt-2 md:mt-4 " +
           (showMenu ? "" : "backdrop-blur")
         }
       >

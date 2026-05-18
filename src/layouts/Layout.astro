@@ -102,7 +102,7 @@ const locale = Astro.currentLocale || "en";
 
       <!-- Cutout Footer Base (Left) -->
       <div
-        class="hidden sm:block absolute bottom-0 left-0 bg-primary rounded-tr-4xl rounded-bl-4xl pt-6 pr-6 z-40 ring-1 ring-primary text-white dark:text-black pb-0 pl-0"
+        class="hidden sm:block absolute bottom-0 left-0 bg-primary rounded-tr-4xl rounded-bl-4xl pt-6 pr-6 z-40 ring-1 ring-primary text-white dark:text-black pb-0 pl-0 transition-colors duration-700"
       >
         <!-- Inverted Corner: Top -->
         <svg
@@ -120,12 +120,13 @@ const locale = Astro.currentLocale || "en";
           <path d="M0 100 H 100 A 100 100 0 0 1 0 0 V 100 Z"></path>
         </svg>
 
+        <!-- Socials -->
         <div
-          class="pb-3 pl-4 sm:pb-4 sm:pl-6 text-sm font-medium leading-tight"
+          class="pb-3 pl-4 sm:pb-4 sm:pl-6 text-sm font-medium leading-tight transition-colors duration-700"
         >
           <div class="grid grid-cols-2 gap-2 w-fit -mt-2">
             <div
-              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 rounded-full overflow-hidden text-center"
+              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 dark:hover:border-zinc-100 rounded-full overflow-hidden text-center transition-colors duration-700"
             >
               <span
                 class="block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0"
@@ -136,14 +137,14 @@ const locale = Astro.currentLocale || "en";
               <a
                 href="https://github.com/jarccy"
                 target="_blank"
-                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
               >
                 Github
               </a>
             </div>
 
             <div
-              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 rounded-full overflow-hidden text-center"
+              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 dark:hover:border-zinc-100 rounded-full overflow-hidden text-center transition-colors duration-700"
             >
               <span
                 class="block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0"
@@ -154,14 +155,14 @@ const locale = Astro.currentLocale || "en";
               <a
                 href="https://linkedin.com/in/jarcristhian"
                 target="_blank"
-                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
               >
                 LinkedIn
               </a>
             </div>
 
             <div
-              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 rounded-full overflow-hidden text-center"
+              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 dark:hover:border-zinc-100 rounded-full overflow-hidden text-center transition-colors duration-700"
             >
               <span
                 class="block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0"
@@ -172,14 +173,14 @@ const locale = Astro.currentLocale || "en";
               <a
                 href="https://x.com/cristhian_jar"
                 target="_blank"
-                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
               >
                 Twitter / X
               </a>
             </div>
 
             <div
-              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 rounded-full overflow-hidden text-center"
+              class="group relative cursor-pointer px-3 py-1.5 border border-dashed hover:border-solid hover:border-zinc-900 dark:hover:border-zinc-100 rounded-full overflow-hidden text-center transition-colors duration-700"
             >
               <span
                 class="block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0"
@@ -190,7 +191,7 @@ const locale = Astro.currentLocale || "en";
               <a
                 href="mailto:jarcristhian@gmail.com"
                 target="_blank"
-                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+                class="absolute inset-0 flex items-center justify-center bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
               >
                 Email
               </a>

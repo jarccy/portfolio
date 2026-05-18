@@ -87,7 +87,7 @@ export default function Hobbie({ lang }: { lang?: string }) {
         className="flex flex-col mt-6 h-[475px] justify-center items-center"
       >
         {!showIframe ? (
-          <span className="text-lg text-zinc-500 dark:text-zinc-400 animate-pulse">
+          <span className="text-lg text-neutral-500 dark:text-neutral-400 animate-pulse">
             Loading Spotify...
           </span>
         ) : (
@@ -101,7 +101,7 @@ export default function Hobbie({ lang }: { lang?: string }) {
         )}
       </motion.div>
 
-      <div className="text-center font-vectra font-bold mt-10 text-2xl select-none text-zinc-300 dark:text-zinc-500">
+      <div className="text-center font-vectra font-bold mt-10 text-2xl select-none text-neutral-300 dark:text-neutral-500">
         {likeCount}
       </div>
 
@@ -152,7 +152,7 @@ export default function Hobbie({ lang }: { lang?: string }) {
         {liked && (
           <ShineTextSimple>
             <TypewriterEffectSmooth
-              className="text-zinc-600 dark:text-zinc-500 font-vectra font-bold text-xl text-shine"
+              className="text-neutral-600 dark:text-neutral-500 font-vectra font-bold text-xl text-shine"
               words={[{ text: "Thank you for visiting my portfolio!" }]}
               duration={1.5}
             />

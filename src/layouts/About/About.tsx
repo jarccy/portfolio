@@ -44,7 +44,7 @@ export default function About({ lang }: { lang: string }) {
 
       <div className="flex flex-col md:flex-row gap-5 mt-6">
         <motion.div variants={itemVariants} className="flex flex-col gap-2">
-          <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 mb-4 min-w-[350px]">
+          <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 mb-4 min-w-[350px]">
             {localT("about.header")}{" "}
             <span className="text-primary font-semibold">
               Jar Cristhian
@@ -72,7 +72,7 @@ export default function About({ lang }: { lang: string }) {
 
             <button
               className="inline-flex  select-none items-center gap-2 cursor-pointer rounded-2xl px-2 md:px-6 py-1.5 font-medium hover:scale-105 transition-transform duration-300
-          text-white dark:text-zinc-900 bg-primary active:scale-95 active:brightness-90 group/svg
+          text-white dark:text-neutral-900 bg-primary active:scale-95 active:brightness-90 group/svg
           "
               onClick={openMail}
             >
@@ -117,7 +117,7 @@ export default function About({ lang }: { lang: string }) {
           <CardProfile>
             <button
               type="button"
-              className="flex w-56 cursor-pointer flex-col mt-4 md:-mt-2 items-stretch rounded-[16px] border-0 bg-neutral-100 dark:bg-zinc-900 saturate-0 p-2"
+              className="flex w-56 cursor-pointer flex-col mt-4 md:-mt-2 items-stretch rounded-[16px] border-0 bg-neutral-100 dark:bg-neutral-900 saturate-0 p-2"
               aria-label="Jarcy"
               style={{
                 transformStyle: "preserve-3d",
@@ -140,7 +140,7 @@ export default function About({ lang }: { lang: string }) {
                 </div>
               </div>
               <div className="font-vectra font-bold mt-2 flex flex-shrink-0 items-center justify-between p-2 text-white">
-                <div className=" text-zinc-500 dark:text-zinc-400">
+                <div className=" text-neutral-500 dark:text-neutral-400">
                   Jar Cristhian
                 </div>
                 <div className="text-xs text-gray-300 opacity-50">23/05</div>

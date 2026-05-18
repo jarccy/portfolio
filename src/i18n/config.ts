@@ -16,6 +16,7 @@ i18next.init({
     ns: ["common"],
     defaultNS: "common",
     debug: false,
+    showSupportNotice: false,
     resources: {
         en: {
             common: enCommon,

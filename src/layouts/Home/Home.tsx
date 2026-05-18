@@ -19,6 +19,46 @@ export const itemVariants: Variants = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
+const nameBlurVariants: Variants = {
+  initial: { opacity: 0, filter: "blur(12px)", y: 8 },
+  animate: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+  },
+};
+
+const surnameBlurVariants: Variants = {
+  initial: { opacity: 0, filter: "blur(12px)", y: 8 },
+  animate: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut", delay: 0.55 },
+  },
+};
+
+const descriptionBlurVariants: Variants = {
+  initial: { opacity: 0, filter: "blur(12px)", y: 14 },
+  animate: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut", delay: 1.1 },
+  },
+};
+
+const languagesBlurVariants: Variants = {
+  initial: { opacity: 0, filter: "blur(12px)", y: 14 },
+  animate: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut", delay: 1.35 },
+  },
+};
+
 export default function Home({ lang }: { lang: string }) {
   const localT = i18next.getFixedT(lang || "en");
 
@@ -43,11 +83,14 @@ export default function Home({ lang }: { lang: string }) {
         <div className="max-w-xl w-full text-center space-y-2">
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-zinc-600 dark:text-zinc-200 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-neutral-600 dark:text-neutral-200 leading-tight"
           >
-            <span>{localT("home.name")}</span>
-
-            <span className="text-primary">Jarcy</span>
+            <motion.span variants={nameBlurVariants} className="inline-block mr-2">
+              {localT("home.name")}
+            </motion.span>
+            <motion.span variants={surnameBlurVariants} className="inline-block text-primary">
+              Jarcy
+            </motion.span>
           </motion.h1>
 
           <motion.h2
@@ -63,13 +106,13 @@ export default function Home({ lang }: { lang: string }) {
           </motion.h2>
 
           <motion.article
-            variants={itemVariants}
-            className="dark:text-zinc-400/90 px-4 md:px-0 text-sm sm:text-base"
+            variants={descriptionBlurVariants}
+            className="dark:text-neutral-400/90 px-4 md:px-0 text-sm sm:text-base"
           >
             {localT("home.description")}
           </motion.article>
 
-          <motion.div variants={itemVariants}>
+          <motion.div variants={languagesBlurVariants}>
             <Languages />
           </motion.div>
         </div>

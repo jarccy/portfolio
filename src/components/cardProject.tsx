@@ -131,7 +131,7 @@ export const CardProject = ({
             ? "fixed inset-4 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-[101] w-auto sm:w-[95vw] max-w-[800px] h-auto sm:h-[90vh] max-h-[850px] cursor-default p-8 pt-12 shadow-sm"
             : "absolute inset-x-0 top-0 h-[350px] cursor-pointer"
           }
-          rounded-[2.5rem] flex flex-col overflow-hidden bg-gradient-to-tr from-white via-neutral-100 to-neutral-200/30 dark:border-t hover:border-t-4 border border-zinc-200 hover:border-t-zinc-700 dark:border-zinc-800 dark:hover:border-t-neutral-300 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-800
+          rounded-[2.5rem] flex flex-col overflow-hidden bg-gradient-to-tr from-white via-neutral-100 to-neutral-200/30 dark:border-t hover:border-t-4 border border-neutral-200 hover:border-t-neutral-700 dark:border-neutral-800 dark:hover:border-t-neutral-300 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800
         `}
       >
         {/* Helmet-style Design elements (Decor) */}
@@ -159,27 +159,27 @@ export const CardProject = ({
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <h2 className="text-4xl font-black text-white tracking-tight">{project.name}</h2>
-                    <div className="flex items-center gap-4 text-zinc-500 font-bold uppercase tracking-widest text-xs">
+                    <div className="flex items-center gap-4 text-neutral-500 font-bold uppercase tracking-widest text-xs">
                       <span>Year {project.date}</span>
-                      <span className="w-1 h-1 rounded-full bg-zinc-800" />
+                      <span className="w-1 h-1 rounded-full bg-neutral-800" />
                       <span>Interactive Experience</span>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 pt-8 border-t border-zinc-900">
+                  <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 pt-8 border-t border-neutral-900">
                     <div className="space-y-6">
-                      <p className="text-zinc-400 text-lg leading-relaxed">
+                      <p className="text-neutral-400 text-lg leading-relaxed">
                         {locale === "en" ? project.description : project.descriptionEs}
                       </p>
                     </div>
 
                     <div className="space-y-6">
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600">Technologies</h4>
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-600">Technologies</h4>
                       <div className="flex flex-wrap gap-2 max-w-[250px]">
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="px-4 py-2 bg-zinc-900 text-zinc-300 rounded-xl text-xs font-bold border border-zinc-800"
+                            className="px-4 py-2 bg-neutral-900 text-neutral-300 rounded-xl text-xs font-bold border border-neutral-800"
                           >
                             {tech}
                           </span>
@@ -211,7 +211,7 @@ export const CardProject = ({
                   layoutId={`desc-${project.name}`}
                   className="w-full px-6 pb-2 text-center"
                 >
-                  <p className="text-zinc-500 text-sm line-clamp-2 leading-relaxed h-11">
+                  <p className="text-neutral-500 text-sm line-clamp-2 leading-relaxed h-11">
                     {locale === "en" ? project.description : project.descriptionEs}
                   </p>
                 </motion.div>
@@ -240,7 +240,7 @@ export const CardProject = ({
               className="relative"
             >
               <div className="relative flex items-baseline gap-2">
-                <span className="text-zinc-400 text-sm font-medium">Year</span>
+                <span className="text-neutral-400 text-sm font-medium">Year</span>
                 <span className="opacity-50 text-xl font-bold">{project.date}</span>
               </div>
             </motion.div>

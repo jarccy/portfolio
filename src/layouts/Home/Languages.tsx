@@ -83,15 +83,15 @@ const Tooltip = ({ text, position, stacks, isVisible }: TooltipParams) => {
         transform: typeof window !== "undefined" && window.innerWidth < 768 ? "none" : "translateX(-50%)",
       }}
     >
-      <div className="hidden md:block absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white dark:border-b-zinc-800/80" />
+      <div className="hidden md:block absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white dark:border-b-neutral-800/80" />
 
-      <div className="text-xs rounded-2xl py-2 px-3 w-[180px] md:h-[80px] shadow-lg bg-white dark:bg-zinc-900">
+      <div className="text-xs rounded-2xl py-2 px-3 w-[180px] md:h-[80px] shadow-lg bg-white dark:bg-neutral-900">
         <div className="flex flex-col">
-          <strong className="dark:text-white text-zinc-900">Stack in {text || "GO"}:</strong>
+          <strong className="dark:text-white text-neutral-900">Stack in {text || "GO"}:</strong>
 
           <ul className="list-disc pl-5">
             {stacks.map((item) => (
-              <li key={item} className="text-zinc-700 dark:text-zinc-200">
+              <li key={item} className="text-neutral-700 dark:text-neutral-200">
                 {item}
               </li>
             ))}
@@ -174,10 +174,10 @@ export default function Languages() {
             onClick={(e) => handleInteraction(item, e)}
             className="flex items-center gap-2 cursor-pointer select-none group transition-all duration-300 hover:scale-105"
           >
-            <div className="text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
+            <div className="text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-neutral-100">
               {item.icon}
             </div>
-            <span className="text-sm font-medium text-zinc-600 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-zinc-100">
+            <span className="text-sm font-medium text-neutral-600 dark:text-neutral-300 group-hover:text-neutral-900 dark:group-hover:text-neutral-100">
               {item.name}
             </span>
           </div>

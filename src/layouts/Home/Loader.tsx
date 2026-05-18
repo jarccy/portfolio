@@ -78,7 +78,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       initial="initial"
       animate={isExiting ? "exit" : "initial"}
       onAnimationComplete={handleAnimationComplete}
-      className="fixed inset-0 w-screen h-screen flex items-center justify-center bg-neutral-50 dark:bg-zinc-950 z-[100] overflow-hidden"
+      className="fixed inset-0 w-screen h-screen flex items-center justify-center bg-neutral-50 dark:bg-neutral-950 z-[100] overflow-hidden"
     >
       {dimension.width > 0 && (
         <>
@@ -86,12 +86,12 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             variants={opacity}
             initial="initial"
             animate="enter"
-            className="flex items-center text-zinc-900 dark:text-white text-4xl md:text-5xl lg:text-6xl absolute z-10 font-medium"
+            className="flex items-center text-neutral-900 dark:text-white text-4xl md:text-5xl lg:text-6xl absolute z-10 font-medium"
           >
             {words[index]}
           </motion.p>
           <svg className="absolute top-0 w-full h-[calc(100%+300px)]">
-            <motion.path variants={curve} initial="initial" animate={isExiting ? "exit" : "initial"} className="fill-neutral-50 dark:fill-zinc-950" />
+            <motion.path variants={curve} initial="initial" animate={isExiting ? "exit" : "initial"} className="fill-neutral-50 dark:fill-neutral-950" />
           </svg>
         </>
       )}

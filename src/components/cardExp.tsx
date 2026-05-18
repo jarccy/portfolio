@@ -14,23 +14,23 @@ export const CardExperience = ({ company }: { company: Company }) => {
       <div className="flex flex-col justify-between h-full">
         <div className="-space-y-2">
           <div className="flex flex-wrap justify-between items-center">
-            <span className="text-lg font-semibold text-zinc-600 dark:text-zinc-300">
+            <span className="text-lg font-semibold text-neutral-600 dark:text-neutral-300">
               {name}
             </span>
             <span className="text-xs font-semibold text-primary/70">
               {period}
             </span>
           </div>
-          <span className="text-xs font-semibold text-zinc-400 dark:text-zinc-500">
+          <span className="text-xs font-semibold text-neutral-400 dark:text-neutral-500">
             {charge}
           </span>
         </div>
 
         <div className="flex flex-col gap-2">
-          <span className="text-sm text-zinc-500 dark:text-zinc-400">
+          <span className="text-sm text-neutral-500 dark:text-neutral-400">
             {description}
           </span>
-          <span className="font-semibold text-zinc-600 dark:text-zinc-300 mb-2">
+          <span className="font-semibold text-neutral-600 dark:text-neutral-300 mb-2">
             {technologies}
           </span>
         </div>
@@ -50,8 +50,8 @@ export const CardExperience = ({ company }: { company: Company }) => {
 const cardClass =
   "w-full relative h-full rounded-2xl p-2 px-3 overflow-hidden " +
   "bg-gradient-to-tr from-white via-neutral-100 to-neutral-100 " +
-  "dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-800 " +
-  "border border-zinc-200 dark:border-zinc-800 " +
+  "dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800 " +
+  "border border-neutral-200 dark:border-neutral-800 " +
   "dark:border-t " +
   "md:transition-all md:duration-300 md:hover:scale-105 " +
-  "md:hover:border-t-4 md:hover:border-t-zinc-700 dark:md:hover:border-t-neutral-300";
+  "md:hover:border-t-4 md:hover:border-t-neutral-700 dark:md:hover:border-t-neutral-300";

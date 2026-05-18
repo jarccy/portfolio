@@ -29,7 +29,7 @@ export const CardProject = ({
       <motion.div
         variants={itemVariants}
         className="group h-64 px-3 pt-2 pb-3 rounded-xl transition-all duration-300 hover:scale-105 bg-gradient-to-tr from-white via-neutral-100
-          to-neutral-200/30 dark:border-t hover:border-t-4 border border-zinc-200 hover:border-t-zinc-700 dark:border-zinc-800 dark:hover:border-t-neutral-300 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-800
+          to-neutral-200/30 dark:border-t hover:border-t-4 border border-neutral-200 hover:border-t-neutral-700 dark:border-neutral-800 dark:hover:border-t-neutral-300 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800
           relative overflow-hidden flex flex-col justify-between"
       >
         <div className="flex items-center justify-between mb-2">
@@ -42,16 +42,16 @@ export const CardProject = ({
         <div className="relative h-full overflow-hidden">{children}</div>
 
         <motion.div variants={itemUp} className="relative mt-1">
-          <p className="font-medium text-zinc-600 dark:text-zinc-400 text-sm transition-all duration-300 group-hover:-translate-y-10 group-hover:bg-zinc-100/20 group-hover:backdrop-blur group-hover:dark:bg-zinc-950/90">
+          <p className="font-medium text-neutral-600 dark:text-neutral-400 text-sm transition-all duration-300 group-hover:-translate-y-10 group-hover:bg-neutral-100/20 group-hover:backdrop-blur group-hover:dark:bg-neutral-950/90">
             {locale === "en" ? project.description : project.descriptionEs}
             {project.technologies.map((tech, index) => (
               <span
                 key={index}
-                className="text-zinc-700 font-bold dark:text-neutral-300"
+                className="text-neutral-700 font-bold dark:text-neutral-300"
               >
                 {tech}
                 {index < project.technologies.length - 1 && index > 0 && ", "}
-                <span className="font-normal text-zinc-600 dark:text-zinc-400">
+                <span className="font-normal text-neutral-600 dark:text-neutral-400">
                   {index === project.technologies.length - 2 && " & "}
                 </span>
 
@@ -63,7 +63,7 @@ export const CardProject = ({
           <a
             className="absolute group-hover:-translate-y-7 translate-y-4 select-none
             inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300
-             text-white dark:text-zinc-900 bg-primary cursor-pointer hover:scale-105 active:scale-95 active:brightness-90 group/svg"
+             text-white dark:text-neutral-900 bg-primary cursor-pointer hover:scale-105 active:scale-95 active:brightness-90 group/svg"
             href={locale === "en" ? `/project/${project.name}` : `/es/project/${project.name}`}
           >
             {locale === "en" ? "Show more" : "Mostrar más"}

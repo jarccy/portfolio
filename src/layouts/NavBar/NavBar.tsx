@@ -76,7 +76,7 @@ export default function NavBar({ lang }: { lang?: string }) {
           </a>
 
           <a href="https://github.com/jarccy"
-            target="_blank" className="absolute inset-0 flex items-center justify-center text-black dark:text-white bg-white dark:bg-zinc-900  transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
+            target="_blank" className="absolute inset-0 flex items-center justify-center text-black dark:text-white bg-white dark:bg-neutral-900  transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24">
               <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5">
                 <path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path>
@@ -95,7 +95,7 @@ export default function NavBar({ lang }: { lang?: string }) {
           </a>
 
           <a href="mailto:jarcristhian@gmail.com"
-            target="_blank" className="absolute inset-0 flex items-center justify-center text-black dark:text-white bg-white dark:bg-zinc-900  transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
+            target="_blank" className="absolute inset-0 flex items-center justify-center text-black dark:text-white bg-white dark:bg-neutral-900  transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 20 20">
               <path fill="currentColor" d="M15.5 4A2.5 2.5 0 0 1 18 6.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 14.5v-8A2.5 2.5 0 0 1 4.5 4zM17 7.961l-6.746 3.97a.5.5 0 0 1-.426.038l-.082-.038L3 7.963V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5zM15.5 5h-11A1.5 1.5 0 0 0 3 6.5v.302l7 4.118l7-4.12v-.3A1.5 1.5 0 0 0 15.5 5"></path>
             </svg>
@@ -105,7 +105,7 @@ export default function NavBar({ lang }: { lang?: string }) {
 
       <div
         className={
-          "flex items-center w-[150px] md:w-full px-4 py-1 sm:py-2 bg-zinc-800/40 shadow rounded-xl mt-2 sm:mt-4 " +
+          "flex items-center w-[150px] md:w-full px-4 py-1 sm:py-2 bg-neutral-800/40 shadow rounded-xl mt-2 sm:mt-4 " +
           (showMenu ? "" : "backdrop-blur")
         }
       >
@@ -115,7 +115,7 @@ export default function NavBar({ lang }: { lang?: string }) {
               className="group relative w-fit select-none cursor-pointer"
               onClick={() => scrollToSection("about")}
             >
-              <span className="text-zinc-200 hover:text-black">
+              <span className="text-neutral-200 hover:text-black">
                 {localT("nav.about")}
               </span>
 
@@ -126,7 +126,7 @@ export default function NavBar({ lang }: { lang?: string }) {
               className="group relative w-fit select-none cursor-pointer"
               onClick={() => scrollToSection("experience")}
             >
-              <span className="text-zinc-200 hover:text-black">
+              <span className="text-neutral-200 hover:text-black">
                 {localT("nav.experience")}
               </span>
 
@@ -137,7 +137,7 @@ export default function NavBar({ lang }: { lang?: string }) {
               className="group relative w-fit select-none cursor-pointer"
               onClick={() => scrollToSection("projects")}
             >
-              <span className="text-zinc-200 hover:text-black">
+              <span className="text-neutral-200 hover:text-black">
                 {localT("nav.projects")}
               </span>
 
@@ -149,7 +149,7 @@ export default function NavBar({ lang }: { lang?: string }) {
             <div className="relative" ref={langMenuRef}>
               <button
                 onClick={() => setShowLangMenu(!showLangMenu)}
-                className="p-1 rounded-full cursor-pointer hover:bg-zinc-200/50 dark:hover:bg-zinc-800 text-zinc-200 hover:text-zinc-200 dark:text-zinc-200 dark:hover:text-zinc-100 transition-colors"
+                className="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-neutral-800 text-neutral-200 hover:text-neutral-200 dark:text-neutral-200 dark:hover:text-neutral-100 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.1em]" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a49 49 0 0 1 6-.371m0 0q1.681 0 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138q1.344.092 2.666.257m-4.589 8.495a18 18 0 0 1-3.827-5.802"></path></svg>
               </button>
@@ -160,18 +160,18 @@ export default function NavBar({ lang }: { lang?: string }) {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -10 }}
-                    className="absolute right-0 mt-3.5 w-32 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-lg z-30 overflow-hidden"
+                    className="absolute right-0 mt-3.5 w-32 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-lg z-30 overflow-hidden"
                   >
                     <div className="py-1">
                       <button
                         onClick={() => changeLanguage("en")}
-                        className="w-full text-left px-4 py-2 text-sm text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                        className="w-full text-left px-4 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
                       >
                         English
                       </button>
                       <button
                         onClick={() => changeLanguage("es")}
-                        className="w-full text-left px-4 py-2 text-sm text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                        className="w-full text-left px-4 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
                       >
                         Español
                       </button>
@@ -203,7 +203,7 @@ export default function NavBar({ lang }: { lang?: string }) {
             </label>
 
             {showMenu && (
-              <div className="fixed top-0 left-0 w-screen h-screen backdrop-blur-3xl bg-white/50 dark:bg-zinc-900/50 -z-10">
+              <div className="fixed top-0 left-0 w-screen h-screen backdrop-blur-3xl bg-white/50 dark:bg-neutral-900/50 -z-10">
                 <div className="flex flex-col items-end justify-end gap-4 pr-8 mt-20">
                   {links.map((link, index) => (
                     <div
@@ -215,11 +215,11 @@ export default function NavBar({ lang }: { lang?: string }) {
                         scrollToSection(link.href);
                       }}
                     >
-                      <span className="text-zinc-400 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-200">
+                      <span className="text-neutral-400 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-200">
                         {link.name}
                       </span>
 
-                      <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-zinc-400 dark:bg-zinc-200 transition-all duration-200 group-hover:w-full"></span>
+                      <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-neutral-400 dark:bg-neutral-200 transition-all duration-200 group-hover:w-full"></span>
                     </div>
                   ))}
                 </div>

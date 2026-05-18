@@ -9,8 +9,8 @@ type data = {
 export const TitleMenu = ({ title, description, children }: data) => {
   return (
     <div className="flex items-center gap-3 mb-4 group">
-      <div className="rounded-xl bg-gradient-to-r from-zinc-200 via-zinc-100 to-zinc-50  dark:from-zinc-800 dark:via-zinc-600 dark:to-zinc-500 group">
-        <div className="bg-zinc-100 dark:bg-zinc-800 rounded-xl p-2 backdrop-blur-sm flex items-center justify-center ml-1 border-[0.5px] border-zinc-300 dark:border-zinc-700">
+      <div className="rounded-xl bg-gradient-to-r from-neutral-200 via-neutral-100 to-neutral-50  dark:from-neutral-800 dark:via-neutral-600 dark:to-neutral-500 group">
+        <div className="bg-neutral-100 dark:bg-neutral-800 rounded-xl p-2 backdrop-blur-sm flex items-center justify-center ml-1 border-[0.5px] border-neutral-300 dark:border-neutral-700">
           {children}
         </div>
       </div>
@@ -24,7 +24,7 @@ export const TitleMenu = ({ title, description, children }: data) => {
           />
         </div>
 
-        <p className="text-zinc-500 dark:text-zinc-400 text-sm">
+        <p className="text-neutral-500 dark:text-neutral-400 text-sm">
           {description}
         </p>
       </div>

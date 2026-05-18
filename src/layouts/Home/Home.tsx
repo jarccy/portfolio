@@ -45,7 +45,9 @@ export default function Home({ lang }: { lang: string }) {
             variants={itemVariants}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-zinc-600 dark:text-zinc-200 leading-tight"
           >
-            {localT("home.name")} <span className="text-primary">Jarcy</span>
+            <span>{localT("home.name")}</span>
+
+            <span className="text-primary">Jarcy</span>
           </motion.h1>
 
           <motion.h2

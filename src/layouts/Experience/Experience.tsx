@@ -17,7 +17,7 @@ export const companies: Company[] = [
   {
     name: { en: "Capital Management Partners", es: "Capital Management Partners" },
     charge: { en: "Full Stack Developer", es: "Full Stack Developer" },
-    period: { en: "Sep 2024 - Present", es: "Sep 2024 - Presente" },
+    period: { en: "Sep 2024 - June 2026", es: "Sep 2024 - June 2026" },
     description: {
       en: "Working as a Full Stack Developer, focusing on building scalable web applications and improving user experience. Responsible for both front-end and back-end development tasks.",
       es: "Trabajando como Full Stack Developer, enfocado en la creación de aplicaciones web escalables y mejorar la experiencia del usuario. Responsable de las tareas de desarrollo tanto del front-end como del back-end.",

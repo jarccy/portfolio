@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from "../layouts/NavBar/index.astro";
+import Footer from "@/layouts/Footer/index.astro";
+import { CardProject } from "@/components/cardProject";
+import { getCollection } from "astro:content";
+import { i18next } from "../i18n/config";
+
+const locale = "en";
+i18next.changeLanguage(locale);
+const localT = i18next.getFixedT(locale);
+const projects = await getCollection("projects");
+---
+
+<Layout>
+  <NavBar />
+
+  <section class="w-full max-w-5xl mx-auto pt-40 mb-10 px-4">
+    <div class="flex items-center justify-between gap-3 mb-6">
+      <a
+        href="/#projects"
+        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300 bg-white/10 border shadow border-white/20 backdrop-blur-lg cursor-pointer hover:scale-105 active:scale-95 active:brightness-90"
+      >
+        ← Back
+      </a>
+
+      <h1 class="text-2xl sm:text-4xl font-black text-right">
+        {localT("projects.title")}
+      </h1>
+    </div>
+
+    <p class="text-sm sm:text-base text-neutral-500 dark:text-neutral-400 mb-8">
+      {localT("projects.description")}
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-2">
+      {
+        projects
+          .toSorted((a, b) => b.data.date - a.data.date)
+          .map((project) => (
+            <CardProject
+              client:load
+              project={project.data}
+              projectId={project.id}
+              locale={locale}
+            >
+              <img
+                src={project.data.image}
+                alt={project.data.name}
+                class="transition-transform duration-300 grayscale group-hover:grayscale-0 select-none pointer-events-none"
+              />
+            </CardProject>
+          ))
+      }
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

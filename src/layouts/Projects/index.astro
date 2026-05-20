@@ -36,6 +36,7 @@ const projects = await getCollection("projects");
           <CardProject
             client:load
             project={project.data}
+            projectId={project.id}
             locale={Astro.currentLocale || "en"}
           >
             <img
@@ -51,6 +52,7 @@ const projects = await getCollection("projects");
 
   <div class="flex justify-center w-full mt-4">
     <a
+      href={Astro.currentLocale === "es" ? "/es/projects" : "/projects"}
       class="select-none inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300
               bg-white/10 border shadow border-white/20 backdrop-blur-lg cursor-pointer hover:scale-105 active:scale-95 active:brightness-90 group/svg"
     >

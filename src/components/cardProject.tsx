@@ -26,32 +26,27 @@ const ImageSlider = ({ images }: { images: string[] }) => {
 
   return (
     <div className="relative w-full aspect-video rounded-2xl overflow-hidden  shadow-sm group/slider border border-white/5">
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={currentIndex}
-          layoutId={currentIndex === 0 ? `image-container-${images[0]}` : undefined}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-          src={images[currentIndex]}
-          alt={`Project view ${currentIndex + 1}`}
-          className="w-full h-full object-cover"
-        />
-      </AnimatePresence>
+      <img
+        key={currentIndex}
+        src={images[currentIndex]}
+        alt={`Project view ${currentIndex + 1}`}
+        loading="lazy"
+        decoding="async"
+        className="w-full h-full object-cover"
+      />
 
       {images.length > 1 && (
         <>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 opacity-0 group-hover/slider:opacity-100 transition-opacity duration-300 pointer-events-none" />
           <button
             onClick={prevSlide}
-            className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/50 text-white backdrop-blur-md opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-black/70 hover:scale-110 active:scale-95 z-10 border border-white/10"
+            className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/50 text-white opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-black/70 hover:scale-110 active:scale-95 z-10 border border-white/10"
           >
             ←
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/50 text-white backdrop-blur-md opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-black/70 hover:scale-110 active:scale-95 z-10 border border-white/10"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/50 text-white opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-black/70 hover:scale-110 active:scale-95 z-10 border border-white/10"
           >
             →
           </button>
@@ -72,14 +67,17 @@ const ImageSlider = ({ images }: { images: string[] }) => {
 
 export const CardProject = ({
   project,
+  projectId,
   locale,
   children,
 }: {
   project: project;
+  projectId: string;
   locale: string;
   children: React.ReactNode;
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const cardLayoutId = `project-card-${projectId}`;
 
   // Lock scroll when expanded
   useEffect(() => {
@@ -94,159 +92,124 @@ export const CardProject = ({
   }, [isExpanded]);
 
   return (
-    <motion.div
-      className="relative group"
-      animate={{ zIndex: isExpanded ? 50 : 0 }}
-      transition={{ zIndex: { delay: isExpanded ? 0 : 0.6 } }}
-    >
-      {/* Grid State Placeholder */}
+    <div className="relative group">
       <div className="h-[350px] w-full invisible pointer-events-none" />
 
-      {/* Backdrop */}
-      <AnimatePresence>
+      {!isExpanded && (
+        <motion.button
+          layoutId={cardLayoutId}
+          type="button"
+          onClick={() => setIsExpanded(true)}
+          transition={{ layout: { duration: 0.4, ease: [0.22, 0.61, 0.36, 1] } }}
+          className="absolute inset-0 h-[350px] w-full cursor-pointer rounded-[2.5rem] flex flex-col overflow-hidden bg-gradient-to-tr from-white via-neutral-100 to-neutral-200/30 dark:border-t border border-neutral-200 dark:border-neutral-800 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800 text-left transform-gpu [contain:layout_paint_style]"
+        >
+          <div className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2.5rem] pointer-events-none m-1" />
+
+          <div className="relative w-full h-full flex flex-col items-center">
+            <div className="flex-1 w-full flex items-center justify-center px-4 pointer-events-none">
+              <div className="relative w-full h-full max-h-[210px] flex items-center justify-center">
+                {children}
+              </div>
+            </div>
+
+            <div className="w-full px-6 pb-2 text-center">
+              <p className="text-neutral-500 text-sm line-clamp-2 leading-relaxed h-11">
+                {locale === "en" ? project.description : project.descriptionEs}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-auto w-full border-t border-neutral-200/70 dark:border-neutral-800/80">
+            <div className="flex items-center justify-between px-6 py-3">
+              <span className="font-medium text-sm capitalize text-neutral-700 dark:text-neutral-300">
+                {project.name}
+              </span>
+              <div className="text-xs text-neutral-400 dark:text-neutral-500">
+                {project.date}
+              </div>
+            </div>
+          </div>
+        </motion.button>
+      )}
+
+      <AnimatePresence mode="wait">
         {isExpanded && (
           <motion.div
+            className="fixed inset-0 flex items-center justify-center z-[120] px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setIsExpanded(false)}
-            className="fixed inset-0 bg-black/20 backdrop-blur-xs z-[100]"
-          />
-        )}
-      </AnimatePresence>
+            transition={{ duration: 0.22, ease: "easeOut" }}
+          >
+            <button
+              type="button"
+              onClick={() => setIsExpanded(false)}
+              className="absolute inset-0 bg-black/40 dark:bg-black/30"
+              aria-label={locale === "en" ? "Close modal" : "Cerrar modal"}
+            />
 
-      {/* Main Card */}
-      <motion.div
-        layoutId={`card-${project.name}`}
-        onClick={!isExpanded ? () => setIsExpanded(true) : undefined}
-        animate={{
-          zIndex: isExpanded ? 100 : 0
-        }}
-        transition={{
-          layout: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
-          zIndex: { delay: isExpanded ? 0 : 0.6 }
-        }}
-        className={`
-          ${isExpanded
-            ? "fixed inset-4 sm:inset-auto sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-[101] w-auto sm:w-[95vw] max-w-[800px] h-auto sm:h-[90vh] max-h-[850px] cursor-default p-8 pt-12 shadow-sm"
-            : "absolute inset-x-0 top-0 h-[350px] cursor-pointer"
-          }
-          rounded-[2.5rem] flex flex-col overflow-hidden bg-gradient-to-tr from-white via-neutral-100 to-neutral-200/30 dark:border-t hover:border-t-4 border border-neutral-200 hover:border-t-neutral-700 dark:border-neutral-800 dark:hover:border-t-neutral-300 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800
-        `}
-      >
-        {/* Helmet-style Design elements (Decor) */}
-        {!isExpanded && (
-          <motion.div
-            layoutId={`decor-${project.name}`}
-            className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2.5rem] pointer-events-none m-1"
-          />
-        )}
+            <motion.div
+              layoutId={cardLayoutId}
+              initial={{ opacity: 0.95 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0.95 }}
+              transition={{ layout: { duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }, opacity: { duration: 0.16 } }}
+              className="w-full max-w-[720px] max-h-[90vh] bg-white dark:bg-neutral-900 rounded-[40px] p-8 shadow-sm border border-gray-200 dark:border-stone-800 relative z-10 overflow-y-auto custom-scrollbar transform-gpu [contain:layout_paint_style]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="mb-6 text-center">
+                <h3 className="text-neutral-400 dark:text-neutral-500 text-[10px] font-black uppercase tracking-[0.2em]">
+                  {locale === "en" ? "Project Details" : "Detalles del Proyecto"}
+                </h3>
+                <h2 className="mt-2 text-2xl sm:text-3xl font-black capitalize">{project.name}</h2>
+              </div>
 
-        {/* Content Container */}
-        <motion.div
-          layout
-          className={`flex-1 flex flex-col items-center justify-center relative ${isExpanded ? "mb-8 overflow-y-auto custom-scrollbar pr-2" : ""}`}
-        >
-          <div className={`w-full ${isExpanded ? "space-y-6" : "h-full flex flex-col items-center justify-center"}`}>
-            {isExpanded ? (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.5 }}
-                className="w-full space-y-6"
-              >
+              <div className="mb-8">
                 <ImageSlider images={project.images || [project.image]} />
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <h2 className="text-4xl font-black text-white tracking-tight">{project.name}</h2>
-                    <div className="flex items-center gap-4 text-neutral-500 font-bold uppercase tracking-widest text-xs">
-                      <span>Year {project.date}</span>
-                      <span className="w-1 h-1 rounded-full bg-neutral-800" />
-                      <span>Interactive Experience</span>
-                    </div>
-                  </div>
+              </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 pt-8 border-t border-neutral-900">
-                    <div className="space-y-6">
-                      <p className="text-neutral-400 text-lg leading-relaxed">
-                        {locale === "en" ? project.description : project.descriptionEs}
-                      </p>
-                    </div>
+              <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
+                {locale === "en" ? project.description : project.descriptionEs}
+              </p>
 
-                    <div className="space-y-6">
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-600">Technologies</h4>
-                      <div className="flex flex-wrap gap-2 max-w-[250px]">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-4 py-2 bg-neutral-900 text-neutral-300 rounded-xl text-xs font-bold border border-neutral-800"
-                          >
-                            {tech}
+              <div className="space-y-5 max-h-[200px] overflow-y-auto pr-2 custom-scrollbar">
+                {project.technologies.map((tech, idx) => (
+                  <div key={tech}>
+                    <div className="flex items-center justify-between py-1 group transition-all duration-300">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-sm dark:shadow-lg shrink-0 bg-neutral-100 dark:bg-neutral-800/80">
+                          <span className="text-xs font-black text-neutral-500">
+                            {(idx + 1).toString().padStart(2, "0")}
                           </span>
-                        ))}
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-foreground">{tech}</h4>
+                          <p className="text-[10px] text-neutral-400 dark:text-neutral-500 font-medium">
+                            {locale === "en" ? "Technology" : "Tecnologia"}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-xs font-bold text-foreground/70">#{idx + 1}</span>
                       </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            ) : (
-              <div className="relative w-full h-full flex flex-col items-center">
-                {/* Main Subject Image (The Helmet vibe) */}
-                <div className="flex-1 w-full flex items-center justify-center px-4">
-                  <motion.div
-                    layoutId={`image-container-${project.image}`}
-                    className="relative w-full h-full max-h-[210px] flex items-center justify-center pointer-events-none"
-                  >
-                    <motion.img
-                      layoutId={`image-${project.image}`}
-                      src={project.image}
-                      alt={project.name}
-                      className="w-full h-full rounded-t-3xl object-cover object-left filter drop-shadow-[0_20px_50px_rgba(255,255,255,0.05)] transition-transform group-hover:scale-110 duration-700"
-                    />
-                  </motion.div>
-                </div>
-
-                {/* Collapsed Description Section */}
-                <motion.div
-                  layoutId={`desc-${project.name}`}
-                  className="w-full px-6 pb-2 text-center"
-                >
-                  <p className="text-neutral-500 text-sm line-clamp-2 leading-relaxed h-11">
-                    {locale === "en" ? project.description : project.descriptionEs}
-                  </p>
-                </motion.div>
+                ))}
               </div>
-            )}
-          </div>
-        </motion.div>
 
-        {/* Footer (Custom Bottom Shape inspired by image) */}
-        <motion.div
-          layoutId={`footer-${project.name}`}
-          className={`mt-auto w-full relative ${isExpanded ? "hidden" : "h-16"}`}
-        >
-          <div className="absolute inset-0 flex items-center justify-between px-6 pb-4">
-            {/* Project Name (Left) */}
-            <motion.span
-              layoutId={`name-${project.name}`}
-              className="font-bold text-primary text-xl capitalize"
-            >
-              {project.name}
-            </motion.span>
-
-            {/* Date Segment (Right) */}
-            <motion.div
-              layoutId={`date-${project.name}`}
-              className="relative"
-            >
-              <div className="relative flex items-baseline gap-2">
-                <span className="text-neutral-400 text-sm font-medium">Year</span>
-                <span className="opacity-50 text-xl font-bold">{project.date}</span>
+              <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800 flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => setIsExpanded(false)}
+                  className="text-sm font-medium text-neutral-500 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
+                >
+                  {locale === "en" ? "Close" : "Cerrar"}
+                </button>
               </div>
             </motion.div>
-          </div>
-        </motion.div>
-      </motion.div>
-    </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };

@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
+import GoTop from "@/components/goTop";
 
 const locale = Astro.currentLocale || "en";
 ---
@@ -73,11 +74,18 @@ const locale = Astro.currentLocale || "en";
       </div>
 
       <div
+        id="app-scroll-container"
         class="flex-1 overflow-y-auto relative rounded-4xl [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         <slot />
         <!-- <div class="h-32 w-full md:hidden"></div> -->
       </div>
+
+      <GoTop
+        client:load
+        scrollContainerId="app-scroll-container"
+        showAfter={300}
+      />
 
       <!-- Cutout Header Base (Right) -->
       <div

@@ -54,8 +54,9 @@ const ImageSlider = ({ images }: { images: string[] }) => {
             {images.map((_, i) => (
               <div
                 key={i}
-                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? "bg-white w-4" : "bg-white/40"
-                  }`}
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                  i === currentIndex ? "bg-white w-4" : "bg-white/40"
+                }`}
               />
             ))}
           </div>
@@ -100,7 +101,9 @@ export const CardProject = ({
           layoutId={cardLayoutId}
           type="button"
           onClick={() => setIsExpanded(true)}
-          transition={{ layout: { duration: 0.4, ease: [0.22, 0.61, 0.36, 1] } }}
+          transition={{
+            layout: { duration: 0.4, ease: [0.22, 0.61, 0.36, 1] },
+          }}
           className="absolute inset-0 h-[350px] w-full cursor-pointer rounded-[2.5rem] flex flex-col overflow-hidden bg-gradient-to-tr from-white via-neutral-100 to-neutral-200/30 dark:border-t border border-neutral-200 dark:border-neutral-800 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800 text-left transform-gpu [contain:layout_paint_style]"
         >
           <div className="absolute inset-0 border border-black/5 dark:border-white/5 rounded-[2.5rem] pointer-events-none m-1" />
@@ -121,7 +124,7 @@ export const CardProject = ({
 
           <div className="mt-auto w-full border-t border-neutral-200/70 dark:border-neutral-800/80">
             <div className="flex items-center justify-between px-6 py-3">
-              <span className="font-medium text-sm capitalize text-neutral-700 dark:text-neutral-300">
+              <span className="font-medium text-sm capitalize text-primary">
                 {project.name}
               </span>
               <div className="text-xs text-neutral-400 dark:text-neutral-500">
@@ -153,15 +156,22 @@ export const CardProject = ({
               initial={{ opacity: 0.95 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0.95 }}
-              transition={{ layout: { duration: 0.4, ease: [0.22, 0.61, 0.36, 1] }, opacity: { duration: 0.16 } }}
+              transition={{
+                layout: { duration: 0.4, ease: [0.22, 0.61, 0.36, 1] },
+                opacity: { duration: 0.16 },
+              }}
               className="w-full max-w-[720px] max-h-[90vh] bg-white dark:bg-neutral-900 rounded-[40px] p-8 shadow-sm border border-gray-200 dark:border-stone-800 relative z-10 overflow-y-auto custom-scrollbar transform-gpu [contain:layout_paint_style]"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="mb-6 text-center">
                 <h3 className="text-neutral-400 dark:text-neutral-500 text-[10px] font-black uppercase tracking-[0.2em]">
-                  {locale === "en" ? "Project Details" : "Detalles del Proyecto"}
+                  {locale === "en"
+                    ? "Project Details"
+                    : "Detalles del Proyecto"}
                 </h3>
-                <h2 className="mt-2 text-2xl sm:text-3xl font-black capitalize">{project.name}</h2>
+                <h2 className="mt-2 text-2xl sm:text-3xl font-black capitalize">
+                  {project.name}
+                </h2>
               </div>
 
               <div className="mb-8">
@@ -183,14 +193,18 @@ export const CardProject = ({
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-sm font-semibold text-foreground">{tech}</h4>
+                          <h4 className="text-sm font-semibold text-foreground">
+                            {tech}
+                          </h4>
                           <p className="text-[10px] text-neutral-400 dark:text-neutral-500 font-medium">
                             {locale === "en" ? "Technology" : "Tecnologia"}
                           </p>
                         </div>
                       </div>
                       <div className="text-right">
-                        <span className="text-xs font-bold text-foreground/70">#{idx + 1}</span>
+                        <span className="text-xs font-bold text-foreground/70">
+                          #{idx + 1}
+                        </span>
                       </div>
                     </div>
                   </div>

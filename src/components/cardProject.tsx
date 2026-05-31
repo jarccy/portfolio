@@ -124,12 +124,12 @@ export const CardProject = ({
 
           <div className="mt-auto w-full border-t border-neutral-200/70 dark:border-neutral-800/80">
             <div className="flex items-center justify-between px-6 py-3">
-              <span className="font-bold text-sm capitalize text-primary">
+              {/* <span className="font-bold text-sm capitalize text-primary">
                 {project.name}
               </span>
               <div className="text-xs text-neutral-400 dark:text-neutral-500">
                 {project.date}
-              </div>
+              </div> */}
             </div>
           </div>
         </motion.button>

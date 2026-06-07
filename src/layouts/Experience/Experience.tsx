@@ -15,9 +15,12 @@ type Company = {
 
 export const companies: Company[] = [
   {
-    name: { en: "Capital Management Partners", es: "Capital Management Partners" },
+    name: {
+      en: "Capital Management Partners",
+      es: "Capital Management Partners",
+    },
     charge: { en: "Full Stack Developer", es: "Full Stack Developer" },
-    period: { en: "Sep 2024 - May 2026", es: "Sep 2024 - Mayo 2026" },
+    period: { en: "Sep 2024 - June 2026", es: "Sep 2024 - Junio 2026" },
     description: {
       en: "Working as a Full Stack Developer, focusing on building scalable web applications and improving user experience. Responsible for both front-end and back-end development tasks.",
       es: "Trabajando como Full Stack Developer, enfocado en la creación de aplicaciones web escalables y mejorar la experiencia del usuario. Responsable de las tareas de desarrollo tanto del front-end como del back-end.",
@@ -25,7 +28,10 @@ export const companies: Company[] = [
     technologies: "Vue.js, Laravel, Node.js, TypeScript, PHP y SQL",
   },
   {
-    name: { en: "Intelligent Technologies and Solutions", es: "Tecnologías y Soluciones Inteligentes" },
+    name: {
+      en: "Intelligent Technologies and Solutions",
+      es: "Tecnologías y Soluciones Inteligentes",
+    },
     charge: { en: "Full Stack Developer", es: "Full Stack Developer" },
     period: { en: "Apr 2021 - Apr 2023", es: "Abr 2021 - Abr 2023" },
     description: {
@@ -66,8 +72,6 @@ export const companies: Company[] = [
   },
 ];
 
-
-
 export default function Experience({ lang }: { lang: string }) {
   const localT = i18next.getFixedT(lang || "en");
 
@@ -97,7 +101,10 @@ export default function Experience({ lang }: { lang: string }) {
       className="w-full max-w-2xl mx-auto pt-40 mb-10 px-4"
     >
       <motion.div variants={itemVariants}>
-        <TitleMenu title={localT("experience.title")} description={localT("experience.description")}>
+        <TitleMenu
+          title={localT("experience.title")}
+          description={localT("experience.description")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

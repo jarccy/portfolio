@@ -127,7 +127,7 @@ export const CardProject = ({
               <span className="font-bold text-sm capitalize text-primary">
                 {project.name}
               </span>
-              <div className="text-xs text-neutral-400 dark:text-neutral-500">
+              <div className="text-xs text-neutral-400 dark:text-neutral-300">
                 {project.date}
               </div>
             </div>

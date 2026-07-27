@@ -122,7 +122,7 @@ export const CardProject = ({
             </div>
           </div>
 
-          {/* <div className="mt-auto w-full border-t border-neutral-200/70 dark:border-neutral-800/80">
+          <div className="mt-auto w-full border-t border-neutral-200/70 dark:border-neutral-800/80">
             <div className="flex items-center justify-between px-6 py-3">
               <span className="font-bold text-sm capitalize text-primary">
                 {project.name}
@@ -131,7 +131,7 @@ export const CardProject = ({
                 {project.date}
               </div>
             </div>
-          </div> */}
+          </div>
         </motion.button>
       )}
 

@@ -13,5 +13,6 @@ images:
   - /projects/padoc/programing.webp
   - /projects/padoc/pending_payment.webp
   - /projects/padoc/provider_payment.webp
+  - /projects/padoc/export.webp
 hide: false
 ---

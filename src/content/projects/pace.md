@@ -1,12 +1,12 @@
 ---
-name: padoc
-date: 2026
+name: pace
+date: 2024
 image: /projects/padoc/provider_dashboard.webp
 description: Commercial platform for issuing and managing electronic invoices, with warehouse management,
 descriptionEs: Plataforma comercial para emitir y gestionar facturas electrónicas, con gestión de almacén,
 technologies:
-  - Svelte
-  - FastApi
+  - Laravel
+  - Vue.js
 images:
   - /projects/padoc/provider_dashboard.webp
   - /projects/padoc/documents.webp

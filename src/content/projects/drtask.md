@@ -1,5 +1,5 @@
 ---
-name: padoc
+name: drtask
 date: 2026
 image: /projects/padoc/provider_dashboard.webp
 description: Commercial platform for issuing and managing electronic invoices, with warehouse management,

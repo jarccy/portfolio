@@ -2,8 +2,8 @@
 name: biance
 date: 2025
 image: /projects/padoc/provider_dashboard.webp
-description: Commercial platform for issuing and managing electronic invoices, with warehouse management,
-descriptionEs: Plataforma comercial para emitir y gestionar facturas electrónicas, con gestión de almacén,
+description: Web application for managing and tracking personal finances, allowing users to record income, expenses, and monitor their budget.
+descriptionEs: Aplicación web para gestionar y controlar las finanzas personales, permitiendo registrar ingresos, gastos y realizar un seguimiento del presupuesto.
 technologies:
   - Next
   - Nest.js

@@ -2,8 +2,8 @@
 name: padoc
 date: 2026
 image: /projects/padoc/provider_dashboard.webp
-description: Commercial platform for issuing and managing electronic invoices, with warehouse management,
-descriptionEs: Plataforma comercial para emitir y gestionar facturas electrónicas, con gestión de almacén,
+description: Platform to manage supplier and collaborator documents with web access and document control.
+descriptionEs: Plataforma para administrar documentos de proveedores y colaboradores con acceso web y control documental.
 technologies:
   - Svelte
   - FastApi

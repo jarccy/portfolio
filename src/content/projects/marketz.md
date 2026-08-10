@@ -2,8 +2,8 @@
 name: marketz
 date: 2025
 image: /projects/padoc/provider_dashboard.webp
-description: Commercial platform for issuing and managing electronic invoices, with warehouse management,
-descriptionEs: Plataforma comercial para emitir y gestionar facturas electrónicas, con gestión de almacén,
+description: Web application for managing product inventory, tracking stock movements through a kardex, and generating notifications when stock reaches minimum levels.
+descriptionEs: Aplicación web para gestionar el inventario de productos, controlar movimientos mediante kardex y generar notificaciones cuando el stock alcanza niveles mínimos.
 technologies:
   - React
   - FastApi

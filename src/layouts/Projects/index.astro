@@ -1,5 +1,6 @@
 ---
-import { CardProject } from "@/components/cardProject";
+// import { CardProject } from "@/components/cardProject";
+import { CardProject1 } from "@/components/cardProjectv1";
 import { TitleMenu } from "@/components/titleMenu";
 import { getCollection } from "astro:content";
 import { i18next } from "../../i18n/config";
@@ -34,7 +35,7 @@ const projects = await getCollection("projects");
         .toSorted((a, b) => b.data.date - a.data.date)
         .filter((project) => !project.data.hide)
         .map((project, _) => (
-          <CardProject
+          <CardProject1
             client:load
             project={project.data}
             projectId={project.id}
@@ -46,7 +47,7 @@ const projects = await getCollection("projects");
               alt={project.data.name}
               class="transition-transform duration-300 grayscale group-hover:grayscale-0 select-none pointer-events-none"
             />
-          </CardProject>
+          </CardProject1>
         ))
     }
   </div>

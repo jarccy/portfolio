@@ -52,6 +52,5 @@ const cardClass =
   "bg-gradient-to-tr from-white via-neutral-100 to-neutral-100 " +
   "dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800 " +
   "border border-neutral-200 dark:border-neutral-800 " +
-  "dark:border-t " +
   "md:transition-all md:duration-300 md:hover:scale-105 " +
   "md:hover:border-t-4 md:hover:border-t-neutral-700 dark:md:hover:border-t-neutral-300";

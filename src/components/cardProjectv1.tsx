@@ -10,12 +10,14 @@ type project = {
   technologies: string[];
 };
 
-export const CardProject = ({
+export const CardProject1 = ({
   project,
+  projectId,
   locale,
   children,
 }: {
   project: project;
+  projectId: string;
   locale: string;
   children: React.ReactNode;
 }) => {
@@ -28,12 +30,14 @@ export const CardProject = ({
     >
       <motion.div
         variants={itemVariants}
-        className="group h-64 px-3 pt-2 pb-3 rounded-xl transition-all duration-300 hover:scale-105 bg-gradient-to-tr from-white via-neutral-100
-          to-neutral-200/30 dark:border-t hover:border-t-4 border border-neutral-200 hover:border-t-neutral-700 dark:border-neutral-800 dark:hover:border-t-neutral-300 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800
+        className="group h-64 px-3 pt-2 pb-3 rounded-2xl transition-all duration-300 hover:scale-105 bg-gradient-to-tr from-white via-neutral-100
+          to-neutral-200/30 hover:border-t-4 border border-neutral-200 hover:border-t-neutral-700 dark:border-neutral-800 dark:hover:border-t-neutral-300 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800
           relative overflow-hidden flex flex-col justify-between"
       >
         <div className="flex items-center justify-between mb-2">
-          <span className="font-semibold capitalize text-primary">{project.name}</span>
+          <span className="font-semibold capitalize text-primary">
+            {project.name}
+          </span>
           <span className="font-vectra text-xs font-semibold opacity-50 mt-1">
             {project.date}
           </span>
@@ -43,7 +47,9 @@ export const CardProject = ({
 
         <motion.div variants={itemUp} className="relative mt-1">
           <p className="font-medium text-neutral-600 dark:text-neutral-400 text-sm transition-all duration-300 group-hover:-translate-y-10 group-hover:bg-neutral-100/20 group-hover:backdrop-blur group-hover:dark:bg-neutral-950/90">
-            {locale === "en" ? project.description : project.descriptionEs}
+            <span className="line-clamp-2">
+              {locale === "en" ? project.description : project.descriptionEs}
+            </span>
             {project.technologies.map((tech, index) => (
               <span
                 key={index}
@@ -54,8 +60,7 @@ export const CardProject = ({
                 <span className="font-normal text-neutral-600 dark:text-neutral-400">
                   {index === project.technologies.length - 2 && " & "}
                 </span>
-
-                {index === project.technologies.length - 1 && "."}
+                {/* {index === project.technologies.length - 1 && "."} */}
               </span>
             ))}
           </p>
@@ -64,7 +69,11 @@ export const CardProject = ({
             className="absolute group-hover:-translate-y-7 translate-y-4 select-none
             inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300
              text-white dark:text-neutral-900 bg-primary cursor-pointer hover:scale-105 active:scale-95 active:brightness-90 group/svg"
-            href={locale === "en" ? `/project/${project.name}` : `/es/project/${project.name}`}
+            href={
+              locale === "en"
+                ? `/project/${project.name}`
+                : `/es/project/${project.name}`
+            }
           >
             {locale === "en" ? "Show more" : "Mostrar más"}
             <svg

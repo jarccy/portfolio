@@ -12,4 +12,5 @@ images:
   - /projects/zenda/product.webp
   - /projects/zenda/sale.webp
   - /projects/zenda/voucher.webp
+hide: false
 ---

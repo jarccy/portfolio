@@ -32,7 +32,8 @@ const projects = await getCollection("projects");
     {
       projects
         .toSorted((a, b) => b.data.date - a.data.date)
-        .map((project, index) => (
+        .filter((project) => !project.data.hide)
+        .map((project, _) => (
           <CardProject
             client:load
             project={project.data}

@@ -12,4 +12,5 @@ images:
   - /projects/faqture/company.webp
   - /projects/faqture/faqtureB.webp
   - /projects/faqture/setting.webp
+hide: true
 ---

@@ -13,4 +13,5 @@ images:
   - /projects/empiria/till.webp
   - /projects/empiria/results.webp
   - /projects/empiria/medic.webp
+hide: false
 ---

@@ -11,6 +11,7 @@ const projects = defineCollection({
         descriptionEs: z.string(),
         technologies: z.array(z.string()),
         images: z.array(z.string()),
+        hide: z.boolean(),
     }),
 });
 

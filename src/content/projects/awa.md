@@ -13,4 +13,5 @@ images:
   - /projects/awa/saleList.webp
   - /projects/awa/report.webp
   - /projects/awa/predio.webp
+hide: true
 ---

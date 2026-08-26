@@ -4,12 +4,9 @@
 
 <!-- <Footer client:load /> -->
 <footer class="text-center mt-32">
-  <p class="text-md text-neutral-400 dark:text-neutral-600 mb-4">
-    © Build by Jarcy
-  </p>
-
-  <div
-    class="fixed -top-7 left-8 sm:-top-4 h-30 flex justify-center items-center"
+  <a
+    class="fixed -top-7 left-8 sm:-top-4 h-30 flex justify-center items-center cursor-pointer"
+    href={Astro.currentLocale === "es" ? "/es/" : "/"}
   >
     <svg
       version="1.1"
@@ -97,7 +94,13 @@
 	z"
       ></path>
     </svg>
-  </div>
+  </a>
+
+  <p
+    class="relative border-t rounded-t-4xl border-t-gray-200 dark:border-t-neutral-700 z-0 mb-0 overflow-hidden bg-neutral-50 dark:bg-neutral-950 font-bold tracking-tight text-bg-invert text-7xl sm:text-[15rem]"
+  >
+    JARCY
+  </p>
 
   <div
     class="fixed mx-4 sm:mx-8 bottom-[7px] sm:bottom-2 left-0 right-0 h-12 bg-linear-to-t from-neutral-50 via-nefrom-neutral-50/80 dark:from-neutral-950 dark:via-neutral-950/80 to-transparent pointer-events-none"

@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { i18next } from "../../i18n/config";
 import { ColorPicker } from "@/components/colorPicker";
+import { GoLink } from "@/components/goLink";
 
 export default function NavBar({ lang }: { lang?: string }) {
   const localT = i18next.getFixedT(lang || "en");
@@ -12,7 +13,10 @@ export default function NavBar({ lang }: { lang?: string }) {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
+      if (
+        langMenuRef.current &&
+        !langMenuRef.current.contains(event.target as Node)
+      ) {
         setShowLangMenu(false);
       }
     };
@@ -31,7 +35,9 @@ export default function NavBar({ lang }: { lang?: string }) {
     if (lang === "en") {
       newPath = hasLocale ? "/" + pathParts.slice(1).join("/") : currentPath;
     } else {
-      newPath = hasLocale ? "/" + lang + "/" + pathParts.slice(1).join("/") : "/" + lang + currentPath;
+      newPath = hasLocale
+        ? "/" + lang + "/" + pathParts.slice(1).join("/")
+        : "/" + lang + currentPath;
     }
 
     newPath = newPath.replace(/\/+$/, "") || "/";
@@ -47,12 +53,12 @@ export default function NavBar({ lang }: { lang?: string }) {
     }
   };
 
-  const links = [
-    { name: localT("nav.home"), href: "home" },
-    { name: localT("nav.about"), href: "about" },
-    { name: localT("nav.experience"), href: "experience" },
-    { name: localT("nav.projects"), href: "projects" },
-    { name: localT("nav.hobbie"), href: "hobbie" },
+  const links: { name: string; href: string; pc: boolean }[] = [
+    { name: localT("nav.home"), href: "home", pc: false },
+    { name: localT("nav.about"), href: "about", pc: true },
+    { name: localT("nav.experience"), href: "experience", pc: true },
+    { name: localT("nav.projects"), href: "projects", pc: true },
+    { name: localT("nav.hobbie"), href: "hobbie", pc: false },
   ];
 
   return (
@@ -62,23 +68,48 @@ export default function NavBar({ lang }: { lang?: string }) {
       transition={{ duration: 0.1, ease: "easeOut" }}
       className={`fixed flex justify-between items-center gap-3 z-50 top-0 right-5 sm:left-auto w-[calc(100vw-150px)] sm:w-auto transition-all duration-300`}
     >
-
       <div className="flex w-full items-center gap-3 mt-2 sm:mt-4 sm:hidden xl:hidden">
         <div className="group relative cursor-pointer px-2 py-1 sm:px-3 sm:py-2 text-white dark:text-black border-white dark:border-black border border-dashed hover:border-solid rounded-full overflow-hidden text-center font-semibold">
-          <a href="https://github.com/jarccy"
-            target="_blank" className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0">
-            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24">
-              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5">
+          <a
+            href="https://github.com/jarccy"
+            target="_blank"
+            className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="size-[1.2em]"
+              viewBox="0 0 24 24"
+            >
+              <g
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+              >
                 <path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path>
                 <path d="M9 20.027c-3 .973-5.5 0-7-3"></path>
               </g>
             </svg>
           </a>
 
-          <a href="https://github.com/jarccy"
-            target="_blank" className="absolute inset-0 flex items-center justify-center text-black dark:text-white bg-white dark:bg-neutral-900  transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 24 24">
-              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5">
+          <a
+            href="https://github.com/jarccy"
+            target="_blank"
+            className="absolute inset-0 flex items-center justify-center text-black dark:text-white bg-white dark:bg-neutral-900  transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="size-[1.2em]"
+              viewBox="0 0 24 24"
+            >
+              <g
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+              >
                 <path d="M16 22.027v-2.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 0 0-1.5-3.75a5.07 5.07 0 0 0-.09-3.77s-1.18-.35-3.91 1.48a13.4 13.4 0 0 0-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 0 0 5 5.797a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58v2.87"></path>
                 <path d="M9 20.027c-3 .973-5.5 0-7-3"></path>
               </g>
@@ -87,17 +118,37 @@ export default function NavBar({ lang }: { lang?: string }) {
         </div>
 
         <div className="group relative cursor-pointer px-2 py-1 sm:px-3 sm:py-2 text-white dark:text-black border-white dark:border-black border border-dashed hover:border-solid rounded-full overflow-hidden text-center font-semibold">
-          <a href="mailto:jarcristhian@gmail.com"
-            target="_blank" className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0">
-            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 20 20">
-              <path fill="currentColor" d="M15.5 4A2.5 2.5 0 0 1 18 6.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 14.5v-8A2.5 2.5 0 0 1 4.5 4zM17 7.961l-6.746 3.97a.5.5 0 0 1-.426.038l-.082-.038L3 7.963V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5zM15.5 5h-11A1.5 1.5 0 0 0 3 6.5v.302l7 4.118l7-4.12v-.3A1.5 1.5 0 0 0 15.5 5"></path>
+          <a
+            href="mailto:jarcristhian@gmail.com"
+            target="_blank"
+            className="inline-block transition-all duration-300 group-hover:-translate-y-12 group-hover:opacity-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="size-[1.2em]"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill="currentColor"
+                d="M15.5 4A2.5 2.5 0 0 1 18 6.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 14.5v-8A2.5 2.5 0 0 1 4.5 4zM17 7.961l-6.746 3.97a.5.5 0 0 1-.426.038l-.082-.038L3 7.963V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5zM15.5 5h-11A1.5 1.5 0 0 0 3 6.5v.302l7 4.118l7-4.12v-.3A1.5 1.5 0 0 0 15.5 5"
+              ></path>
             </svg>
           </a>
 
-          <a href="mailto:jarcristhian@gmail.com"
-            target="_blank" className="absolute inset-0 flex items-center justify-center text-black dark:text-white bg-white dark:bg-neutral-900  transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em]" viewBox="0 0 20 20">
-              <path fill="currentColor" d="M15.5 4A2.5 2.5 0 0 1 18 6.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 14.5v-8A2.5 2.5 0 0 1 4.5 4zM17 7.961l-6.746 3.97a.5.5 0 0 1-.426.038l-.082-.038L3 7.963V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5zM15.5 5h-11A1.5 1.5 0 0 0 3 6.5v.302l7 4.118l7-4.12v-.3A1.5 1.5 0 0 0 15.5 5"></path>
+          <a
+            href="mailto:jarcristhian@gmail.com"
+            target="_blank"
+            className="absolute inset-0 flex items-center justify-center text-black dark:text-white bg-white dark:bg-neutral-900  transition-all duration-300 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 rounded-full"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="size-[1.2em]"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill="currentColor"
+                d="M15.5 4A2.5 2.5 0 0 1 18 6.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 14.5v-8A2.5 2.5 0 0 1 4.5 4zM17 7.961l-6.746 3.97a.5.5 0 0 1-.426.038l-.082-.038L3 7.963V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5zM15.5 5h-11A1.5 1.5 0 0 0 3 6.5v.302l7 4.118l7-4.12v-.3A1.5 1.5 0 0 0 15.5 5"
+              ></path>
             </svg>
           </a>
         </div>
@@ -110,39 +161,17 @@ export default function NavBar({ lang }: { lang?: string }) {
         }
       >
         <div className="flex items-center gap-1 sm:gap-4 px-1 w-full justify-between">
-          <div className="hidden md:flex items-center gap-6">
-            <div
-              className="group relative w-fit select-none cursor-pointer"
-              onClick={() => scrollToSection("about")}
-            >
-              <span className="text-neutral-200 hover:text-black">
-                {localT("nav.about")}
-              </span>
-
-              <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-primary transition-all duration-200 group-hover:w-full"></span>
-            </div>
-
-            <div
-              className="group relative w-fit select-none cursor-pointer"
-              onClick={() => scrollToSection("experience")}
-            >
-              <span className="text-neutral-200 hover:text-black">
-                {localT("nav.experience")}
-              </span>
-
-              <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-primary transition-all duration-200 group-hover:w-full"></span>
-            </div>
-
-            <div
-              className="group relative w-fit select-none cursor-pointer"
-              onClick={() => scrollToSection("projects")}
-            >
-              <span className="text-neutral-200 hover:text-black">
-                {localT("nav.projects")}
-              </span>
-
-              <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-primary transition-all duration-200 group-hover:w-full"></span>
-            </div>
+          <div className="hidden md:flex items-center gap-3">
+            {links
+              .filter((link) => link.pc)
+              .map((link, _) => (
+                <GoLink
+                  click={() => scrollToSection(link.href)}
+                  showIcon={false}
+                >
+                  {localT(`${link.name}`)}
+                </GoLink>
+              ))}
           </div>
 
           <div className="flex justify-end gap-1 ml-auto">
@@ -151,7 +180,20 @@ export default function NavBar({ lang }: { lang?: string }) {
                 onClick={() => setShowLangMenu(!showLangMenu)}
                 className="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-neutral-800 text-neutral-200 hover:text-neutral-200 dark:text-neutral-200 dark:hover:text-neutral-100 transition-colors"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.1em]" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a49 49 0 0 1 6-.371m0 0q1.681 0 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138q1.344.092 2.666.257m-4.589 8.495a18 18 0 0 1-3.827-5.802"></path></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="size-[1.1em]"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="m10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a49 49 0 0 1 6-.371m0 0q1.681 0 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138q1.344.092 2.666.257m-4.589 8.495a18 18 0 0 1-3.827-5.802"
+                  ></path>
+                </svg>
               </button>
 
               <AnimatePresence>
@@ -186,7 +228,10 @@ export default function NavBar({ lang }: { lang?: string }) {
 
           <div className="flex md:hidden ml-2 z-50">
             <label
-              className={"hamburger cursor-pointer relative z-50 " + (showMenu ? "active" : "")}
+              className={
+                "hamburger cursor-pointer relative z-50 " +
+                (showMenu ? "active" : "")
+              }
             >
               <input
                 type="checkbox"
@@ -205,22 +250,13 @@ export default function NavBar({ lang }: { lang?: string }) {
             {showMenu && (
               <div className="fixed top-0 left-0 w-screen h-screen backdrop-blur-3xl bg-white/50 dark:bg-neutral-900/50 -z-10">
                 <div className="flex flex-col items-end justify-end gap-4 pr-8 mt-20">
-                  {links.map((link, index) => (
-                    <div
-                      key={link.href}
-                      className="group relative w-fit select-none cursor-pointer opacity-0 animate-fade-in-up"
-                      style={{ animationDelay: `${index * 100}ms` }}
-                      onClick={() => {
-                        setShowMenu(false);
-                        scrollToSection(link.href);
-                      }}
+                  {links.map((link, _) => (
+                    <GoLink
+                      click={() => scrollToSection(link.href)}
+                      showIcon={true}
                     >
-                      <span className="text-neutral-400 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-200">
-                        {link.name}
-                      </span>
-
-                      <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-neutral-400 dark:bg-neutral-200 transition-all duration-200 group-hover:w-full"></span>
-                    </div>
+                      {link.name}
+                    </GoLink>
                   ))}
                 </div>
               </div>

@@ -166,6 +166,7 @@ export default function NavBar({ lang }: { lang?: string }) {
               .filter((link) => link.pc)
               .map((link, _) => (
                 <GoLink
+                  key={link.href}
                   click={() => scrollToSection(link.href)}
                   showIcon={false}
                 >
@@ -252,6 +253,7 @@ export default function NavBar({ lang }: { lang?: string }) {
                 <div className="flex flex-col items-end justify-end gap-4 pr-8 mt-20">
                   {links.map((link, _) => (
                     <GoLink
+                      key={link.href}
                       click={() => scrollToSection(link.href)}
                       showIcon={true}
                     >

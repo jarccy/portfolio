@@ -31,7 +31,7 @@ export const CardProject1 = ({
       <motion.div
         variants={itemVariants}
         className="group h-64 px-3 pt-2 pb-3 rounded-2xl transition-all duration-300 hover:scale-105 bg-gradient-to-tr from-white via-neutral-100
-          to-neutral-200/30 hover:border-t-4 border border-neutral-200 hover:border-t-neutral-700 dark:border-neutral-800 dark:hover:border-t-neutral-300 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800
+          to-neutral-100 hover:border-t-4 border border-neutral-200 hover:border-t-neutral-700 dark:border-neutral-800 dark:hover:border-t-neutral-300 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800
           relative overflow-hidden flex flex-col justify-between"
       >
         <div className="flex items-center justify-between mb-2">
@@ -46,7 +46,7 @@ export const CardProject1 = ({
         <div className="relative h-full overflow-hidden">{children}</div>
 
         <motion.div variants={itemUp} className="relative mt-1">
-          <p className="font-medium text-neutral-600 dark:text-neutral-400 text-sm transition-all duration-300 group-hover:-translate-y-10 group-hover:bg-neutral-100/20 group-hover:backdrop-blur group-hover:dark:bg-neutral-950/90">
+          <p className="font-medium text-neutral-600 dark:text-neutral-400 text-sm transition-all duration-300 group-hover:-translate-y-10 group-hover:bg-neutral-100/20 group-hover:backdrop-blur group-hover:dark:bg-neutral-950/80">
             <span className="line-clamp-2">
               {locale === "en" ? project.description : project.descriptionEs}
             </span>

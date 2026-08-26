@@ -45,7 +45,7 @@ const projects = await getCollection("projects");
               transition:name={`image-${project.id}`}
               src={project.data.image}
               alt={project.data.name}
-              class="transition-transform duration-300 grayscale group-hover:grayscale-0 select-none pointer-events-none"
+              class="transition-transform max-h-[137px] duration-300 grayscale group-hover:grayscale-0 select-none pointer-events-none"
             />
           </CardProject1>
         ))

@@ -26,14 +26,14 @@ export const CardExperience = ({ company }: { company: Company }) => {
           </span>
         </div>
 
-        <div className="flex flex-col gap-2">
+        {/* <div className="flex flex-col gap-2">
           <span className="text-sm text-neutral-500 dark:text-neutral-400">
             {description}
           </span>
           <span className="font-semibold text-neutral-600 dark:text-neutral-300 mb-2">
             {technologies}
           </span>
-        </div>
+        </div> */}
       </div>
 
       <img

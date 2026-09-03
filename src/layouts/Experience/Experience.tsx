@@ -19,8 +19,11 @@ export const companies: Company[] = [
       en: "Capital Management Partners",
       es: "Capital Management Partners",
     },
-    charge: { en: "Full Stack Developer", es: "Full Stack Developer" },
-    period: { en: "Sep 2024 - July 2026", es: "Sep 2024 - Julio 2026" },
+    charge: {
+      en: "Analyst - Full Stack Developer",
+      es: "Analista - Desarrollador Full Stack",
+    },
+    period: { en: "Sep 2024 - July 2026", es: "Sep 2024 - Jul 2026" },
     description: {
       en: "Working as a Full Stack Developer, focusing on building scalable web applications and improving user experience. Responsible for both front-end and back-end development tasks.",
       es: "Trabajando como Full Stack Developer, enfocado en la creación de aplicaciones web escalables y mejorar la experiencia del usuario. Responsable de las tareas de desarrollo tanto del front-end como del back-end.",
@@ -32,7 +35,10 @@ export const companies: Company[] = [
       en: "Intelligent Technologies and Solutions",
       es: "Tecnologías y Soluciones Inteligentes",
     },
-    charge: { en: "Full Stack Developer", es: "Full Stack Developer" },
+    charge: {
+      en: "Assistant - Full Stack Developer",
+      es: "Asistente - Desarrollador Full Stack",
+    },
     period: { en: "Apr 2021 - Apr 2023", es: "Abr 2021 - Abr 2023" },
     description: {
       en: "Developed and maintained web applications using Vue.js and Django, ensuring responsive design and optimal performance. Collaborated with cross-functional teams to deliver projects on time and within budget.",
@@ -42,7 +48,7 @@ export const companies: Company[] = [
   },
   {
     name: { en: "Freelancer Jobs", es: "Freelancer Jobs" },
-    charge: { en: "Full Stack Developer", es: "Full Stack Developer" },
+    charge: { en: "Full Stack Developer", es: "Desarrollador Full Stack" },
     period: { en: "Jan 2020 - Mar 2021", es: "Ene 2020 - Mar 2021" },
     description: {
       en: "Provided freelance web development services to various clients, creating custom websites and applications tailored to their needs. Managed all aspects of the development process from concept to deployment.",

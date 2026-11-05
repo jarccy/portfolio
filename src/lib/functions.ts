@@ -1,125 +1,103 @@
-import { type Variants } from "framer-motion";
+/**
+ * Lightweight animation helpers that replace framer-motion variants.
+ *
+ * A `Variant` describes the hidden ("offscreen") state of an element; the
+ * visible state is always `opacity: 1`, no translation and no blur.
+ * `reveal()` returns an inline style string that transitions between both.
+ */
 
-export const containerVariants: Variants = {
-    offscreen: {},
-    onscreen: {
-        transition: {
-            staggerChildren: 0.4,
+export const EASE_OUT = "cubic-bezier(0, 0, 0.58, 1)";
+export const EASE_IN_OUT = "cubic-bezier(0.42, 0, 0.58, 1)";
+
+export type Variant = {
+    opacity?: number;
+    x?: number;
+    y?: number;
+    blur?: number;
+    /** ms */
+    duration: number;
+    /** ms */
+    delay?: number;
+    ease?: string;
+};
+
+/** Delay between staggered children (ms). Mirrors `staggerChildren: 0.4`. */
+export const STAGGER = 400;
+
+export const itemVariants: Variant = { opacity: 0, y: -20, duration: 400 };
+
+export const itemProfile: Variant = { opacity: 0, x: -20, duration: 200 };
+
+export const itemUp: Variant = { opacity: 0, y: 20, duration: 400 };
+
+/**
+ * @param extraTransition transitions the element already had via classes
+ *   (e.g. `transition-all duration-300`), since the inline style overrides them.
+ */
+export function reveal(
+    visible: boolean,
+    variant: Variant,
+    delay = variant.delay ?? 0,
+    extraTransition?: string,
+): string {
+    const { opacity = 0, x = 0, y = 0, blur = 0, duration, ease = EASE_OUT } = variant;
+    const t = `${duration}ms ${ease} ${delay}ms`;
+    const props = [`opacity ${t}`, `transform ${t}`];
+    if (extraTransition) props.unshift(extraTransition);
+    if (blur) props.push(`filter ${t}`);
+
+    return [
+        `opacity: ${visible ? 1 : opacity}`,
+        `transform: ${visible ? "none" : `translate(${x}px, ${y}px)`}`,
+        blur ? `filter: ${visible ? "none" : `blur(${blur}px)`}` : "",
+        `transition: ${props.join(", ")}`,
+    ]
+        .filter(Boolean)
+        .join("; ");
+}
+
+type InViewOptions = {
+    /** Fraction of the element that must be visible (0-1). */
+    amount?: number;
+    /** Stop observing after the first time it enters. */
+    once?: boolean;
+    onenter?: () => void;
+    onleave?: () => void;
+};
+
+/** Svelte action: replaces framer-motion `whileInView`. */
+export function inview(node: HTMLElement, options: InViewOptions = {}) {
+    let opts = options;
+
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (entry.isIntersecting) {
+                opts.onenter?.();
+                if (opts.once) observer.disconnect();
+            } else {
+                opts.onleave?.();
+            }
         },
-    },
-};
+        { threshold: opts.amount ?? 0 },
+    );
+    observer.observe(node);
 
-export const itemVariants: Variants = {
-    offscreen: { opacity: 0, y: -20 },
-    onscreen: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.4, ease: "easeOut" },
-    },
-};
+    return {
+        update(next: InViewOptions) {
+            opts = next;
+        },
+        destroy() {
+            observer.disconnect();
+        },
+    };
+}
 
-export const itemProfile: Variants = {
-    offscreen: { opacity: 0, x: -20 },
-    onscreen: {
-        opacity: 1,
-        x: 0,
-        transition: { duration: 0.2, ease: "easeOut" },
-    },
-};
-
-export const itemUp: Variants = {
-    offscreen: { opacity: 0, y: 20 },
-    onscreen: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.4, ease: "easeOut" },
-    },
-};
-
-// export const itemVariants = {
-//   initial: { opacity: 0, y: 20 },
-//   animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-// };
-
-// UP
-// export const itemVariants = {
-//   initial: { opacity: 0, y: 15 },
-//   animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-// };
-
-// 3. Elegant Slide Left
-// export const itemVariants: Variants = {
-//   initial: { opacity: 0, x: -50 },
-//   animate: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
-// };
-
-// 1. Girated
-// const itemVariants = {
-//   initial: { opacity: 0, y: 30, skewY: 10 },
-//   animate: {
-//     opacity: 1,
-//     y: 0,
-//     skewY: 0,
-//     transition: { duration: 0.5, ease: "easeOut" },
-//   },
-// };
-
-// 3. 3D
-// const itemVariants = {
-//   initial: { opacity: 0, rotateY: 90 },
-//   animate: {
-//     opacity: 1,
-//     rotateY: 0,
-//     transition: { duration: 0.6, ease: "easeInOut" },
-//   },
-// };
-
-// 3. Scale
-// export const itemVariants = {
-//   initial: { opacity: 0, scale: 0.8 },
-//   animate: {
-//     opacity: 1,
-//     scale: 1,
-//     transition: { duration: 0.4, ease: "easeOut" },
-//   },
-// };
-
-// 5. Blur
-// export const itemVariants = {
-//   initial: { opacity: 0, filter: "blur(8px)" },
-//   animate: { opacity: 1, filter: "blur(0px)", transition: { duration: 0.5 } },
-// };
-
-// 8. Left
-// export const itemVariants = {
-//   initial: { opacity: 0, x: -100 },
-//   animate: { opacity: 1, x: 0, transition: { duration: 0.6 } },
-// };
-
-// 9.  Right
-// export const itemVariants = {
-//   initial: { opacity: 0, x: 100 },
-//   animate: { opacity: 1, x: 0, transition: { duration: 0.6 } },
-// };
-
-// 11. Slide UP
-// export const itemVariants = {
-//   initial: { opacity: 0, y: 20 },
-//   animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-// };
-
-// 4. Elegant Slide Right
-// export const itemVariants = {
-//   initial: { opacity: 0, x: 50 },
-//   animate: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
-// };
-
-// 19. Soft Elastic
-// export const itemVariants = {
-//   initial: { opacity: 0, scale: 0.9 },
-//   animate: {
-//     opacity: 1,
-//     scale: 1,
-//     transition: { type: "spring", stiffness: 80 },
-//   },
-// };
+/** Svelte action: moves the node to `document.body` (replaces `createPortal`). */
+export function portal(node: HTMLElement) {
+    document.body.appendChild(node);
+    return {
+        destroy() {
+            node.remove();
+        },
+    };
+}

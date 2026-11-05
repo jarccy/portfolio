@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 export type PrimaryColor = 'default' | 'blue' | 'green' | 'rose' | 'yellow' | 'violet' | 'pink' | 'orange';
 
 const STORAGE_KEY = 'primary-color';
@@ -17,18 +15,11 @@ export function setPrimaryColor(color: PrimaryColor) {
     document.documentElement.setAttribute('data-theme-color', color);
 }
 
-export function usePrimaryColor() {
-    const [color, setColor] = useState<PrimaryColor>(getPrimaryColor());
-
-    useEffect(() => {
-        const handleColorChange = (e: Event) => {
-            const customEvent = e as CustomEvent<PrimaryColor>;
-            setColor(customEvent.detail);
-        };
-
-        window.addEventListener(EVENT_NAME, handleColorChange);
-        return () => window.removeEventListener(EVENT_NAME, handleColorChange);
-    }, []);
-
-    return [color, setPrimaryColor] as const;
+/** Subscribes to primary color changes. Returns an unsubscribe function. */
+export function onPrimaryColorChange(callback: (color: PrimaryColor) => void) {
+    const handleColorChange = (e: Event) => {
+        callback((e as CustomEvent<PrimaryColor>).detail);
+    };
+    window.addEventListener(EVENT_NAME, handleColorChange);
+    return () => window.removeEventListener(EVENT_NAME, handleColorChange);
 }

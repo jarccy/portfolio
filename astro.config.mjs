@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
+import svelte from "@astrojs/svelte";
 import tailwind from "@tailwindcss/vite";
 
 export default defineConfig({
@@ -10,7 +10,7 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  integrations: [react()],
+  integrations: [svelte()],
   vite: {
     plugins: [tailwind()],
   },

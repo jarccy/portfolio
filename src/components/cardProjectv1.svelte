@@ -15,11 +15,14 @@
     project,
     projectId,
     locale,
+    delay = 0,
     children,
   }: {
     project: Project;
     projectId: string;
     locale: string;
+    /** Extra entrance delay in ms (to stagger cards in a grid). */
+    delay?: number;
     children: Snippet;
   } = $props();
 
@@ -28,7 +31,7 @@
 
 <div use:inview={{ amount: 0.2, once: true, onenter: () => (visible = true) }}>
   <div
-    data-reveal style={reveal(visible, itemVariants, 0, "all 300ms cubic-bezier(0.4, 0, 0.2, 1)")}
+    data-reveal style={reveal(visible, itemVariants, delay, "all 300ms cubic-bezier(0.4, 0, 0.2, 1)")}
     class="group h-64 px-3 pt-2 pb-3 rounded-2xl transition-all duration-300 hover:scale-105 bg-gradient-to-tr from-white via-neutral-100
       to-neutral-100 hover:border-t-4 border border-neutral-200 hover:border-t-neutral-700 dark:border-neutral-800 dark:hover:border-t-neutral-300 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-800
       relative overflow-hidden flex flex-col justify-between"
@@ -44,7 +47,7 @@
 
     <div class="relative h-full overflow-hidden">{@render children()}</div>
 
-    <div data-reveal style={reveal(visible, itemUp)} class="relative mt-1">
+    <div data-reveal style={reveal(visible, itemUp, delay)} class="relative mt-1">
       <p
         class="font-medium text-neutral-600 dark:text-neutral-400 text-sm transition-all duration-300 group-hover:-translate-y-10 group-hover:bg-neutral-100/20 group-hover:backdrop-blur group-hover:dark:bg-neutral-950/80"
       >

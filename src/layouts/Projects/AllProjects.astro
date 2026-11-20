@@ -1,0 +1,53 @@
+---
+import CardProject1 from "@/components/cardProjectv1.svelte";
+import BackButton from "@/components/backButton.svelte";
+import TypewriterEffectSmooth from "@/components/textWrite.svelte";
+import { getCollection } from "astro:content";
+import { i18next } from "@/i18n/config";
+
+interface Props {
+  locale: "en" | "es";
+}
+
+const { locale } = Astro.props;
+i18next.changeLanguage(locale);
+const localT = i18next.getFixedT(locale);
+
+const projects = (await getCollection("projects")).toSorted((a, b) => b.data.date - a.data.date);
+---
+
+<section class="w-full max-w-2xl mx-auto pt-40 mb-10 px-4">
+  <div class="animate-fade-in-up flex items-center justify-between gap-3 mb-4">
+    <BackButton client:load locale={locale} />
+
+    <div class="h-[35px]">
+      <TypewriterEffectSmooth
+        client:load
+        class="text-primary text-2xl font-bold font-vectra"
+        words={[{ text: localT("projects.title") }]}
+        duration={0.5}
+      />
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4">
+    {
+      projects.map((project, index) => (
+        <CardProject1
+          client:load
+          project={project.data}
+          projectId={project.id}
+          locale={locale}
+          delay={(index % 2) * 150}
+        >
+          <img
+            transition:name={`image-${project.id}`}
+            src={project.data.image}
+            alt={project.data.name}
+            class="transition-transform max-h-[137px] duration-300 grayscale group-hover:grayscale-0 select-none pointer-events-none"
+          />
+        </CardProject1>
+      ))
+    }
+  </div>
+</section>

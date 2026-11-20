@@ -17,17 +17,23 @@ const locale = Astro.currentLocale || "en";
     <ClientRouter />
 
     <script is:inline>
-      function applyTheme() {
+      function applyTheme(doc = document) {
         const theme = localStorage.getItem("theme");
         const prefersDark = window.matchMedia(
           "(prefers-color-scheme: dark)",
         ).matches;
         const isDark = theme === "dark" || (!theme && prefersDark);
-        document.documentElement.classList.toggle("dark", isDark);
+        doc.documentElement.classList.toggle("dark", isDark);
 
         const primaryColor = localStorage.getItem("primary-color") || "default";
-        document.documentElement.setAttribute("data-theme-color", primaryColor);
+        doc.documentElement.setAttribute("data-theme-color", primaryColor);
       }
+
+      // Apply the theme to the incoming page *before* the swap, so the <html>
+      // attributes never reset to the defaults (no color transition flash).
+      document.addEventListener("astro:before-swap", (e) => {
+        applyTheme(e.newDocument);
+      });
 
       function scrollToHash(behavior) {
         if (window.location.hash) {
@@ -50,7 +56,18 @@ const locale = Astro.currentLocale || "en";
       }
 
       applyTheme();
-      scrollToHash("smooth");
+
+      // Initial load / reload (e.g. /#projects): this script runs in <head> before
+      // the body exists, so wait for the page to be ready before scrolling.
+      // Later client-side navigations are handled in `astro:after-swap`.
+      let isFirstLoad = true;
+      document.addEventListener("astro:page-load", () => {
+        if (!isFirstLoad) return;
+        isFirstLoad = false;
+        // Full load: there is no previous in-site page to go back to.
+        sessionStorage.removeItem("prev-path");
+        scrollToHash("instant");
+      });
 
       window.addEventListener("primary-color-changed", (e) => {
         document.documentElement.setAttribute("data-theme-color", e.detail);

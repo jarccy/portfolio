@@ -1,6 +1,11 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
-  import { getPrimaryColor, onPrimaryColorChange, setPrimaryColor, type PrimaryColor } from "@/lib/theme";
+  import {
+    getPrimaryColor,
+    onPrimaryColorChange,
+    setPrimaryColor,
+    type PrimaryColor,
+  } from "@/lib/theme";
   import { cn } from "@/lib/utils";
   import ThemeSwitch from "./themeSwitch.svelte";
 
@@ -37,7 +42,7 @@
 <div class="relative" bind:this={ref}>
   <button
     onclick={() => (isOpen = !isOpen)}
-    aria-label={lang === "en" ? "Theme / Color" : "Tema / Color"}
+    aria-label={lang === "en" ? "Color / Theme" : "Color / Tema"}
     class="p-1 rounded-full cursor-pointer hover:bg-neutral-200/50 dark:hover:bg-neutral-800 text-neutral-200 hover:text-neutral-600 dark:text-neutral-200 dark:hover:text-neutral-200 transition-colors active:scale-95"
   >
     <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 256 256"
@@ -54,8 +59,10 @@
       class="absolute bg-white dark:bg-neutral-900 right-0 top-full mt-3.5 p-3 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-lg min-w-[180px] z-50 origin-top-right"
     >
       <div class="flex items-center justify-between mb-3">
-        <p class="text-xs font-bold text-muted-foreground px-1 uppercase tracking-wider">
-          {lang === "en" ? "Theme / Color" : "Tema / Color"}
+        <p
+          class="text-xs font-bold text-muted-foreground px-1 uppercase tracking-wider"
+        >
+          {lang === "en" ? "Color / Theme" : "Color / Tema"}
         </p>
         <ThemeSwitch
           variant="top-down"

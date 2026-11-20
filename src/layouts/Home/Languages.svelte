@@ -62,7 +62,20 @@
     tooltip.show = false;
   };
 
-  const isSmall = () => typeof window !== "undefined" && window.innerWidth < 768;
+  const TOOLTIP_WIDTH = 180;
+  const VIEWPORT_MARGIN = 12;
+
+  // Center the tooltip under the language, but keep it inside the viewport.
+  const tooltipLeft = $derived.by(() => {
+    if (typeof window === "undefined") return tooltip.position.left;
+    const half = TOOLTIP_WIDTH / 2;
+    const min = VIEWPORT_MARGIN + half;
+    const max = window.innerWidth - VIEWPORT_MARGIN - half;
+    return Math.min(Math.max(tooltip.position.left, min), max);
+  });
+
+  // Keeps the arrow pointing at the language when the tooltip is clamped.
+  const arrowOffset = $derived(tooltip.position.left - tooltipLeft);
 </script>
 
 <div
@@ -104,13 +117,12 @@
   {#if tooltip.show}
     <div
       use:portal
-      class="fixed z-30 transition-all duration-300 pointer-events-none flex justify-center w-auto px-10 md:px-0"
-      style="top: {tooltip.position.top}px; left: {isSmall() ? 0 : tooltip.position.left}px; transform: {isSmall()
-        ? 'none'
-        : 'translateX(-50%)'};"
+      class="fixed z-30 transition-all duration-300 pointer-events-none flex justify-center w-auto"
+      style="top: {tooltip.position.top}px; left: {tooltipLeft}px; transform: translateX(-50%);"
     >
       <div
-        class="hidden md:block absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white dark:border-b-neutral-800/80"
+        class="absolute -top-2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white dark:border-b-neutral-800/80"
+        style="left: calc(50% + {arrowOffset}px);"
       ></div>
 
       <div class="text-xs rounded-2xl py-2 px-3 w-[180px] md:h-[80px] shadow-lg bg-white dark:bg-neutral-900">

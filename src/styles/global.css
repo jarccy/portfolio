@@ -284,3 +284,20 @@
     animation: fade-in-up 0.4s ease-out forwards;
   }
 }
+
+/* Returning to a page (back navigation / #hash): show content already revealed,
+   so the view transition morphs into visible elements instead of hidden ones. */
+html[data-restoring] [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+html[data-restoring] [data-reveal-fade] {
+  opacity: 1 !important;
+}
+
+html[data-restoring] [data-reveal-width] {
+  width: fit-content !important;
+  transition: none !important;
+}

@@ -47,16 +47,16 @@
     <SpotlightParticles />
     <div class="max-w-xl w-full text-center space-y-2">
       <h1
-        style={reveal(mounted, itemVariants, 0)}
+        data-reveal style={reveal(mounted, itemVariants, 0)}
         class="text-4xl sm:text-5xl lg:text-6xl font-bold font-sans text-neutral-600 dark:text-neutral-200 leading-tight"
       >
-        <span style={reveal(mounted, nameBlurVariants)} class="inline-block mr-2">
+        <span data-reveal style={reveal(mounted, nameBlurVariants)} class="inline-block mr-2">
           {localT("home.name")}
         </span>
-        <span style={reveal(mounted, surnameBlurVariants)} class="inline-block text-primary">Jarcy</span>
+        <span data-reveal style={reveal(mounted, surnameBlurVariants)} class="inline-block text-primary">Jarcy</span>
       </h1>
 
-      <h2 style={reveal(mounted, itemVariants, STAGGER)} class="font-vectra text-4xl sm:text-5xl lg:text-6xl font-bold py-2">
+      <h2 data-reveal style={reveal(mounted, itemVariants, STAGGER)} class="font-vectra text-4xl sm:text-5xl lg:text-6xl font-bold py-2">
         <ShinyText
           text="Software Developer"
           speed={2}
@@ -66,13 +66,13 @@
       </h2>
 
       <article
-        style={reveal(mounted, descriptionBlurVariants)}
+        data-reveal style={reveal(mounted, descriptionBlurVariants)}
         class="dark:text-neutral-400/90 px-4 md:px-0 text-sm sm:text-base"
       >
         {localT("home.description")}
       </article>
 
-      <div style={reveal(mounted, languagesBlurVariants)}>
+      <div data-reveal style={reveal(mounted, languagesBlurVariants)}>
         <Languages />
       </div>
     </div>

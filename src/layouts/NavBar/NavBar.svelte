@@ -85,6 +85,7 @@
 
 <nav
   class="fixed flex justify-between items-center gap-3 z-50 top-0 right-5 sm:left-auto w-[calc(100vw-150px)] sm:w-auto transition-all duration-300"
+  data-reveal
   style="transform: {mounted ? 'none' : 'translateY(-50px)'}; opacity: {mounted
     ? 1
     : 0}; transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 0.1s cubic-bezier(0, 0, 0.58, 1), opacity 0.1s cubic-bezier(0, 0, 0.58, 1);"

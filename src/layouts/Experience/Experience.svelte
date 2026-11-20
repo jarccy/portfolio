@@ -110,7 +110,7 @@
   use:inview={{ amount: 0.2, once: true, onenter: () => (visible = true) }}
   class="w-full max-w-2xl mx-auto pt-40 mb-10 px-4"
 >
-  <div style={reveal(visible, itemVariants, 0)}>
+  <div data-reveal style={reveal(visible, itemVariants, 0)}>
     <TitleMenu title={localT("experience.title")} description={localT("experience.description")}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +125,7 @@
     </TitleMenu>
   </div>
 
-  <div style={reveal(visible, itemVariants, STAGGER)}>
+  <div data-reveal style={reveal(visible, itemVariants, STAGGER)}>
     <Tabs {tabs} renderContent={experienceCard} />
   </div>
 </section>

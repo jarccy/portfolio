@@ -29,25 +29,57 @@ const locale = Astro.currentLocale || "en";
         document.documentElement.setAttribute("data-theme-color", primaryColor);
       }
 
-      function scrollToHash() {
+      function scrollToHash(behavior) {
         if (window.location.hash) {
           const el = document.querySelector(window.location.hash);
           if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
+            el.scrollIntoView({ behavior });
           }
         }
       }
 
+      const SCROLL_KEY = "scroll-positions";
+      let navDirection = "forward";
+
+      function readScrollPositions() {
+        try {
+          return JSON.parse(sessionStorage.getItem(SCROLL_KEY) || "{}");
+        } catch {
+          return {};
+        }
+      }
+
       applyTheme();
-      scrollToHash();
+      scrollToHash("smooth");
 
       window.addEventListener("primary-color-changed", (e) => {
         document.documentElement.setAttribute("data-theme-color", e.detail);
       });
 
-      document.addEventListener("astro:page-load", () => {
+      // Before leaving a page: remember its scroll position and where we came from.
+      document.addEventListener("astro:before-preparation", (e) => {
+        navDirection = e.direction;
+        const container = document.getElementById("app-scroll-container");
+        const positions = readScrollPositions();
+        positions[e.from.pathname] = container ? container.scrollTop : 0;
+        sessionStorage.setItem(SCROLL_KEY, JSON.stringify(positions));
+        sessionStorage.setItem("prev-path", e.from.pathname);
+      });
+
+      // After the new page is in the DOM (before the view transition snapshot):
+      // restore the scroll instantly and skip entrance animations when going back.
+      document.addEventListener("astro:after-swap", () => {
         applyTheme();
-        scrollToHash();
+        const container = document.getElementById("app-scroll-container");
+        const saved = readScrollPositions()[window.location.pathname];
+
+        if (navDirection === "back" && container && saved !== undefined) {
+          document.documentElement.setAttribute("data-restoring", "");
+          container.scrollTop = saved;
+        } else if (window.location.hash) {
+          document.documentElement.setAttribute("data-restoring", "");
+          scrollToHash("instant");
+        }
       });
     </script>
   </head>

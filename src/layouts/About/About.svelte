@@ -19,7 +19,7 @@
   use:inview={{ amount: 0.2, once: true, onenter: () => (visible = true) }}
   class="w-full max-w-2xl mx-auto pt-40 mb-10 px-4"
 >
-  <div style={reveal(visible, itemVariants, 0)}>
+  <div data-reveal style={reveal(visible, itemVariants, 0)}>
     <TitleMenu title={localT("about.title")} description={localT("about.description")}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@
   </div>
 
   <div class="flex flex-col md:flex-row gap-5 mt-6">
-    <div style={reveal(visible, itemVariants, STAGGER)} class="flex flex-col gap-2">
+    <div data-reveal style={reveal(visible, itemVariants, STAGGER)} class="flex flex-col gap-2">
       <p class="text-sm md:text-base text-neutral-600 dark:text-neutral-400 mb-4 min-w-[350px]">
         {localT("about.header")}{" "}
         <span class="text-primary font-semibold">Jar Cristhian</span>
@@ -92,7 +92,7 @@
       </div>
     </div>
 
-    <div style={reveal(visible, itemProfile, STAGGER * 2)} class="flex items-center justify-center ">
+    <div data-reveal style={reveal(visible, itemProfile, STAGGER * 2)} class="flex items-center justify-center ">
       <CardProfile>
         <button
           type="button"

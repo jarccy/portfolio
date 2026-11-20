@@ -69,7 +69,7 @@
   use:inview={{ amount: 0.2, once: true, onenter: () => (visible = true) }}
   class="w-full max-w-2xl mx-auto pt-40 mb-40 px-4"
 >
-  <div style={reveal(visible, itemVariants, 0)}>
+  <div data-reveal style={reveal(visible, itemVariants, 0)}>
     <TitleMenu title={localT("hobbie.title")} description={localT("hobbie.description")}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +86,7 @@
     </TitleMenu>
   </div>
 
-  <div style={reveal(visible, itemVariants, STAGGER)} class="flex flex-col mt-6 h-[475px] justify-center items-center">
+  <div data-reveal style={reveal(visible, itemVariants, STAGGER)} class="flex flex-col mt-6 h-[475px] justify-center items-center">
     {#if !showIframe}
       <span class="text-lg text-neutral-500 dark:text-neutral-400 animate-pulse"> Loading Spotify... </span>
     {:else}

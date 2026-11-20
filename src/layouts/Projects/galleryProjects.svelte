@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
+  import { navigate } from "astro:transitions/client";
   import { inview, itemProfile, reveal } from "@/lib/functions";
 
   interface ImageGalleryProps {
@@ -26,8 +27,20 @@
     selectedImage = image;
   };
 
+  const normalize = (path: string) => path.replace(/\/+$/, "") || "/";
+
   const goBack = () => {
-    window.location.href = locale === "es" ? "/es/#projects" : "/#projects";
+    const home = locale === "es" ? "/es" : "/";
+    const prevPath = sessionStorage.getItem("prev-path");
+
+    // Came from the home page: go back in history so the view transition
+    // plays in the "back" direction and the scroll position is restored.
+    if (prevPath && normalize(prevPath) === normalize(home) && history.length > 1) {
+      history.back();
+      return;
+    }
+
+    navigate(locale === "es" ? "/es/#projects" : "/#projects");
   };
 </script>
 
@@ -78,7 +91,7 @@
   </div>
 
   <div
-    style={reveal(visible, itemProfile)}
+    data-reveal style={reveal(visible, itemProfile)}
     class="flex gap-4 mt-4 items-center w-2/3 bg-neutral-200/80 dark:bg-neutral-800 rounded-lg overflow-hidden px-3 py-1"
   >
     {#each images as img (img)}

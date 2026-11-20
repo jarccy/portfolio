@@ -45,6 +45,7 @@
 <div class={cn(className)}>
   <div
     bind:this={outer}
+    data-reveal-width
     use:inview={{ onenter, onleave }}
     {ontransitionend}
     class="overflow-hidden"

@@ -80,6 +80,7 @@
     onmousemove={handleMouseMove}
     onmouseenter={handleMouseEnter}
     onmouseleave={handleMouseLeave}
+    data-reveal-fade
     style="transform: {transform}; opacity: {mounted ? 1 : 0}; transition: opacity 0.3s ease-out;"
     class="relative rounded-2xl shadow-2xl"
   >
